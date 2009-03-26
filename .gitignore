@@ -4,4 +4,4 @@ config/database.yml
 log/*
 tmp/*
 coverage/*
-db/development.sqlite3
+db/*.sqlite3
