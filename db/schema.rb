@@ -9,6 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20090329100243) do
+
+  create_table "users", :force => true do |t|
+    t.string   "login"
+    t.string   "access_token"
+    t.string   "access_secret"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.string   "name"
+    t.string   "location"
+    t.string   "description"
+    t.string   "profile_image_url"
+    t.string   "url"
+    t.boolean  "protected"
+    t.integer  "utc_offset"
+    t.string   "time_zone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
