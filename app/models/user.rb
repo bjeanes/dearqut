@@ -1,5 +1,15 @@
 class User < TwitterAuth::GenericUser
-  # Extend and define your user model as you see fit.
-  # All of the authentication logic is handled by the 
-  # parent TwitterAuth::GenericUser class.
+  
+  # For non-twitter users to login
+  def self.authenticate(login, password)
+    User.find_by_login(login).authenticate(password)
+  rescue
+    nil
+  end
+  
+  def authenticate(password)
+    # TODO check password field
+    self 
+  end
+  
 end
