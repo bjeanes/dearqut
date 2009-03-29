@@ -15,26 +15,31 @@ class SessionsController < ApplicationController
   end
  
   def create
-    logout_keeping_session!
+    # logout_keeping_session!
     if @user = User.authenticate(params[:login], params[:password])
+      logger.info @user.inspect
       self.current_user = @user
-      authentication_succeeded and return
+      logger.info @current_user.inspect
+      logger.info session.inspect
+      
+      authentication_succeeded
     else
-      authentication_failed('Unable to verify your credentials through Twitter. Please try again.', '/login') and return
+      authentication_failed('Unable to verify your credentials through Twitter. Please try again.', '/login')
     end
+    logger.info session.inspect
   end
  
   def oauth_callback
     unless session[:request_token] && session[:request_token_secret] 
       authentication_failed('No authentication information was found in the session. Please try again.') and return
     end
- 
+    
    unless params[:oauth_token].blank? || session[:request_token] ==  params[:oauth_token]
      authentication_failed('Authentication information does not match session information. Please try again.') and return
    end
- 
+    
     @request_token = OAuth::RequestToken.new(TwitterAuth.consumer, session[:request_token], session[:request_token_secret])
- 
+    
     @access_token = @request_token.get_access_token
 
  
@@ -58,18 +63,10 @@ class SessionsController < ApplicationController
   
   protected
   def current_user=(user)
-    logger.debug("Setting #{user.inspect} as current user")
-    
-    # The request token has been invalidated
-    # so we nullify it in the session.
     session[:request_token] = nil
     session[:request_token_secret] = nil
     
-    session[:user_id] = user.id
     cookies[:remember_token] = user.remember_me
-    
-    logger.debug(cookies.inspect)
-    logger.debug(session.inspect)
     super(user)
   end
   

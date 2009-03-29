@@ -1,8 +1,15 @@
 <%= flash[:notice] %>
 
 <%= link_to "sign up", "/" %>
+<%= link_to "login", "/login" %>
+<%= link_to "login with twitter", "/login?twitter=1" %>
 
-<p><%= current_user.login rescue "Logged out" %></p>
+<p><%= begin
+current_user.login 
+rescue => e
+  e.message
+end
+ %></p>
 
 <form>
   <input name="Username"/>
