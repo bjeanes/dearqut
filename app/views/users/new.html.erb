@@ -1,0 +1,7 @@
+If you want to create an account using twitter, merely <%= link_to "log in here", twitter_login_path %>
+<br /><br />
+
+<% form_tag(:url => sessions_path, :method => :post) do |f| %>
+  <%= f.text_field :username %>
+  <%= f.password_field :password %>
+<% end %>
