@@ -1,12 +1,15 @@
 class CreateComments < ActiveRecord::Migration
   def self.up
     create_table :comments do |t|
-      t.references :user
-      t.references :message
-      t.text :body
+      t.references :user,    :null => false
+      t.references :message, :null => false
+      t.text :body,          :null => false
 
       t.timestamps
     end
+    
+    add_index :comments, :message_id
+    add_index :comments, :user_id
   end
 
   def self.down
