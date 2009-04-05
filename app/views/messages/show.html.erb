@@ -1,0 +1,18 @@
+<p>
+  <b>User:</b>
+  <%=h @message.user %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @message.body %>
+</p>
+
+<p>
+  <b>Twitter:</b>
+  <%=h @message.twitter %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>
