@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.references :user, :null => false
       t.text :body,       :null => false
-      t.boolean :twitter, :null => false
+      t.boolean :twitter, :null => false, :default => false
 
       t.timestamps
     end
