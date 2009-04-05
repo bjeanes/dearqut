@@ -6,6 +6,11 @@ class User < TwitterAuth::GenericUser
   validates_length_of       :password, :within => 6..40, :if => :password_required?
   before_save :encrypt_password
   
+  def to_s
+    protected? ? 
+      "Anonymous" :
+      (name || login)
+  end
   
   # For non-twitter users to login
   def self.authenticate(login, password)
