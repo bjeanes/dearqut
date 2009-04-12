@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20090412122830) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.text     "body",       :null => false
-    t.boolean  "twitter",    :null => false
+    t.text     "body",                          :null => false
+    t.boolean  "twitter",    :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

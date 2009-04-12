@@ -20,7 +20,7 @@
 #content
 {
 	margin-top: 50px;
-	font:10pt "Helvetica", "Arial";
+	font:15pt "Helvetica", "Arial";
 }
 
 	#msgform textarea
@@ -196,3 +196,16 @@
 {
 	width: 600px;
 }
+
+input.text_field, input.password_field,
+textarea {
+  font: 15pt "Helvetica", "Arial";
+  border:0;
+  color:#5e5e5e;
+  margin:0;
+  padding:0;
+  border-bottom: 2px solid #5e5e5e;
+  background-color:#fff;
+}
+
+input:focus, textarea:focus { outline: none; }
