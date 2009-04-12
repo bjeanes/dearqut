@@ -1,23 +1,13 @@
 <h1>Listing messages</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Body</th>
-    <th>Twitter</th>
-  </tr>
-
+<ul>
 <% @messages.each do |message| %>
-  <tr>
-    <td><%=h message.user %></td>
-    <td><%=h message.body %></td>
-    <td><%=h message.twitter %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <li></li>
+    <li><a href="<%= link_to 'Show', message %>"<%=h message.body %>
+				<%=h message.user %></li>
+    <li><%= link_to 'Edit', edit_message_path(message) %></li>
+    <li><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></li>
 <% end %>
-</table>
+</ul>
 
 <br />
 

@@ -1,0 +1,97 @@
+#container 
+{
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#title 
+{
+	margin-top: 50px;
+	font-family:"Helvetiva", "Arial";
+	
+}
+
+#content
+{
+	margin-top: 50px;
+	font:10pt "Helvetica", "Arial";
+}
+
+	#msgform textarea
+	{
+		width: 600px;
+	}
+
+#footer
+{}
+	#footer ul
+	{
+		font-family: "Helvetica", "Arial";
+		font-weight: bolder;
+		list-style: none;
+		margin: 20px 0 0 0;
+		padding: 0;
+	}
+	
+	#footer li
+	{
+		text-align: justify;
+		text-transform: uppercase;
+		display: block;
+		float: left;
+		color: #5e5e5e;
+
+	}
+	
+	.first
+	{
+		width: 140px;
+		line-height: 1.1em;
+		font-size: 1.4em;
+		padding: 0 50px 0 0;
+	}
+	
+	.second
+	{
+		line-height: 1.6em;
+		font-size: 1em;
+		padding: 0 50px 0 50px;
+		width: 98px;
+		border-width: 0 1px 0 1px;
+		border-style: solid;
+	}
+	
+	.third
+	{
+		padding: 0 0 0 50px;
+		width: 156px;
+		font-size: 1.3em;
+		line-height: 1.35em;
+	}
+	
+	.large
+	{
+		font-size: 1.4em;
+	}
+	
+	.larger
+	{
+		font-size: 1.2em;
+	}
+	
+	.huge
+	{
+		font-size: 2.3em;
+	}
+/*----Global-----*/
+
+.right
+{
+	float:right;
+}
+
+.form
+{
+	width: 600px;
+}
