@@ -9,7 +9,7 @@
 {
 	margin-top: 50px;
 	font-family:"Helvetiva", "Arial";
-	
+	font-size: 36pt;
 }
 
 #content
@@ -22,9 +22,82 @@
 	{
 		width: 600px;
 	}
+	
+	#filter
+	{
+		float: left;
+		font: bold 14pt "Helvetica", "Arial";
+	}
+		#filter ul
+		{
+			font-size: 12pt;
+			list-style: none;
+			padding: 0;
+		}
+	
+	.msglist
+	{
+		padding: 0;
+		margin: 0;
+		text-align: right;
+		width: 450px;
+		list-style: none;
+		float: right;
+	}
+	
+		.msglist li
+		{
+			padding: 0 20px 10px 10px;
+		}
+	
+		.msglist a
+		{
+			color: #555555;
+			text-decoration: none;
+		}
+	
+		.msglist a:hover
+		{
+			color: #000;
+		}
+		
+		.popularity
+		{
+			color: #555;
+			margin-top: 5px;
+			text-align: justify;
+			width:40px;
+			font-size: 0.9em;
+			float:left;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+		
+		.num
+		{
+			line-height: 0.7em;
+			font-size:2.2em;
+		}
 
+		.small
+		{
+			font-size: 0.7em;
+		}
+		
+		.msg-item
+		{
+			line-height: 1.6em;
+		}
+		.msg
+		{
+			float: left;
+		}
+		
 #footer
-{}
+{
+	clear: both;
+	padding: 20px 0 10px 0;
+}
 	#footer ul
 	{
 		font-family: "Helvetica", "Arial";
