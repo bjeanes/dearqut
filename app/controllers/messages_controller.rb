@@ -37,9 +37,11 @@ class MessagesController < ApplicationController
   def create
     message = params[:message]
     message.delete(:user_id)
+    message.delete(:user)
     
     @message = Message.new(message)
     @message.user = current_user
+    @message.twitter = false
   
     respond_to do |format|
       if @message.save

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090405104746) do
+ActiveRecord::Schema.define(:version => 20090412122830) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(:version => 20090405104746) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "messages", :force => true do |t|
-    t.integer  "user_id",                       :null => false
-    t.text     "body",                          :null => false
-    t.boolean  "twitter",    :default => false, :null => false
+    t.integer  "user_id"
+    t.text     "body",       :null => false
+    t.boolean  "twitter",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20090405104746) do
     t.string   "login"
     t.string   "access_token"
     t.string   "access_secret"
-    t.string   "remember_token"
+    t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.string   "name"
     t.string   "location"

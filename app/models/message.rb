@@ -12,5 +12,6 @@ class Message < ActiveRecord::Base
   protected
     def set_twitter_field_to_false
       self.twitter ||= false
+      true
     end
 end
