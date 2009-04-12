@@ -23,6 +23,7 @@ role :db,  domain, :primary => true
 
 before 'deploy:cold', 'deploy:upload_database_yml'
 after 'deploy:symlink', 'deploy:create_symlinks'
+after 'deploy', 'deploy:migrate'
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"

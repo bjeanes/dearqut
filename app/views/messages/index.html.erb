@@ -1,14 +1,33 @@
-<h1>Listing messages</h1>
-<ul>
+<div id="filter">
+	Order by:
+	<ul>
+		<li>Date</li>
+		<li>Popularity</li>
+	</ul>
+	Search Tags:
+	<br />
+	<br />
+	All Tags
+</div>
+<ul class="msglist">
 <% @messages.each do |message| %>
-    <li></li>
-    <li><a href="<%= link_to 'Show', message %>"<%=h message.body %>
-				<%=h message.user %></li>
-    <li><%= link_to 'Edit', edit_message_path(message) %></li>
-    <li><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></li>
+       		<li class="popularity"><span class="num">110</span> agree
+						<br /><span class="num">010</span><br /><span class="small">disagree</span></li>
+					<li class="msg-item"><span class="msg"><%= link_to message.body, message %></span>
+					<br />
+					sincerely,
+					<%= 
+					if message.user 
+						 message.user
+					else "<strong>Anon</strong>" 
+					end %>, <%= h message.created_at.to_s(:short) 
+					%>
+					<br />
+					Reply
+					<br /><br >					<br />
+					</li>
 <% end %>
 </ul>
 
 <br />
 
-<%= link_to 'New message', new_message_path %>
