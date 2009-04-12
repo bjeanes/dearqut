@@ -1,0 +1,10 @@
+include_friends: true
+min_interval: 60
+max_interval: 600
+interval_step: 10
+log_level: error
+log_file: log/bot.log
+prompt: false
+daemonize: true
+login: dearqut
+password: qm"60%$9.k?12N=[Q/C3?b^e`TLt}sg?H6uc`CWppmA]Hxk6C'2Q?bF$#Orfg1P
