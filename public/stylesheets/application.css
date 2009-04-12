@@ -11,6 +11,11 @@
 	font-family:"Helvetiva", "Arial";
 	font-size: 36pt;
 }
+	#title a
+	{
+		color: #000;
+		text-decoration: none;
+	}
 
 #content
 {
@@ -21,6 +26,29 @@
 	#msgform textarea
 	{
 		width: 600px;
+	}
+	
+	#single
+	{
+		clear: both;
+		float: right;
+	}
+	
+	#singleleft
+	{
+		text-align: left;
+	}
+	
+	#controls
+	{
+		color: #555;
+		margin-top: 5px;
+		text-align: justify;
+		width:100px;
+		font-size: 0.9em;
+		float:right;
+		text-transform: uppercase;
+		font-weight: bold;
 	}
 	
 	#filter
@@ -61,7 +89,7 @@
 			color: #000;
 		}
 		
-		.popularity
+		.popularity-item
 		{
 			color: #555;
 			margin-top: 5px;

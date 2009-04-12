@@ -11,16 +11,13 @@
 </div>
 <ul class="msglist">
 <% @messages.each do |message| %>
-       		<li class="popularity"><span class="num">110</span> agree
+       		<li class="popularity-item"><span class="num">110</span> agree
 						<br /><span class="num">010</span><br /><span class="small">disagree</span></li>
 					<li class="msg-item"><span class="msg"><%= link_to message.body, message %></span>
 					<br />
+					
 					sincerely,
-					<%= 
-					if message.user 
-						 message.user
-					else "<strong>Anon</strong>" 
-					end %>, <%= h message.created_at.to_s(:short) 
+					<strong><%= message.user || "Anonymous" %></strong>, <%= h message.created_at.to_s(:short) 
 					%>
 					<br />
 					Reply
