@@ -1,8 +1,11 @@
 require 'rubygems'
-require 'twibot'
+# require 'twibot'
+require File.join(File.dirname(__FILE__), "twibot", "lib", "twibot")
 
 begin
   configure do |c|
+    c.login = 'dearqut'
+    c.password = %Q(qm"60%$9.k?12N=[Q/C3?b^e`TLt}sg?H6uc`CWppmA]Hxk6C'2Q?bF$#Orfg1P)
   end
 
   message do |message, params|
