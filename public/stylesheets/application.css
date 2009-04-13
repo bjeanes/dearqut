@@ -208,4 +208,6 @@ textarea {
   background-color:#fff;
 }
 
-input:focus, textarea:focus { outline: none; }
+input:focus, 
+select:focus,
+textarea:focus { outline: none; }
