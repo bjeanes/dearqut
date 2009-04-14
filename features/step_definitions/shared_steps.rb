@@ -1,5 +1,5 @@
 Given /^I am not logged in$/ do
-  # pending 
+  post_via_redirect logout_path
 end
 
 Then /^I should be logged in$/ do
