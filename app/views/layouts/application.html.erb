@@ -1,7 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-  <body>
-    <%= yield %>
-  </body>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Dear QUT</title>
+  <%= stylesheet_link_tag 'application' %>
+</head>
+	<body>
+		<div id="container">
+			<h1 id="title"><a href="/">Dear QUT,</a></h1>
+			<div id="content">
+			<p style="color: green"><%= flash[:notice] %></p>
+
+			<%= yield %>
+			</div>
+			<div id="footer">
+				<ul>
+					<li class="first">Sync Your <span class="large">Twitter</span></li>
+					<li class="second">Need Some <span class="huge">Help</span></li>
+					<li class="third"><span class="larger">Terms</span> and <span class="larger">Conditions</span></li>
+				</ul>
+			</div>
+		</div>
+	</body>
 </html>

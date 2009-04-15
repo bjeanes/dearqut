@@ -5,7 +5,7 @@ class TwitterAuthMigration < ActiveRecord::Migration
       t.string :access_token
       t.string :access_secret
 
-      t.string :remember_token
+      t.string :remember_token, :limit => 40
       t.datetime :remember_token_expires_at
 
       # This information is automatically kept

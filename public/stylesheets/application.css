@@ -1,0 +1,213 @@
+#container 
+{
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#title 
+{
+	margin-top: 50px;
+	font-family:"Helvetiva", "Arial";
+	font-size: 36pt;
+}
+	#title a
+	{
+		color: #000;
+		text-decoration: none;
+	}
+
+#content
+{
+	margin-top: 50px;
+	font:15pt "Helvetica", "Arial";
+}
+
+	#msgform textarea
+	{
+		width: 600px;
+	}
+	
+	#single
+	{
+		clear: both;
+		float: right;
+	}
+	
+	#singleleft
+	{
+		text-align: left;
+	}
+	
+	#controls
+	{
+		color: #555;
+		margin-top: 5px;
+		text-align: justify;
+		width:100px;
+		font-size: 0.9em;
+		float:right;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	
+	#filter
+	{
+		float: left;
+		font: bold 14pt "Helvetica", "Arial";
+	}
+		#filter ul
+		{
+			font-size: 12pt;
+			list-style: none;
+			padding: 0;
+		}
+	
+	.msglist
+	{
+		padding: 0;
+		margin: 0;
+		text-align: right;
+		width: 450px;
+		list-style: none;
+		float: right;
+	}
+	
+		.msglist li
+		{
+			padding: 0 20px 10px 10px;
+		}
+	
+		.msglist a
+		{
+			color: #555555;
+			text-decoration: none;
+		}
+	
+		.msglist a:hover
+		{
+			color: #000;
+		}
+		
+		.popularity-item
+		{
+			color: #555;
+			margin-top: 5px;
+			text-align: justify;
+			width:40px;
+			font-size: 0.9em;
+			float:left;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+		
+		.num
+		{
+			line-height: 0.7em;
+			font-size:2.2em;
+		}
+
+		.small
+		{
+			font-size: 0.7em;
+		}
+		
+		.msg-item
+		{
+			line-height: 1.6em;
+		}
+		.msg
+		{
+			float: left;
+		}
+		
+#footer
+{
+	clear: both;
+	padding: 20px 0 10px 0;
+}
+	#footer ul
+	{
+		font-family: "Helvetica", "Arial";
+		font-weight: bolder;
+		list-style: none;
+		margin: 20px 0 0 0;
+		padding: 0;
+	}
+	
+	#footer li
+	{
+		text-align: justify;
+		text-transform: uppercase;
+		display: block;
+		float: left;
+		color: #5e5e5e;
+
+	}
+	
+	.first
+	{
+		width: 140px;
+		line-height: 1.1em;
+		font-size: 1.4em;
+		padding: 0 50px 0 0;
+	}
+	
+	.second
+	{
+		line-height: 1.6em;
+		font-size: 1em;
+		padding: 0 50px 0 50px;
+		width: 98px;
+		border-width: 0 1px 0 1px;
+		border-style: solid;
+	}
+	
+	.third
+	{
+		padding: 0 0 0 50px;
+		width: 156px;
+		font-size: 1.3em;
+		line-height: 1.35em;
+	}
+	
+	.large
+	{
+		font-size: 1.4em;
+	}
+	
+	.larger
+	{
+		font-size: 1.2em;
+	}
+	
+	.huge
+	{
+		font-size: 2.3em;
+	}
+/*----Global-----*/
+
+.right
+{
+	float:right;
+}
+
+.form
+{
+	width: 600px;
+}
+
+input.text_field, input.password_field,
+textarea {
+  font: 15pt "Helvetica", "Arial";
+  border:0;
+  color:#5e5e5e;
+  margin:0;
+  padding:0;
+  border-bottom: 2px solid #5e5e5e;
+  background-color:#fff;
+}
+
+input:focus, 
+select:focus,
+textarea:focus { outline: none; }

@@ -1,0 +1,12 @@
+<div id="single"><!-- <div id="controls"><span class="num">110</span><br />agree
+<span class="num">010</span><br /><span class="small">disagree</span></li></div>
+<br /><br /><br /><br /><br /> -->
+<p class="msg"><%=h @message.body %></p>
+sincerely,
+<%= 
+if @message.user 
+	 @message.user
+else "<strong>Anon</strong>" 
+end %>, <%= h @message.created_at.to_s(:short) 
+%>
+</div>

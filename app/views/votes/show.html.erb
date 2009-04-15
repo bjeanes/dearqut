@@ -1,0 +1,18 @@
+<p>
+  <b>User:</b>
+  <%=h @vote.user %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%=h @vote.message %>
+</p>
+
+<p>
+  <b>Up:</b>
+  <%=h @vote.up %>
+</p>
+
+
+<%= link_to 'Edit', edit_vote_path(@vote) %> |
+<%= link_to 'Back', votes_path %>
