@@ -203,9 +203,14 @@ textarea {
   border:0;
   color:#5e5e5e;
   margin:0;
+  width: 7em;
   padding:0;
   border-bottom: 2px solid #5e5e5e;
   background-color:#fff;
+}
+
+textarea {
+  border: 2px solid #5e5e5e
 }
 
 input:focus, 
