@@ -56,7 +56,7 @@ end
 namespace :bot do
   desc "Start the DearQUT bot"
   task :start do
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} screen -d -m ruby bot/dearqut.rb"
+    run "cd #{current_path}/app/bot && RAILS_ENV=#{rails_env} screen -d -m ruby dearqut.rb"
   end
   
   desc "Stop the DearQUT bot"
