@@ -1,29 +1,33 @@
-set :application, "dearqut"
-set :repository,  "git@github.com:bjeanes/dearqut.git"
-set :domain,      "#{application}.com"
-
-set :user,        "deploy"
-
-set :deploy_to,   "/var/www/#{application}"
-
-set :scm, :git
-set :repository,  "git@github.com:bjeanes/#{application}.git"
-set :deploy_to,   "/var/www/#{application}"
-set :branch,      "master"
-set :deploy_via, :remote_cache
+set :application,             "dearqut"
+set :repository,              "git@github.com:bjeanes/dearqut.git"
+set :domain,                  "#{application}.com"
+                              
+set :user,                    "deploy"
+                              
+set :deploy_to,               "/var/www/#{application}"
+                              
+set :scm, :git                
+set :repository,              "git@github.com:bjeanes/#{application}.git"
+set :deploy_to,               "/var/www/#{application}"
+set :branch,                  "master"
+set :deploy_via,              :remote_cache
 set :git_enable_submodules,   true
 
-set :ssh_options, { :forward_agent => true }
+set :ssh_options,             { :forward_agent => true }
+                              
+set :use_sudo,                false
+                              
+role :app,                    domain
+role :web,                    domain
+role :db,                     domain, :primary => true
+                              
+set :rails_env,               "production"
 
-set :use_sudo, false
-
-role :app, domain
-role :web, domain
-role :db,  domain, :primary => true
-
-before 'deploy:cold', 'deploy:upload_database_yml'
-after 'deploy:symlink', 'deploy:create_symlinks'
-after 'deploy', 'deploy:migrate'
+before 'deploy:cold',         'deploy:upload_database_yml'
+before 'deploy',              'bot:stop'
+after  'deploy',              'deploy:migrate'
+after  'deploy:symlink',      'deploy:create_symlinks'
+after  'deploy:symlink',      'bot:start'
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
@@ -46,5 +50,23 @@ namespace :deploy do
   task :create_symlinks, :roles => :app do
     run "rm -f #{release_path}/config/database.yml"
     run "ln -s #{shared_path}/database.yml #{current_path}/config/database.yml"
+  end
+end
+
+namespace :bot do
+  desc "Start the DearQUT bot"
+  task :start do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} screen -d -m ruby bot/dearqut.rb"
+  end
+  
+  desc "Stop the DearQUT bot"
+  task :stop do
+    run "kill `cat #{current_path}/tmp/pids/bot.pid` || echo 'Already stopped'"
+  end
+  
+  desc "Restarts the DearQUT bot"
+  task :restart do
+    stop
+    start
   end
 end
