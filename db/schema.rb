@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090412122830) do
+ActiveRecord::Schema.define(:version => 20090418081323) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -24,13 +24,14 @@ ActiveRecord::Schema.define(:version => 20090412122830) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.text     "body",                          :null => false
-    t.boolean  "twitter",    :default => false, :null => false
+    t.text     "body",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tweet_id"
+    t.boolean  "private"
   end
 
-  add_index "messages", ["twitter"], :name => "index_messages_on_twitter"
+  add_index "messages", ["tweet_id"], :name => "index_messages_on_tweet_id"
   add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "sessions", :force => true do |t|

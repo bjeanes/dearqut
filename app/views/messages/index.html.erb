@@ -17,7 +17,7 @@
 					<br />
 					
 					sincerely,
-					<strong><%= message.user || "Anonymous" %></strong>, <%= h message.created_at.to_s(:short) 
+					<strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) 
 					%>
 					<br />
 					Reply
