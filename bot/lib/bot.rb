@@ -8,20 +8,20 @@ configure do |c|
   c.log_level = "error"
   
   c.process = Message.maximum(:tweet_id, :conditions => "tweet_id IS NOT NULL") || 0
+  puts "Starting from tweet ##{c.process}"
   
+  c.min_interval = 30  # 30 seconds
+  c.max_interval = 600 # 10 minutes
+  
+  # Increase by 30 seconds after each empty request
   c.interval_step = 30
-  c.min_interval = 30
-  c.max_interval = 800
 end
 
 message do |message, params|
-  puts %Q{Process this #{message.id}: "#{message}"}
+  add_message(message, :private => true)
 end
 
 reply do |message, params|
-  if message.to_s =~ /^@dearqut\s+(.+)$/
-    puts %Q{Process this #{message.id}: "#{$1}"}
-  else
-    puts %Q{Ignore this #{message.id}: "#{message}"}
-  end
+  # Only process replies that begin with @dearqut
+  add_message(message, :text => $1) if message.to_s =~ /^@dearqut\s+(.+)$/
 end

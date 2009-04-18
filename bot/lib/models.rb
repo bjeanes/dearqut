@@ -12,6 +12,10 @@ Dir[File.join(RAILS_ROOT, "app", "models", "*.rb")].each do |model|
   require model
 end
 
-config = YAML.load(File.read(File.join(RAILS_ROOT, "config", "database.yml")))[RAILS_ENV]
+class User < TwitterAuth::GenericUser
+  set_table_name :users
+end
+
+config = YAML.load_file(File.join(RAILS_ROOT, "config", "database.yml"))[RAILS_ENV]
 
 ActiveRecord::Base.establish_connection(config)

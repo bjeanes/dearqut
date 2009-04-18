@@ -22,6 +22,22 @@ class User < TwitterAuth::GenericUser
     "#{'@' if twitter?}#{self[:login]}"
   end
   
+  def self.find_or_create_by_twitter_user(user)
+    find_by_login(user.screen_name) || begin
+      options = {
+        :location => user.location,
+        :login => user.screen_name,
+        :description => user.description, 
+        :name => user.name,
+        :profile_image_url => user.profile_image_url,
+        :url => user.url,
+        :protected => user.protected,
+      }
+
+      create(options)
+    end
+  end
+  
   # For non-twitter users to login
   def self.authenticate(login, password)
     User.find_by_login(login).authenticate(password)

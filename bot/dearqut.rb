@@ -4,4 +4,5 @@ $:.unshift(File.join(File.dirname(__FILE__), "lib"))
 
 require 'rubygems'
 require 'models'
+require 'handler'
 require 'bot'
