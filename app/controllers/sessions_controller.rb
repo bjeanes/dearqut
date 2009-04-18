@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       
       authentication_succeeded
     else
-      authentication_failed('Unable to verify your credentials through Twitter. Please try again.', '/login')
+      authentication_failed('Unable to verify your credentials. Please try again.', '/login')
     end
     logger.info session.inspect
   end
