@@ -5,3 +5,4 @@ log/*
 tmp/*
 coverage/*
 db/*.sqlite3
+bot/log/*
