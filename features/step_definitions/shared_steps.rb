@@ -15,7 +15,7 @@ Then /^I should be redirected to (.+)$/ do |path|
 end
 
 Given /^I have an existing account$/ do
-  
+  create_user
 end
 
 Given /^I am logged in(?: as (.+))?$/ do |user|
