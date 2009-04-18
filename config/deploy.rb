@@ -26,8 +26,8 @@ set :rails_env,               "production"
 before 'deploy:cold',         'deploy:upload_database_yml'
 before 'deploy',              'bot:stop'
 after  'deploy',              'deploy:migrate'
+after  'deploy',              'bot:start'
 after  'deploy:symlink',      'deploy:create_symlinks'
-after  'deploy:symlink',      'bot:start'
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
