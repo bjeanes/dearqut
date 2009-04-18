@@ -30,5 +30,6 @@ config.action_mailer.delivery_method = :test
 config.gem 'cucumber',    :version => '0.2.2', :lib => false
 config.gem 'rspec',       :version => '1.2.2', :lib => false
 config.gem 'rspec-rails', :version => '1.2.2', :lib => false
+config.gem 'rr',          :version => '0.8.1', :lib => false
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
