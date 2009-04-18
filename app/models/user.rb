@@ -1,4 +1,8 @@
 class User < TwitterAuth::GenericUser
+  has_many :messages
+  has_many :comments
+  has_many :votes
+  
   attr_accessor :password
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
@@ -15,11 +19,11 @@ class User < TwitterAuth::GenericUser
   end
   
   def name_for_display
-    (name || login)
+    name.blank? ? login_for_display : name
   end
   
-  def login
-    "#{'@' if twitter?}#{self[:login]}"
+  def login_for_display
+    "#{'@' if twitter?}#{login}"
   end
   
   def self.find_or_create_by_twitter_user(user)

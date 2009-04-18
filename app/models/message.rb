@@ -3,8 +3,6 @@ class Message < ActiveRecord::Base
   
   validates_presence_of :body
   
-  before_save :set_twitter_field_to_false
-  
   def author
     anonymous? ? "Anonymous" : user.to_s
   end
@@ -15,10 +13,4 @@ class Message < ActiveRecord::Base
   def anonymous?
     private? || user.nil? || user.protected?
   end
-  
-  protected
-    def set_twitter_field_to_false
-      self.twitter ||= false
-      true
-    end
 end

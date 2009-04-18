@@ -41,7 +41,6 @@ class MessagesController < ApplicationController
     
     @message = Message.new(message)
     @message.user = current_user
-    @message.twitter = false
   
     respond_to do |format|
       if @message.save

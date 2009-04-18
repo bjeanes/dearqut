@@ -42,8 +42,8 @@ class SessionsController < ApplicationController
     
     @access_token = @request_token.get_access_token
 
- 
     @user = User.identify_or_create_from_access_token(@access_token)
+
     self.current_user = @user
  
     authentication_succeeded 
