@@ -7,7 +7,7 @@ Then /^I should be logged in$/ do
   And(%Q{I should see "#{current_user.login}"})
 end
 
-Then /^I should be logged in as "?([^"]+)"?$/ do |login|
+Then /^I should be logged in as "([^"]+)"$/ do |login|
   And(%Q{I should see "#{login}"})
 end
 
@@ -16,8 +16,8 @@ Then /^I should be redirected to (.+)$/ do |path|
   response.should redirect_to(path)
 end
 
-Given /^I have an existing account$/ do
-  create_user
+Given /^I have an existing account(?: with login "([^"]+)")?$/ do |login|
+  login.nil? ? create_user : create_user(login)
 end
 
 Given /^I am logged in(?: as (.+))?$/ do |user|

@@ -5,8 +5,13 @@ module DearQutHelper
     nil
   end
   
-  def create_user(user = "leet", password = "h4x0r")
-    User.find_by_login(user) || User.create(:login => user, :password => password)
+  def create_user(login = "leet", password = "h4x0rk1d")
+    User.find_by_login(login) || begin
+      u = User.new(:password => password, :password_confirmation => password)
+      u.login = login
+      u.save!
+      u
+    end
   end
 end
 
