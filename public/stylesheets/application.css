@@ -197,16 +197,22 @@
 	width: 600px;
 }
 
-input.text_field, input.password_field,
-textarea {
-  font: 15pt "Helvetica", "Arial";
-  border:0;
+form {
+  line-height: 160%;
+}
+
+select, input.text_field, input.password_field, textarea {
+  font: 15pt "Helvetica", "Arial";  
   color:#5e5e5e;
   margin:0;
-  width: 7em;
   padding:0;
+  background-color:transparent;
+}
+
+input.text_field, input.password_field, textarea {
+  width: 7em;
+  border:0;
   border-bottom: 2px solid #5e5e5e;
-  background-color:#fff;
 }
 
 textarea {
