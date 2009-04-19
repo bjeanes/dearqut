@@ -1,16 +1,18 @@
 Given /^I am not logged in$/ do
-  @current_user = nil
   reset!
 end
 
 Then /^I should be logged in$/ do
-  @current_user.should_not be_nil
-  And(%Q{I should see "#{@current_user.login}"})
+  current_user.should_not be_nil
+  And(%Q{I should see "#{current_user.login}"})
+end
+
+Then /^I should be logged in as "?([^"]+)"?$/ do |login|
+  And(%Q{I should see "#{login}"})
 end
 
 Then /^I should be redirected to (.+)$/ do |path|
   path = path_to(path) unless path[0] == '/'
-
   response.should redirect_to(path)
 end
 
@@ -19,12 +21,12 @@ Given /^I have an existing account$/ do
 end
 
 Given /^I am logged in(?: as (.+))?$/ do |user|
-  @current_user ||= user ? create_user(user) : create_user
-  post_via_redirect '/session', :login => @current_user.login, :password => @current_user.password
+  current_user = user ? create_user(user) : create_user
+  post_via_redirect '/session', :login => current_user.login, :password => current_user.password
 end
 
 Given /^I do not fill in "([^\"]*)"$/ do |field|
-  fill_in field, ''
+  fill_in field, :with => ''
 end
 
 Then /^the message will be under the name "([^\"]*)"$/ do |author|

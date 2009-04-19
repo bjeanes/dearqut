@@ -15,3 +15,6 @@ end
 
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
+
+require 'rr'
+World(RR::Adapters::RRMethods)

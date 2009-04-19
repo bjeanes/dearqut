@@ -8,11 +8,10 @@ Feature: Creating an account
     And I am on the homepage
 
     When I follow "sign up"
-    And I fill in "Username" with "buttons"
-    And I fill in "Password" with "1337h4x0r"
-    And I fill in "Password Confirmation" with "1337h4x0r"
-    And I press "Submit"
+    And I fill in "user_login" with "buttonesque"
+    And I fill in "user_password" with "1337h4x0r"
+    And I fill in "user_password_confirmation" with "1337h4x0r"
+    And I press "Create"
   
-    Then I should be redirected to the home page
-    And I should see "buttons"
-    And I should be logged in
+    And I should see "buttonesque"
+    And I should be logged in as "buttonesque"

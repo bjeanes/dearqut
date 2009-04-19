@@ -1,7 +1,7 @@
 class Message < ActiveRecord::Base
   belongs_to :user
   
-  validates_presence_of :body
+  validates_presence_of :body, :message => "^Please enter a message."
   
   def author
     anonymous? ? "Anonymous" : user.to_s
