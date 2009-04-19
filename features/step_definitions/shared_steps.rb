@@ -3,12 +3,11 @@ Given /^I am not logged in$/ do
 end
 
 Then /^I should be logged in$/ do
-  current_user.should_not be_nil
-  And(%Q{I should see "#{current_user.login}"})
 end
 
-Then /^I should be logged in as "([^"]+)"$/ do |login|
-  And(%Q{I should see "#{login}"})
+Then /^I should be logged(?: in as "([^"]+)")?$/ do |login|
+  should_be_logged_in
+  And(%Q{I should see "#{login || current_user.login}"})
 end
 
 Then /^I should be redirected to (.+)$/ do |path|

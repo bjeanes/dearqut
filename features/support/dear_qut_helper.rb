@@ -1,8 +1,11 @@
 module DearQutHelper
   def current_user
-    controller.current_user
-  rescue
-    nil
+    controller.send :current_user
+  end
+  
+  def should_be_logged_in
+    controller.should be_logged_in
+    current_user.should_not be_nil
   end
   
   def create_user(login = "leet", password = "h4x0rk1d")

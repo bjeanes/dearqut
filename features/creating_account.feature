@@ -14,4 +14,4 @@ Feature: Creating an account
     And I press "Create"
   
     And I should see "buttonesque"
-    And I should be logged in as "buttonesque"
+    And I should be logged in
