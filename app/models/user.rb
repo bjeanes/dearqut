@@ -8,7 +8,7 @@ class User < TwitterAuth::GenericUser
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :password, :within => 6..40, :if => :password_required?
   before_save :encrypt_password
-  
+
   attr_accessor :password, :password_confirmation
   
   def to_s
@@ -45,19 +45,19 @@ class User < TwitterAuth::GenericUser
   
   # For non-twitter users to login
   def self.authenticate(login, password)
-    User.find_by_login(login).authenticate(password)
-  rescue NoMethodError
-    nil
+    u = User.find_by_login(login)
+    u && u.authenticate(password)
+  end
+  
+  def authenticate(password)
+    crypted_password == encrypt(password)
+    self
   end
   
   protected
     # Encrypts the password with the user salt
     def encrypt(password)
       self.class.password_digest(password, salt)
-    end
-  
-    def authenticated?(password)
-      crypted_password == encrypt(password)
     end
   
     # before filter 
