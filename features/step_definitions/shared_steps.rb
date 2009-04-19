@@ -21,8 +21,8 @@ Given /^I have an existing account$/ do
 end
 
 Given /^I am logged in(?: as (.+))?$/ do |user|
-  current_user = user ? create_user(user) : create_user
-  post_via_redirect '/session', :login => current_user.login, :password => current_user.password
+  user = user ? create_user(user) : create_user
+  post_via_redirect '/session', :login => user.login, :password => user.password
 end
 
 Given /^I do not fill in "([^\"]*)"$/ do |field|
@@ -31,8 +31,4 @@ end
 
 Then /^the message will be under the name "([^\"]*)"$/ do |author|
   pending
-end
-
-def create_user(user = "leet", password = "h4x0r")
-  User.find_by_login(user) || User.create(:login => user, :password => password)
 end
