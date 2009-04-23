@@ -27,7 +27,3 @@ end
 Given /^I do not fill in "([^\"]*)"$/ do |field|
   fill_in field, :with => ''
 end
-
-Then /^the message will be under the name "([^\"]*)"$/ do |author|
-  pending
-end
