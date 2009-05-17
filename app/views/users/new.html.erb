@@ -2,9 +2,9 @@ If you want to create an account using twitter, merely <%= link_to "log in here"
 <br /><br />
 
 <% form_for @user do |f| %>
-  <p>I would like to create an account with the login
-  <%= f.text_field :login, :class => 'text_field' %> and password
-  <%= f.password_field :password, :class => 'password_field' %>. Here is my password again just to be sure:
+  <p>I would like to create an account with the <%= f.label :login, "login" %>
+  <%= f.text_field :login, :class => 'text_field' %> and <%= f.label :password, "password" %>
+  <%= f.password_field :password, :class => 'password_field' %>. Here is my <%= f.label :password_confirmation, "password again" %> just to be sure:
   <%= f.password_field :password_confirmation, :class => 'password_field' %></p>
   
   <p><%= f.submit 'Create' %></p>

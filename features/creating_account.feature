@@ -8,9 +8,9 @@ Feature: Creating an account
     And I am on the homepage
 
     When I follow "sign up"
-    And I fill in "user_login" with "buttonesque"
-    And I fill in "user_password" with "1337h4x0r"
-    And I fill in "user_password_confirmation" with "1337h4x0r"
+    And I fill in "login" with "buttonesque"
+    And I fill in "password" with "1337h4x0r"
+    And I fill in "password again" with "1337h4x0r"
     And I press "Create"
   
     And I should see "buttonesque"

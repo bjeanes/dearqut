@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'json'
   config.gem 'twitter'
-  config.gem 'twitter-auth', :lib => 'twitter_auth'
+  config.gem 'twitter-auth', :lib => 'twitter_auth', :version => "~> 0.1.21"
 
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
