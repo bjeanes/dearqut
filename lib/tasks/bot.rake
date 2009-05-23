@@ -10,8 +10,5 @@ namespace :bot do
   end
   
   desc "Restarts the DearQUT bot"
-  task :restart do
-    stop
-    start
-  end
+  task :restart => [:stop, :start]
 end

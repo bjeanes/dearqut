@@ -19,6 +19,11 @@ class VotesController < ApplicationController
     end
     
     def save_vote
-      render :text => (@vote.save ? "OK" : "Damn")
+      success      = @vote.save
+      id           = @vote.message_id
+      rating       = @vote.message.rating
+      value        = @vote.value
+      
+      render :json => "[{'id': #{id}, 'rating': #{rating}, 'success': #{success.inspect}, 'value': #{value}}]"
     end
 end
