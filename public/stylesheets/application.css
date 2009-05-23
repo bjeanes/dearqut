@@ -39,7 +39,7 @@
 		text-align: left;
 	}
 	
-	#controls
+	.controls
 	{
 		color: #555;
 		margin-top: 5px;
@@ -49,6 +49,7 @@
 		float:right;
 		text-transform: uppercase;
 		font-weight: bold;
+		margin-left:20px;
 	}
 	
 	#filter
@@ -107,7 +108,7 @@
 			font-size:2.2em;
 		}
 
-		.small
+		.disagree
 		{
 			font-size: 0.7em;
 		}

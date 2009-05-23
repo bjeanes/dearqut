@@ -1,8 +1,5 @@
 <div id="single">
-  <div id="controls">
-    <span class="num"><%= @message.rating %></span><br />agree
-    <span class="small">disagree</span>
-  </div>
+  <%= render :partial => 'controls', :locals => {:message => @message} %>
   
   <p class="msg"><%=h @message.body %></p>
   <p>sincerely, <%= @message.author %>, <%= h @message.created_at.to_s(:short) %></p>

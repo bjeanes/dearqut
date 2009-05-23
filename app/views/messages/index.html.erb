@@ -11,14 +11,12 @@
 </div>
 <ul class="msglist">
 <% @messages.each do |message| %>
-       		<li class="popularity-item"><span class="num">110</span> agree
-						<br /><span class="num">010</span><br /><span class="small">disagree</span></li>
-					<li class="msg-item"><span class="msg"><%= link_to message.body, message %></span>
-					<br />
+					<li class="msg-item">
+					  
+         		<%= render :partial => 'controls', :locals => {:message => message} %>
+					  <p class="msg"><%= link_to message.body, message %></p>
 					
-					sincerely,
-					<strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) 
-					%>
+					<p>sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
 					<br />
 					Reply
 					<br /><br >					<br />
