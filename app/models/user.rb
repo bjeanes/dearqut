@@ -11,10 +11,6 @@ class User < TwitterAuth::GenericUser
 
   attr_accessor :password, :password_confirmation
   
-  def rating
-    @rating ||= votes.sum(:value)
-  end
-  
   def to_s
     protected? ? "Anonymous" : name_for_display
   end

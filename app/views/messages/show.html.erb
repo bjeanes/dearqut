@@ -1,6 +1,9 @@
-<div id="single"><!-- <div id="controls"><span class="num">110</span><br />agree
-<span class="num">010</span><br /><span class="small">disagree</span></li></div>
-<br /><br /><br /><br /><br /> -->
-<p class="msg"><%=h @message.body %></p>
-sincerely, <%= @message.author %>, <%= h @message.created_at.to_s(:short) %>
+<div id="single">
+  <div id="controls">
+    <span class="num"><%= @message.rating %></span><br />agree
+    <span class="small">disagree</span>
+  </div>
+  
+  <p class="msg"><%=h @message.body %></p>
+  <p>sincerely, <%= @message.author %>, <%= h @message.created_at.to_s(:short) %></p>
 </div>

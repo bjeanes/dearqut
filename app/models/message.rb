@@ -1,10 +1,15 @@
 class Message < ActiveRecord::Base
   belongs_to :user
+  has_many   :votes
   
   validates_presence_of :body, :message => "^Please enter a message."
   
   def author
     anonymous? ? "Anonymous" : user.to_s
+  end
+  
+  def rating
+    @rating ||= votes.sum(:value)
   end
 
   # If sent via DM, lets make it Anonymous by default. All other 
