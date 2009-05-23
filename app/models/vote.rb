@@ -8,4 +8,14 @@ class Vote < ActiveRecord::Base
 
   named_scope :positive, :conditions => "value > 0"
   named_scope :negative, :conditions => "value < 0"
+  
+  after_save    :update_message_rating_cache
+  after_destroy :update_message_rating_cache
+  
+  private
+  
+    def update_message_rating_cache
+      message.send :update_rating!
+    end
+    
 end

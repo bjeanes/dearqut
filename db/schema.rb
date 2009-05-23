@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090418081323) do
+ActiveRecord::Schema.define(:version => 20090523131845) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20090418081323) do
     t.datetime "updated_at"
     t.integer  "tweet_id"
     t.boolean  "private"
+    t.integer  "rating"
   end
 
   add_index "messages", ["tweet_id"], :name => "index_messages_on_tweet_id"
