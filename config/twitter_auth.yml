@@ -1,11 +1,12 @@
 development:
   strategy: oauth
-  oauth_consumer_key: vGcptDOIaRl5kidYbofQ
-  oauth_consumer_secret: cjGgIiKSIwuXu6BkIllNrFGqgYbJj3MuRnmidsaKweU
+  oauth_consumer_key: V0xVRgj8HImO0ieEnlTKyA
+  oauth_consumer_secret: n9T0jOGxWHTb6MlCP9hX3ndwz0WoMXwRKiJtkDusPgI
   base_url: "https://twitter.com"
   api_timeout: 10
   remember_for: 14 # days
   oauth_callback: "http://dearqut.local/oauth_callback"
+  authorize_path: "/oauth/authenticate"
 test:
   strategy: oauth
   oauth_consumer_key: vGcptDOIaRl5kidYbofQ
@@ -14,10 +15,13 @@ test:
   api_timeout: 10
   remember_for: 14 # days
   oauth_callback: "http://dearqut.local/oauth_callback"
+  authorize_path: "/oauth/authenticate"
 production:
   strategy: oauth
-  oauth_consumer_key: vGcptDOIaRl5kidYbofQ
-  oauth_consumer_secret: cjGgIiKSIwuXu6BkIllNrFGqgYbJj3MuRnmidsaKweU
+  oauth_consumer_key: V0xVRgj8HImO0ieEnlTKyA
+  oauth_consumer_secret: n9T0jOGxWHTb6MlCP9hX3ndwz0WoMXwRKiJtkDusPgI
   base_url: "https://twitter.com"
   api_timeout: 10
   remember_for: 14 # days
+  oauth_callback: "http://dearqut.com/oauth_callback"
+  authorize_path: "/oauth/authenticate"

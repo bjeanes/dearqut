@@ -1,6 +1,7 @@
 class TwitterAuthMigration < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
+      t.string :twitter_id
       t.string :login
       t.string :access_token
       t.string :access_secret

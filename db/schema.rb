@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20090418081323) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
+    t.string   "twitter_id"
     t.string   "login"
     t.string   "access_token"
     t.string   "access_secret"
