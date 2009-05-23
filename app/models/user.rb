@@ -30,6 +30,7 @@ class User < TwitterAuth::GenericUser
   def self.find_or_create_by_twitter_user(user)
     find_by_login(user.screen_name) || begin
       options = {
+        :twitter_id => user.id,
         :location => user.location,
         :login => user.screen_name,
         :description => user.description, 
