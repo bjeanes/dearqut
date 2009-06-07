@@ -4,3 +4,23 @@
   <p class="msg"><%=h @message.body %></p>
   <p>sincerely, <%= @message.author %>, <%= h @message.created_at.to_s(:short) %></p>
 </div>
+
+<div id="comments">
+  <% @message.comments.each do |comment| %>
+    <div id="comment-<%= comment.id %>" class="comment<%= ' anonymous' if comment.anonymous? %>">
+      <div class="message">
+        <%= simple_format comment.body %>
+      </div>
+      
+      <div class="author"><%= comment.author %></div>
+    </div>
+  <% end %>
+  
+  <div id="create-comment">
+    <% form_for [@message, @message.comments.build] do |f| %>
+      <%= f.text_area :body %>
+      
+      <%= f.submit 'Post Comment' %>
+    <% end %>
+  </div>
+</div>

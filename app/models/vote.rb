@@ -12,6 +12,8 @@ class Vote < ActiveRecord::Base
   after_save    :update_message_rating_cache
   after_destroy :update_message_rating_cache
   
+  attr_accessible # nothing
+  
   private
   
     def update_message_rating_cache

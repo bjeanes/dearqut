@@ -3,11 +3,14 @@ class Message < ActiveRecord::Base
   
   belongs_to :user
   has_many   :votes
+  has_many   :comments
   
   validates_presence_of :body, :message => "^Please enter a message."
   validates_uniqueness_of :tweet_id, :allow_blank => true
   
   after_create :create_initial_vote_for_author, :unless => :guest?
+  
+  attr_accessible :body
   
   def author
     anonymous? ? "Anonymous" : user.to_s
