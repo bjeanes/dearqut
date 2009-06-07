@@ -46,11 +46,10 @@ ActiveRecord::Schema.define(:version => 20090523131845) do
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "twitter_id"
     t.string   "login"
     t.string   "access_token"
     t.string   "access_secret"
-    t.string   "remember_token",            :limit => 40
+    t.string   "remember_token"
     t.datetime "remember_token_expires_at"
     t.string   "name"
     t.string   "location"
@@ -71,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20090523131845) do
   create_table "votes", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "message_id", :null => false
-    t.integer  "value",      :null => false
+    t.boolean  "up",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

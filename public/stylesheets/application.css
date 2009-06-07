@@ -1,14 +1,49 @@
-#container 
-{
-	width: 600px;
-	margin-left: auto;
-	margin-right: auto;
+body {
+	margin: 0;
+	padding: 0;
+	border-top: solid 5px #000;
+	background: url('/images/bg.jpg') repeat;
 }
 
+#container 
+{
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:"Helvetiva", "Arial";
+}
+
+#user-details
+{
+	float: right;
+}
+	#user-details ul
+	{
+		list-style-type: none;
+		font-size: 10pt;
+	}
+	
+	#user-details li
+	{
+		padding-left: 20px;
+		display: inline;
+	}
+	
+	#user-details a
+	{
+		color: #000;
+		text-decoration: none;
+	}
+	
+	#user-details a:hover
+	{
+		color: #ff0000;
+	}
+	
 #title 
 {
+	clear: right;
 	margin-top: 50px;
-	font-family:"Helvetiva", "Arial";
 	font-size: 36pt;
 }
 	#title a
@@ -26,6 +61,7 @@
 	#msgform textarea
 	{
 		width: 600px;
+		margin-left: 100px;
 	}
 	
 	#single
@@ -42,16 +78,12 @@
 	.controls
 	{
 		color: #555;
-		margin-top: 5px;
-		text-align: justify;
-		width:100px;
-		font-size: 0.9em;
-		float:right;
+		font-size: 14pt;
 		text-transform: uppercase;
-		font-weight: bold;
-		margin-left:20px;
+		text-align:right;
+		clear:both;
 	}
-	
+
 	#filter
 	{
 		float: left;
@@ -81,7 +113,7 @@
 	
 		.msglist a
 		{
-			color: #555555;
+			color: #000;
 			text-decoration: none;
 		}
 	
@@ -111,6 +143,24 @@
 		.down
 		{
 			font-size: 0.7em;
+		}
+		
+		.message
+		{
+			text-align: left;
+			font-size: 16pt;
+		}
+		
+		.postedby
+		{
+			font-size: 10pt;
+			color: #9999A0;
+		}
+		
+		.postedby strong
+		{
+			color: #000;
+			font-weight: bold;
 		}
 		
 		.msg-item
@@ -186,6 +236,8 @@
 .right
 {
 	float:right;
+	color: #9999A0;
+	margin-right: 100px;
 }
 
 .form
@@ -211,6 +263,16 @@ input.text_field, input.password_field, textarea {
   border-bottom: 2px solid #5e5e5e;
 }
 
+.button 
+{
+	float: right;
+	background-color: #000;
+	color: #fff;
+	border: none;
+	font-size: 14pt;
+	margin-right:100px;
+	padding: 10px;
+}
 textarea {
   border: 2px solid #5e5e5e
 }
