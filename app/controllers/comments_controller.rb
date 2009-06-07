@@ -8,15 +8,16 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = @message.comments.build(params[:comment])
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(@comment) }
+        flash[:notice] = 'Comment was successfully posted.'
+        format.html { redirect_to(@message) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        format.html { render :action => "new" }
+        format.html { render :controller => "messages", :action => "show", :id => @message }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end

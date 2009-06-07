@@ -35,11 +35,8 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.xml
   def create
-    message = params[:message]
-    message.delete(:user_id)
-    message.delete(:user)
     
-    @message = Message.new(message)
+    @message = Message.new(params[:message])
     @message.user = current_user
   
     respond_to do |format|
