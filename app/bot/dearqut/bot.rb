@@ -7,7 +7,7 @@ configure do |c|
   
   c.log_level = "error"
   
-  c.process = Message.maximum(:tweet_id, :conditions => "tweet_id IS NOT NULL") || 0
+  c.process = last_tweet || 0
   puts "Starting from tweet ##{c.process}"
   
   c.min_interval = 30  # 30 seconds
