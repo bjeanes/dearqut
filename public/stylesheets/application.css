@@ -13,29 +13,35 @@ body {
 	font-family:"Helvetiva", "Arial";
 }
 
-#user-details
+#menu
 {
 	float: right;
 }
-	#user-details ul
+	#menu ul
 	{
 		list-style-type: none;
 		font-size: 10pt;
 	}
 	
-	#user-details li
+	#menu li
 	{
 		padding-left: 20px;
 		display: inline;
 	}
 	
-	#user-details a
+	#menu .active
+	{
+		font-weight: bold;
+		color: #ff0000;
+	}
+	
+	#menu a
 	{
 		color: #000;
 		text-decoration: none;
 	}
 	
-	#user-details a:hover
+	#menu a:hover
 	{
 		color: #ff0000;
 	}
@@ -60,13 +66,18 @@ body {
 
 	#msgform textarea
 	{
-		width: 600px;
+		padding: 50px;
+		width: 500px;
+		height: 200px;
 		margin-left: 100px;
 	}
 	
 	#single
 	{
-		clear: both;
+		margin-right: 50px;
+		background-color: #fff;
+		width: 660px;
+		padding: 20px 40px;
 		float: right;
 	}
 	
@@ -270,19 +281,29 @@ input.text_field, input.password_field, textarea {
 	color: #fff;
 	border: none;
 	font-size: 14pt;
-	margin-right:100px;
 	padding: 10px;
 }
 
-#create-comment textarea {
-  width: 100%;
-  height: 4em;
-  margin-top:2em;
-  margin-bottom:1em;
+#create-comment {
+	margin-left: 100px;
+	width: 600px;
 }
 
+	#create-comment textarea {
+		padding: 10px;
+	  width: 580px;
+	  height: 4.5em;
+	  margin-bottom:1em;
+	}
+
 textarea {
-  border: 2px solid #5e5e5e
+	border: none;
+	background-color: #fff;
+	line-height: 1.5em;
+}
+
+img {
+	padding: 30px 0 20px 0;
 }
 
 input:focus, 

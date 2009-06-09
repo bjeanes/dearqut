@@ -1,4 +1,3 @@
-<%= link_to 'Browse', messages_path %>
 <% form_for(@message, :html => { :id => "msgform"}) do |f| %>
   <%= f.error_messages %>
   <p>
@@ -10,4 +9,6 @@
   <p>
     <%= f.submit 'SUBMIT', :class=>'button' %>
   </p>
+  <%= link_to 'Browse', messages_path %>
+  
 <% end %>
