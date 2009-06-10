@@ -1,4 +1,6 @@
 class User < TwitterAuth::GenericUser
+  acts_as_tagger
+  
   has_many :messages
   has_many :comments
   has_many :votes
