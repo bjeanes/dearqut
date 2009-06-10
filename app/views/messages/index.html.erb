@@ -1,13 +1,19 @@
 <div id="filter">
-	Order by:
+	<h2>Browse by</h2>
 	<ul>
-		<li>Date</li>
-		<li>Popularity</li>
+		<li>
+		  <% link_to '#' do %><%= image_tag 'popular.png' %> Popular Vote<% end %>
+		</li>
+		<li>
+		  <% link_to '#' do %><%= image_tag 'freshness.png' %> Freshness <% end %>
+		</li>
+		<li>
+		  <%= image_tag 'tags.png' %> Search Tags <%= image_tag 'arrowdown.png' %>
+		  <br />
+		  <%= text_field_tag :bla %>
+  	</li>
 	</ul>
-	Search Tags:
-	<br />
-	<br />
-	All Tags
+  
 </div>
 <% @messages.each do |message| %>
 <span class="msg-item">

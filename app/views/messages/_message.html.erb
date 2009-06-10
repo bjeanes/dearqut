@@ -1,6 +1,6 @@
 <%= render :partial => 'controls', :locals => {:message => message} %>
-<p class="message"><%= link_to message.body, message %></p>
-<p class="postedby">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
+<p class="message-text"><%= link_to message.body, message %></p>
+<p class="postedby right-text">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
 <div class="msg-extras">
   <ul>
     <li class="comments">
