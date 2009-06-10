@@ -48,7 +48,11 @@ class Message < ActiveRecord::Base
   def twitter?
     tweet_id? || !!@twitter
   end
-  
+
+  def self.per_page
+    5
+  end
+
   private
   
     # This is called from after_save and after_destroy on Vote

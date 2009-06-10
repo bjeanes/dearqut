@@ -313,6 +313,36 @@ body {
 		color:#2CADE3;
 	}
 
+#add-tags
+{
+	width: 600px;
+	margin-left:100px;
+	clear:both;
+}
+
+	#add-tags textarea
+	{
+		width:600px;
+		height:100px;
+		background: #fff;
+		border-width: 1px 0 1px 0;
+		border-style:solid;
+		margin: 0;
+	}
+	
+	#add-tags .button
+	{
+		margin:0;
+	}
+	
+#pagination
+{
+	font-size: 12pt;
+	font-weight: bold;
+	clear:both;
+	text-align: center;
+}
+
 #footer
 {
 	clear: both;

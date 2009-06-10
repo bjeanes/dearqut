@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
   def index
     tab :browse
+    
   end
   
   def new
@@ -49,7 +50,8 @@ class MessagesController < ApplicationController
   
     def load_resources
       if collection?
-        @messages = Message.all(:include => [:tags, :user])
+        @messages = Message.paginate(:page => params[:page], :include => [:tags, :user])
+        
       else
         @message = case action_name
           when 'new' then Message.new
