@@ -2,8 +2,8 @@ class Message < ActiveRecord::Base
   default_scope :order => 'created_at'
   
   belongs_to :user
-  has_many   :votes
-  has_many   :comments
+  has_many   :votes,    :dependent => :destroy
+  has_many   :comments, :dependent => :destroy
   
   validates_presence_of :body, :message => "^Please enter a message."
   validates_uniqueness_of :tweet_id, :allow_blank => true
