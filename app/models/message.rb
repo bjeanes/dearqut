@@ -74,7 +74,7 @@ class Message < ActiveRecord::Base
     end
     
     def strip_and_chomp_body
-      self.body = body.to_s.chomp.strip.gsub!(/[\ \t]+/, ' ')
+      self.body = body.to_s.chomp.strip.gsub(/[\ \t]+/, ' ')
       true
     end
     
