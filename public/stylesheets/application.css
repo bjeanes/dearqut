@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	padding 0;
+	padding: 0;
 	border-top: solid 5px #000;
 	background: url('/images/margin.png') repeat-x #E5E2DB 0 60px;
 }
@@ -140,17 +140,6 @@ body {
 			float:left;
 			text-transform: uppercase;
 			font-weight: bold;
-		}
-		
-		.num
-		{
-			line-height: 0.7em;
-			font-size:2.2em;
-		}
-
-		.down
-		{
-			font-size: 0.7em;
 		}
 		
 		.message

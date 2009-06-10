@@ -9,12 +9,16 @@ function vote() {
   var url       = "/messages/" + id + "/vote/" + direction;
   
   $.post(url, {}, voteCallback, 'json');
+  
+  return false;
 }
 
 function voteCallback(data) {
   for (var i = data.length - 1; i >= 0; i--){
-    var num = $('#controls-' + data[i].id + ' .num');
+    var up_num = $('#controls-' + data[i].id + ' .up num');
+    var down_num = $('#controls-' + data[i].id + ' .down num');
     console.log(num);
-    num.text(data[i].rating);
+    up_num.text(data[i].positive_count);
+    down_num.text(data[i].negative_count);
   };
 }
