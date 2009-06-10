@@ -9,4 +9,10 @@
   <p>
     <%= f.submit 'SUBMIT', :class=>'button inner' %>
   </p>  
+  
+  <div id="random-message">
+    <%= @random_message.body %>
+    
+    by <%= @random_message.author %>
+  </div>
 <% end %>

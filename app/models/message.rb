@@ -35,6 +35,10 @@ class Message < ActiveRecord::Base
     self[:rating] || 0
   end
   
+  def self.random
+    first(:offset => rand(count))
+  end
+  
   private
   
     # This is called from after_save and after_destroy on Vote

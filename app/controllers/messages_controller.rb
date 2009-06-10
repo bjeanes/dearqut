@@ -3,24 +3,12 @@ class MessagesController < ApplicationController
   before_filter :permission_required, :except => [:index, :show, :new, :create]
   
   tab :browse
-  
-  # GET /messages
-  # GET /messages.xml
-  def index
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @messages }
-    end
-  end
 
-  # GET /messages/new
-  # GET /messages/new.xml
   def new
     tab :home if request.path == '/'
+    @random_message = Message.random
   end
 
-  # POST /messages
-  # POST /messages.xml
   def create
     @message.user = current_user
   
