@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :users
+  map.resources :users, :tags
   
   map.resources :messages do |mes|
     mes.resources :comments
