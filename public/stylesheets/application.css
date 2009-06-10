@@ -66,9 +66,12 @@ body {
 
 	#msgform textarea
 	{
-		padding: 50px;
-		width: 500px;
-		height: 200px;
+		font-size: 20px;
+		line-height: 40px;
+		background: url('/images/line.png') repeat 0 20px;
+		padding: 30px;
+		width: 540px;
+		height: 110px;
 		margin-left: 100px;
 		background-color:transparent;
 		overflow:hidden;
@@ -145,11 +148,11 @@ body {
 		.message
 		{
 			text-align: left;
-			font-size: 16pt;
+			font-size: 14pt;
 			font-weight: bold;
 			margin: 0;
 			padding: 0;
-			line-height:1sem;
+			line-height:1.5em;
 		}
 		
 		.message a
@@ -161,7 +164,6 @@ body {
 		{
 			line-height:1.5em;
 			padding: 10px 0;
-			margin: 0;
 			font-size: 10pt;
 			color: #9999A0;
 			text-align: right;
@@ -185,9 +187,10 @@ body {
 
 #random-message
 {
-	padding-top: 50px;
+	background-color: #EAE8E4;
+	padding: 20px 20px 0 20px;
 	margin-left: 100px;
-	width: 600px;
+	width: 560px;
 }
 
 .nextmessage
@@ -207,6 +210,7 @@ body {
 
 .msg-extras
 {
+	margin-left: -20px;
 	text-transform: uppercase;
 	width: 600px;
 	line-height: 1.2em;
@@ -416,11 +420,12 @@ input.text_field, input.password_field, textarea {
 	padding: 10px;
 }
 
-.small
+.center
 {
-	font-size: 0.8em;
+	line-height: 0em;
+	text-align: center;
+	color: #999999;
 }
-
 .inner
 {
 	margin-right:100px;

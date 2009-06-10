@@ -1,16 +1,15 @@
 <% form_for(@message, :html => { :id => "msgform"}) do |f| %>
   <%= f.error_messages %>
+  <h2 class="center">Type your message below</h2>
   <p>
     <%= f.text_area :body %>
 		<br />
 		<span class="right">sincerely, <strong><%= current_user || "Anonymous" %></strong> <%= Time.now.to_s(:short) %></span>
   </p>
-  <br 
-  <p>
+  <br />
     <%= f.submit 'SUBMIT', :class=>'button inner' %>
-  </p>
 <% end %>
-
+<br /><br /><br /><br />
 <% if @random_message %>
   <div id="random-message">
     <% link_to '#', :class=>'nextmessage' do %>Show me another <%= image_tag "/images/nextmsg.png" %><% end %>
