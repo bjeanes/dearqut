@@ -13,6 +13,14 @@ body {
 	font-family:"Helvetiva", "Arial";
 }
 
+.flash, .notice
+{
+	margin-bottom: 30px;
+	padding: 10px;
+	color: #f2f2f2;
+	background-color: #2CADE3;
+}
+
 #menu
 {
 	float: right;
@@ -105,7 +113,9 @@ body {
 	#filter
 	{
 		float: left;
-		font: bold 14pt "Helvetica", "Arial";
+		font: bold 12pt "Helvetica", "Arial";
+		line-height:1.5em;
+		text-transform: uppercase;
 	}
 		#filter ul
 		{
@@ -113,6 +123,23 @@ body {
 			list-style: none;
 			padding: 0;
 		}
+		
+		#filter li
+		{
+			margin: 10px 0;
+		}
+		
+		#filter a
+		{
+			color:#000;
+			text-decoration: none;
+		}
+		
+		#filter a:hover
+		{
+			color:#fff;
+		}
+		
 	
 	.msglist
 	{
