@@ -70,6 +70,8 @@ body {
 		width: 500px;
 		height: 200px;
 		margin-left: 100px;
+		background-color:transparent;
+		overflow:hidden;
 	}
 	
 	#single
