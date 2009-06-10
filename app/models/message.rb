@@ -12,6 +12,8 @@ class Message < ActiveRecord::Base
   
   attr_accessible :body
   
+  acts_as_taggable
+  
   # If sent via DM, lets make it Anonymous by default. All other 
   # messages are public, unless the user has a protected profile,
   # or of course they really were anonymous when creating message.

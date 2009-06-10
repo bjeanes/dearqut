@@ -1,4 +1,4 @@
-gem 'bjeanes-twibot', '>= 0.1.7'
+gem 'twibot', '>= 0.1.7'
 require 'twibot'
 
 configure do |c|
