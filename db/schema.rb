@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090610063114) do
+ActiveRecord::Schema.define(:version => 20090610073711) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(:version => 20090610063114) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.text     "body",                :null => false
+    t.text     "body",                               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tweet_id"
     t.boolean  "private"
-    t.integer  "rating"
-    t.integer  "negative_vote_count"
-    t.integer  "positive_vote_count"
+    t.integer  "rating",              :default => 0, :null => false
+    t.integer  "negative_vote_count", :default => 0, :null => false
+    t.integer  "positive_vote_count", :default => 0, :null => false
   end
 
   add_index "messages", ["negative_vote_count"], :name => "index_messages_on_negative_vote_count"

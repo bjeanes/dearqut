@@ -1,14 +1,15 @@
 class User < TwitterAuth::GenericUser
   acts_as_tagger
   
-  has_many :messages
-  has_many :comments
-  has_many :votes
+  has_many :messages, :dependent => :nullify
+  has_many :comments, :dependent => :nullify
+  has_many :votes,    :dependent => :destroy
   
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :password, :within => 6..40, :if => :password_required?
+  
   before_save :encrypt_password
 
   attr_accessor :password, :password_confirmation
