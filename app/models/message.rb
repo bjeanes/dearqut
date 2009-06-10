@@ -6,11 +6,14 @@ class Message < ActiveRecord::Base
   has_many   :comments, :dependent => :destroy
   
   validates_presence_of :body, :message => "^Please enter a message."
+  validates_presence_of :tweet_id, :on => :create, :if => :twitter?
   validates_uniqueness_of :tweet_id, :allow_blank => true
   
   before_save  :convert_hash_tags_to_tags
   before_save  :strip_and_chomp_body
   after_create :create_initial_vote_for_author, :unless => :guest?
+
+  attr_accessor :twitter
   
   attr_accessible :body
   
@@ -41,6 +44,10 @@ class Message < ActiveRecord::Base
   
   def self.random
     first(:offset => rand(count))
+  end
+  
+  def twitter?
+    tweet_id? || !!@twitter
   end
   
   private
