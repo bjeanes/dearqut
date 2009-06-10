@@ -1,5 +1,15 @@
 require 'active_record'
 
+class ActiveRecord::Base
+  def logger
+    $logger
+  end
+  
+  def self.logger
+    $logger
+  end
+end
+
 unless defined? TwitterAuth::GenericUser
   module TwitterAuth
     class GenericUser < ActiveRecord::Base

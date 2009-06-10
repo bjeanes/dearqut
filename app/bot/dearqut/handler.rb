@@ -5,5 +5,11 @@ def add_message(message, options = {})
   sender = message.user rescue message.sender
   user = User.find_or_create_by_twitter_user(sender)
   
-  Message.create!(:user => user, :private => priv, :body => text, :tweet_id => message.id)
+  message          = Message.new
+  message.user     = user
+  message.private  = priv
+  message.body     = text
+  message.tweet_id = message.id
+  
+  message.save! && message
 end
