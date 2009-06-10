@@ -1,6 +1,4 @@
 class User < TwitterAuth::GenericUser
-  acts_as_tagger
-  
   has_many :messages, :dependent => :nullify
   has_many :comments, :dependent => :nullify
   has_many :votes,    :dependent => :destroy
