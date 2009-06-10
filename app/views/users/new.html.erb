@@ -1,4 +1,5 @@
-If you want to create an account using twitter, merely <%= link_to "log in here", twitter_login_path %>
+<h2>Sign up to get started</h2>
+<span class="small">or <%= link_to "log in here", twitter_login_path %></span>
 <br /><br />
 
 <% form_for @user do |f| %>
@@ -7,5 +8,5 @@ If you want to create an account using twitter, merely <%= link_to "log in here"
   <%= f.password_field :password, :class => 'password_field' %>. Here is my <%= f.label :password_confirmation, "password again" %> just to be sure:
   <%= f.password_field :password_confirmation, :class => 'password_field' %></p>
   
-  <p><%= f.submit 'Create' %></p>
+  <%= f.submit 'SUBMIT', :class=>'button inner' %>
 <% end %>
