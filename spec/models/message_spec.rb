@@ -38,35 +38,27 @@ describe Message do
   end
   
   describe "#strip_and_chomp_body" do
-    it "should get rid of any whitespace on either end of a message" do
+    def stripped_message_with(body)      
       message = Message.new
-      message.body = " Google!   "
+      message.body = body
       message.send :strip_and_chomp_body
-      
-      message.body.should == "Google!"
+      message
+    end
+    
+    it "should get rid of any whitespace on either end of a message" do
+      stripped_message_with(" Google!   \t ").body.should == "Google!"
     end
     
     it "should get rid of any new lines at end of message" do
-      message = Message.new
-      message.body = " Google!   \r\n"
-      message.send :strip_and_chomp_body
-      
-      message.body.should == "Google!"
+      stripped_message_with(" Google!   \r\n").body.should == "Google!"
     end
     
     it "should set empty string if body is nil" do
-      message = Message.new
-      message.send :strip_and_chomp_body
-      
-      message.body.should == ""
+      stripped_message_with(nil).body.should == ""
     end
     
     it "should not modify the body when there is a single word" do
-      message = Message.new
-      message.body = "asingleword"
-      message.send :strip_and_chomp_body
-      
-      message.body.should == "asingleword"
+      stripped_message_with("asingleword").body.should == "asingleword"
     end
   end
 end
