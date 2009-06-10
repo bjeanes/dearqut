@@ -65,21 +65,29 @@ class Message < ActiveRecord::Base
     end
     
     def convert_hash_tags_to_tags
-      tl = self.tag_list.split(' ')
-      tl += body.to_s.scan(/(?:^|\s)#(\w+)/).flatten
-      
-      self.tag_list = tl.uniq.join(' ')
-      
-      # not sure that it should always do this (perhaps 
-      # just when the hash tag is at the end of the message):
-      self.body = body.to_s.gsub(/#(\w+)/, '\1')
-      
+      tags = existing_tags + extract_tags
+      self.tag_list = tags.uniq * ' '
+      replace_hash_tags
       true
     end
     
     def strip_and_chomp_body
       self.body = body.to_s.chomp.strip.gsub(/[\ \t]+/, ' ')
       true
+    end
+    
+    def existing_tags
+      self.tag_list.split(/\s+/)
+    end
+    
+    def extract_tags
+      self.body.to_s.scan(/(?:^|\s)#(\w+)/).flatten
+    end
+    
+    def replace_hash_tags
+      # not sure that it should always do this (perhaps 
+      # just when the hash tag is at the end of the message):
+      self.body = body.to_s.gsub(/(^|\s)#(\w+)/, '\1\2')
     end
     
     # When a user creates a message, we assume they want to vote
