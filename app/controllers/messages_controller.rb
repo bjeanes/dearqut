@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :load_resources, :except => :random
   before_filter :permission_required, :except => [:index, :show, :new, :create, :random]
-  
 
   def index
     tab :browse

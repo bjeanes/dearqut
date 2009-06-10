@@ -14,7 +14,7 @@ class Message < ActiveRecord::Base
   after_create :create_initial_vote_for_author, :unless => :guest?
 
   attr_accessor :twitter
-  attr_accessible :body
+  attr_accessible :body, :tag_list
   
   acts_as_taggable
   

@@ -12,7 +12,10 @@
    		  <%= message_time(@message) %>
    		</span>
   </p>
-  <br 
+  
+  <%= f.label :tag_list, "Tags" %>
+  <%= f.text_field :tag_list %>
+  <br /> 
   <p>
     <%= f.submit 'SUBMIT', :class=>'button inner' %> or <%= link_to "View your message", @message %>
   </p>  
