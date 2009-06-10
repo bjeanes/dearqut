@@ -1,0 +1,4 @@
+run the following to get all 3rd party libraries required
+
+git submodule update --init
+sudo rake gems:install
