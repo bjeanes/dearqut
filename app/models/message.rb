@@ -12,10 +12,6 @@ class Message < ActiveRecord::Base
   
   attr_accessible :body
   
-  def author
-    anonymous? ? "Anonymous" : user.to_s
-  end
-
   # If sent via DM, lets make it Anonymous by default. All other 
   # messages are public, unless the user has a protected profile,
   # or of course they really were anonymous when creating message.
@@ -27,6 +23,10 @@ class Message < ActiveRecord::Base
     user.nil?
   end
   
+  def author
+    anonymous? ? "Anonymous" : user.to_s
+  end
+  
   def author?(user)
     params[:user] == user
   end
@@ -35,11 +35,20 @@ class Message < ActiveRecord::Base
     self[:rating] || 0
   end
   
+  def self.random
+    first(:offset => rand(count))
+  end
+  
   private
   
     # This is called from after_save and after_destroy on Vote
     def update_rating!
-      update_attribute(:rating, votes.sum(:value))
+      update_attributes({
+        # not using count because lates some votes might be something other than +/- 1
+        :positive_vote_count => votes.positive.sum(:value).abs,
+        :negative_vote_count => votes.negative.sum(:value).abs,
+        :rating              => votes.sum(:value)
+      })
     end
     
     # When a user creates a message, we assume they want to vote

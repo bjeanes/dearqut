@@ -4,7 +4,7 @@ class Vote < ActiveRecord::Base
   
   validates_presence_of   :user_id, :message_id, :value
   validates_uniqueness_of :user_id, :scope => :message_id #, :allow_blank => true
-  validates_inclusion_of  :value, :in => [-1, 1]
+  validates_inclusion_of  :value, :in => [-1, 1]          # this may change
 
   named_scope :positive, :conditions => "value > 0"
   named_scope :negative, :conditions => "value < 0"

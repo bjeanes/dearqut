@@ -376,3 +376,7 @@ img {
 input:focus, 
 select:focus,
 textarea:focus { outline: none; }
+
+#random-message {
+  clear:both;
+}
