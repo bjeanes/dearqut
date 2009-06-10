@@ -66,11 +66,10 @@ ActiveRecord::Schema.define(:version => 20090610034838) do
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
 
   create_table "users", :force => true do |t|
-    t.string   "twitter_id"
     t.string   "login"
     t.string   "access_token"
     t.string   "access_secret"
-    t.string   "remember_token",            :limit => 40
+    t.string   "remember_token"
     t.datetime "remember_token_expires_at"
     t.string   "name"
     t.string   "location"
@@ -91,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20090610034838) do
   create_table "votes", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.integer  "message_id", :null => false
-    t.integer  "value",      :null => false
+    t.boolean  "up",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

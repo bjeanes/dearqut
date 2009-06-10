@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    tab :signup
     @user = User.new
   end
   

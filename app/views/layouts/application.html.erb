@@ -10,12 +10,18 @@
 </head>
 	<body>
 		<div id="container">
-		  <div id="user-details">
-		    <% if logged_in? %>
-		      <%= link_to "Log out", logout_path %>
-		    <% else %>
-		      <%= link_to "Log in", login_path %>
-		      <%= link_to "Sign up", signup_path %>
+		  <div id="menu">
+		  <% tabs do |tab| %>
+  		    <%= tab.home "Home", root_path %>
+  		    <% if logged_in? %>
+  		      <%= tab.logout "Log out", logout_path %>
+  		    <% else %>
+  		      <%= tab.login "Log in", login_path %>
+  		      <%= tab.signup "Sign up", signup_path %>
+  		      <%= tab.about "About", root_path %>
+  		      <%= tab.browse "Browse", messages_path %>
+  		      <%= tab.contact "Contact", root_path %>
+  		    <% end %>
 		    <% end %>
 		  </div>
 			<h1 id="title"><a href="/">Dear QUT,</a></h1>
@@ -26,9 +32,11 @@
 			</div>
 			<div id="footer">
 				<ul>
-					<li class="first">Sync Your <span class="large">Twitter</span></li>
-					<li class="second">Need Some <span class="huge">Help</span></li>
-					<li class="third"><span class="larger">Terms</span> and <span class="larger">Conditions</span></li>
+					<li class="footer1"><% link_to 'http://www.qut.edu.au' do %>dearQUT is the place for anyone to contribute ideas/grips about the Queensland University of Technology<% end %></li>
+					<li class="footer2"><% link_to 'http://www.twitter.com/dearqut' do %>Get notified of new updates by following dearQUT on twitter.<% end %></li>
+					<li class="footer3"><% link_to '#' do %>Your privacy is important to us. Here are the ground rules.<% end %></li>
+					<li class="footer4"><% link_to '#' do %>Unsure how to begin? Check out our tutorials and FAQ<% end %></li>
+					<li>
 				</ul>
 			</div>
 		</div>

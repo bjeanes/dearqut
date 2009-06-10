@@ -14,12 +14,9 @@
 					<li class="msg-item">
 					  
          		<%= render :partial => 'controls', :locals => {:message => message} %>
-					  <p class="msg"><%= link_to message.body, message %></p>
-					
-					<p>sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
-					<br />
+					 <p class="message"><%= link_to message.body, message %></p>
+					<p class="postedby">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
 					Reply
-					<br /><br >					<br />
 					</li>
 <% end %>
 </ul>

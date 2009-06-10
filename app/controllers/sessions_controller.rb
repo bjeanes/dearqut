@@ -1,6 +1,7 @@
 # Pulled from twitter-auth gem to override some of the behaviour
 class SessionsController < ApplicationController
   def new
+    tab :login
     if twitter?
       @request_token = TwitterAuth.consumer.get_request_token
       session[:request_token] = @request_token.token
@@ -57,6 +58,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    tab :logout
     logout_keeping_session!
     redirect_back_or_default('/')
   end

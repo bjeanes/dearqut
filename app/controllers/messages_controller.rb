@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # GET /messages.xml
   def index
     @messages = Message.all
-
+    tab :browse
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @messages }
