@@ -11,13 +11,12 @@
 </div>
 <ul class="msglist">
 <% @messages.each do |message| %>
-					<li class="msg-item">
-					  
-         		<%= render :partial => 'controls', :locals => {:message => message} %>
-					 <p class="message"><%= link_to message.body, message %></p>
-					<p class="postedby">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
-					Reply
-					</li>
+  <li class="msg-item">
+    <%= render :partial => 'controls', :locals => {:message => message} %>
+    <p class="message"><%= link_to message.body, message %></p>
+    <p class="postedby">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
+    <%= link_to 'Reply', "#{message_path(message)}#comments" %>
+  </li>
 <% end %>
 </ul>
 

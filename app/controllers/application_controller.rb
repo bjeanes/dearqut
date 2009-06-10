@@ -3,9 +3,15 @@
 
 class ApplicationController < ActionController::Base
   include TabFu
-  helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  helper :all
+  protect_from_forgery
   tab :home
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+
+  filter_parameter_logging :password
+  
+  protected
+  
+    def anonymous?
+      current_user.nil?
+    end
 end

@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users, :tags
   
-  map.resources :messages do |mes|
+  map.resources(:messages, :member => {:add_context => :get}) do |mes|
     mes.resources :comments
     mes.resource  :vote, :member => {:up => :post, :down => :post}, :only => []
   end

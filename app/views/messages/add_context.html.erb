@@ -1,0 +1,15 @@
+<% form_for(@message, :html => { :id => "msgform"}) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field 'adding_context', true %>
+  <p>
+    <div id="message_body">
+      <%= @message.body %>
+    </div>
+		<br />
+		<span class="right">sincerely, <strong><%= @message.author %></strong> <%= @message.created_at.to_s(:short) %></span>
+  </p>
+  <br 
+  <p>
+    <%= f.submit 'SUBMIT', :class=>'button' %>
+  </p>  
+<% end %>

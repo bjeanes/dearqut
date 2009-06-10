@@ -27,6 +27,14 @@ class Message < ActiveRecord::Base
     user.nil?
   end
   
+  def author?(user)
+    params[:user] == user
+  end
+  
+  def rating
+    self[:rating] || 0
+  end
+  
   private
   
     # This is called from after_save and after_destroy on Vote
