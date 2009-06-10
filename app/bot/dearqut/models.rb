@@ -1,5 +1,6 @@
 require 'active_record'
 require 'model_hacks'
+require 'acts_as_taggable_helper'
 require 'acts_as_taggable_redux'
 
 Dir[File.join(RAILS_ROOT, "app", "models", "*.rb")].each do |model|
