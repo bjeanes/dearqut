@@ -95,6 +95,7 @@ body {
 		text-transform: uppercase;
 		text-align:right;
 		clear:both;
+		height: 40px;
 	}
 
 	#filter
@@ -156,10 +157,22 @@ body {
 		{
 			text-align: left;
 			font-size: 16pt;
+			font-weight: bold;
+			margin: 0;
+			padding: 0;
+			line-height:1sem;
+		}
+		
+		.message a
+		{
+			text-decoration: none;
 		}
 		
 		.postedby
 		{
+			line-height:1.5em;
+			padding: 10px 0;
+			margin: 0;
 			font-size: 10pt;
 			color: #9999A0;
 			text-align: right;
@@ -175,10 +188,17 @@ body {
 		
 		.msg-item
 		{
+			width: 600px;
+			margin-bottom: 40px;
 			float: right;
-			line-height: 1.6em;
+			line-height: 1.5em;
 		}
 		
+.vote a
+{
+	text-decoration:none;
+}
+
 .msg-extras
 {
 	text-transform: uppercase;
@@ -237,7 +257,7 @@ body {
 		font-size: 1.3em;
 	}
 	
-	.msg-extras img
+	.msg-extras img, .vote img
 	{
 		border:none;
 		padding:0;

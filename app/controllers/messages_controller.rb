@@ -2,8 +2,12 @@ class MessagesController < ApplicationController
   before_filter :load_resources
   before_filter :permission_required, :except => [:index, :show, :new, :create]
   
-  tab :browse
 
+  def index
+    tab :browse
+    
+  end
+  
   def new
     tab :home if request.path == '/'
     @random_message = Message.random
