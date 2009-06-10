@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :load_resources
-  before_filter :permission_required, :except => [:index, :show, :new, :create]
+  before_filter :load_resources, :except => :random
+  before_filter :permission_required, :except => [:index, :show, :new, :create, :random]
   
 
   def index
@@ -34,6 +34,11 @@ class MessagesController < ApplicationController
     else
       render :action => update_error_action
     end
+  end
+  
+  def random
+    redirect_to('/#random_message')
+  
   end
   
   protected

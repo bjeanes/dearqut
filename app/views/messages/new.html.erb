@@ -9,10 +9,12 @@
   <br />
     <%= f.submit 'SUBMIT', :class=>'button inner' %>
 <% end %>
+<a name="random_message" />
 <br /><br /><br /><br />
 <% if @random_message %>
   <div id="random-message">
-    <% link_to '#', :class=>'nextmessage' do %>Show me another <%= image_tag "/images/nextmsg.png" %><% end %>
+      <% link_to random_messages_path, :class=>'nextmessage' do %>Show me another <%= image_tag "/images/nextmsg.png" %><% end %>
+      
     <%= render :partial => 'message', :locals => {:message => @random_message} %>
   </div>
 <% end %>

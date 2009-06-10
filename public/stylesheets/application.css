@@ -93,6 +93,7 @@ body {
 	
 	.controls
 	{
+		padding: 10px 10px 0 0;
 		color: #555;
 		font-size: 14pt;
 		text-transform: uppercase;
@@ -151,7 +152,7 @@ body {
 			font-size: 14pt;
 			font-weight: bold;
 			margin: 0;
-			padding: 10px;
+			padding: 0 20px 0 20px;
 			line-height:1.5em;
 		}
 		
@@ -199,11 +200,6 @@ body {
 	text-decoration: none;
 	color: #00A43D
 }	
-	
-.vote
-{
-	padding:10px 10px;
-}
 	.vote a
 	{
 		text-decoration:none;

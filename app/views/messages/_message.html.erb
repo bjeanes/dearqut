@@ -8,7 +8,7 @@
         <li class="comments-col">
           <% link_to "#{message_path(message)}#comments" do%>
           <strong>Comments</strong><br />
-          <%= image_tag "/images/commentsicon.png" %> <strong>20</strong><% end %>
+          <%= image_tag "/images/commentsicon.png" %> <strong><%= message.comments.count %></strong><% end %>
         </li>
         <li class="tags">
           <strong>Tagged Under</strong> 
