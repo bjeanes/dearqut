@@ -14,7 +14,10 @@ class MessagesController < ApplicationController
   
     if @message.save
       add_message_to_session
-      flash[:notice] = 'Thank you for your message.'
+      flash[:notice] = 
+        'Thank you for your message. <br /><br />
+        Please add more information below, or <a href="%s">view your message</a>' % 
+        message_path(@message)
       redirect_to(add_context_message_path(@message))
     else
       render :action => "new"
@@ -31,7 +34,10 @@ class MessagesController < ApplicationController
   
   protected
     def permission_required
-      message_in_session? || @message.author?(current_user)
+      unless message_in_session? || @message.author?(current_user)
+        flash[:error] = "You do not have permission to do that"
+        redirect_to @message
+      end
     end
   
     def load_resources
