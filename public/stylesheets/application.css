@@ -181,28 +181,77 @@ body {
 		
 .msg-extras
 {
-	
+	text-transform: uppercase;
 	width: 600px;
+	line-height: 1.2em;
+	background-color: #f2f2f2;
+	padding-bottom:10px;
 }
 
 	.msg-extras ul
 	{
-		height: 50px;
+		
+		padding: 10px 10px;
 		list-style-type:none;
 	}
 	
 	.msg-extras li
 	{
-		padding: 0 10px;
+		background-color: #f2f2f2;
+		padding: 0 15px;
 		float:left;
 		display: block;
 		font-size:0.5em;
 	}
 	
-	.msg-extras .h1
+	.msg-extras .comments
 	{
-		text-transform: uppercase;
-		font-size: 1em;
+		
+	}
+	
+	.msg-extras .tags
+	{
+			width:180px;
+	}
+	
+	.msg-extras .campus
+	{
+
+	}
+	
+	.msg-extras .faculty
+	{
+		
+	}
+	
+	.msg-extras strong
+	{
+		font-size: 1.1em;
+	}
+	
+	.msg-extras p
+	{
+		color: #878787;
+		padding: 0;
+		margin: 0;
+		font-size: 1.3em;
+	}
+	
+	.msg-extras img
+	{
+		border:none;
+		padding:0;
+		margin:0;
+	}
+	
+	.msg-extras a
+	{
+		text-decoration: none;
+	}
+	
+	.blue
+	{
+		color:#2CADE3;
 	}
 
 #footer
