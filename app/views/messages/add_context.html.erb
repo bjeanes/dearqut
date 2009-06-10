@@ -1,6 +1,6 @@
 <% form_for(@message, :html => { :id => "msgform"}) do |f| %>
   <%= f.error_messages %>
-  <%= f.hidden_field 'adding_context', true %>
+  <%= f.hidden_field 'adding_context', :value => true %>
   <p>
     <div id="message_body">
       <%= @message.body %>
@@ -10,6 +10,6 @@
   </p>
   <br 
   <p>
-    <%= f.submit 'SUBMIT', :class=>'button' %>
+    <%= f.submit 'SUBMIT', :class=>'button' %> or <%= link_to "View your message", @message %>
   </p>  
 <% end %>

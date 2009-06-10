@@ -5,6 +5,7 @@ unless defined? TwitterAuth::GenericUser
     class GenericUser < ActiveRecord::Base
       # Hack to get the User model to load
       def self.table_name; 'users' end
+      def self.acts_as_tagger; end
     end
   end
 end
