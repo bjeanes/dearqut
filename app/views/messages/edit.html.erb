@@ -1,24 +1,24 @@
-<h1>Editing message</h1>
-
-<% form_for(@message) do |f| %>
+<% form_for(@message, :html => { :id => "msgform"}) do |f| %>
   <%= f.error_messages %>
+  <%= f.hidden_field 'adding_context', :value => true %>
+  <h2 class="center">Your Message</h2>
+  
+    <div id="message_body">
+      <%= f.text_area :body %>
+     </div>
+     	<br />
+   		<span class="right">sincerely, <strong><%= current_user || "Anonymous" %></strong> <%= Time.now.to_s(:short) %>
+   		  <% if !current_user %>
+   		    <%= link_to '(login?)', login_path %>
+   		  <% end %>
+   		</span>
+  <br />
 
-  <p>
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :twitter %><br />
-    <%= f.check_box :twitter %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+  <div id ="add-tags">
+    <h2>Add Tags</h2>
+    <%= text_area_tag 'tag' %>
+    <br />
+    <%= f.submit 'SUBMIT', :class=>'button inner' %>
+    
+  </div>
 <% end %>
-
-<%= link_to 'Show', @message %> |
-<%= link_to 'Back', messages_path %>

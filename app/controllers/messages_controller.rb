@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
     if @message.update_attributes(params[:message])
       redirect_to(@message)
     else
-      render :action => update_error_action
+      render :action => "edit"
     end
   end
   
@@ -84,13 +84,5 @@ class MessagesController < ApplicationController
     
     def adding_context?
       !!params[:adding_context]
-    end
-    
-    def update_error_action
-      if adding_context?
-        "add_context"
-      else
-        "edit"
-      end
     end
 end

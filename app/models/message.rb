@@ -65,7 +65,10 @@ class Message < ActiveRecord::Base
     end
     
     def convert_hash_tags_to_tags
-      self.tag_list = body.to_s.scan(/(?:^|\s)#(\w+)/).flatten.join(" ").downcase
+      tl = self.tag_list.split(' ')
+      tl += body.to_s.scan(/(?:^|\s)#(\w+)/).flatten
+      
+      self.tag_list = tl.uniq.join(' ')
       
       # not sure that it should always do this (perhaps 
       # just when the hash tag is at the end of the message):
@@ -75,7 +78,7 @@ class Message < ActiveRecord::Base
     end
     
     def strip_and_chomp_body
-      self.body = body.to_s.chomp.strip.gsub!(/[\ \t]+/, ' ')
+      self.body = body.to_s.chomp.strip.gsub(/[\ \t]+/, ' ')
       true
     end
     
