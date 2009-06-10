@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  default_scope :order => 'created_at'
+  default_scope :order => 'created_at DESC, tweet_id DESC'
   
   belongs_to :user
   has_many   :votes,    :dependent => :destroy
@@ -14,7 +14,6 @@ class Message < ActiveRecord::Base
   after_create :create_initial_vote_for_author, :unless => :guest?
 
   attr_accessor :twitter
-  
   attr_accessible :body
   
   acts_as_taggable

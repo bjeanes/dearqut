@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
 
   def index
     tab :browse
-    
   end
   
   def new
@@ -38,7 +37,6 @@ class MessagesController < ApplicationController
   
   def random
     redirect_to('/#random_message')
-  
   end
   
   protected
