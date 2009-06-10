@@ -1,20 +1,6 @@
-<div id="single">
-  <%= render :partial => 'controls', :locals => {:message => @message} %>
-  
-  <p class="msg"><%=h @message.body %></p>
-  <p>sincerely, <%= @message.author %>, <%= h @message.created_at.to_s(:short) %></p>
-</div>
-
-<div id="comments">
-  <% @message.comments.each do |comment| %>
-    <div id="comment-<%= comment.id %>" class="comment<%= ' anonymous' if comment.anonymous? %>">
-      <div class="message">
-        <%= simple_format comment.body %>
-      </div>
-      
-      <div class="author"><%= comment.author %></div>
-    </div>
-  <% end %>
+<div id="random-message">
+  <%= render :partial => 'message', :locals => {:message => @random_message} %>
+</div>  
   
   <div id="create-comment">
     <%= image_tag 'comment.png' %>
@@ -24,4 +10,16 @@
       <%= f.submit 'Post Comment', :class => 'button' %>
     <% end %>
   </div>
-</div>
+  
+  <div id="comments">
+  <% @message.comments.each do |comment| %>
+    <% unless comment.new_record? %>
+      <div id="comment-<%= comment.id %>" class="comment <%= cycle("even", "odd") %><%= ' anonymous' if comment.anonymous? %>">
+        <p class="postedby">Posted by: <strong><%= comment.author %></strong> on <%= h comment.created_at.to_s(:short) %></p>
+        <div class="message">
+          <%= simple_format comment.body %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>

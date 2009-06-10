@@ -68,9 +68,9 @@ body {
 	{
 		font-size: 20px;
 		line-height: 40px;
-		background: url('/images/line.png') repeat 0 20px;
-		padding: 30px;
-		width: 540px;
+		background: url('/images/line.png') repeat 0 -1px;
+		padding: 10px;
+		width: 580px;
 		height: 110px;
 		margin-left: 100px;
 		background-color:transparent;
@@ -145,38 +145,34 @@ body {
 			font-weight: bold;
 		}
 		
-		.message
+		.message-text
 		{
 			text-align: left;
 			font-size: 14pt;
 			font-weight: bold;
 			margin: 0;
-			padding: 0;
+			padding: 10px;
 			line-height:1.5em;
 		}
 		
-		.message a
+		.message-text a
 		{
 			text-decoration: none;
 		}
 		
 		.postedby
 		{
-			line-height:1.5em;
-			padding: 10px 0;
+			line-height:1em;
 			font-size: 10pt;
-			color: #9999A0;
-			text-align: right;
-			
+			color: #999999;			
 		}
 		
 	.postedby strong
 	{
 		color: #000;
-		font-weight: bold;
-		
+		font-weight: bold;	
 	}
-		
+
 .msg-item
 {
 	width: 600px;
@@ -188,13 +184,14 @@ body {
 #random-message
 {
 	background-color: #EAE8E4;
-	padding: 20px 20px 0 20px;
 	margin-left: 100px;
-	width: 560px;
+	padding-top:10px;
+	width: 600px;
 }
 
 .nextmessage
 {
+	margin-left:30px;
 	clear:both;
 	font-size: 0.6em;
 	font-weight: bold;
@@ -203,14 +200,38 @@ body {
 	color: #00A43D
 }	
 	
-.vote a
+.vote
 {
-	text-decoration:none;
+	padding:10px 10px;
 }
+	.vote a
+	{
+		text-decoration:none;
+	}
+
+#comments
+{
+	margin-top:90px;
+	width:600px;
+	margin-left:100px;
+}
+
+	.comment
+	{
+		background: url('/images/comment-large.png') no-repeat 40px 25px;
+		padding:10px 20px 10px 100px;
+		line-height:0em;
+		font-size:12pt;
+		height: 60px;
+	}
+
+	.even
+	{
+		background-color: #EEEEEE;
+	}
 
 .msg-extras
 {
-	margin-left: -20px;
 	text-transform: uppercase;
 	width: 600px;
 	line-height: 1.2em;
@@ -234,24 +255,9 @@ body {
 		font-size:0.5em;
 	}
 	
-	.msg-extras .comments
-	{
-		
-	}
-	
 	.msg-extras .tags
 	{
 			width:180px;
-	}
-	
-	.msg-extras .campus
-	{
-
-	}
-	
-	.msg-extras .faculty
-	{
-		
 	}
 	
 	.msg-extras strong
@@ -370,6 +376,11 @@ body {
 	margin-right: 100px;
 }
 
+.right-text
+{
+	text-align: right;
+}
+
 .form
 {
 	width: 600px;
@@ -420,6 +431,16 @@ input.text_field, input.password_field, textarea {
 	padding: 10px;
 }
 
+.button, .button-inner
+{
+	cursor: pointer;
+}
+
+.button:hover, .button-inner:hover
+{
+	background-color:#ff0000;
+}
+
 .center
 {
 	line-height: 0em;
@@ -432,15 +453,19 @@ input.text_field, input.password_field, textarea {
 }
 
 #create-comment {
-	margin-left: 100px;
+	margin-top:40px;
 	width: 600px;
+	margin-left: 100px;
 }
 
 	#create-comment textarea {
 		padding: 10px;
 	  width: 580px;
-	  height: 4.5em;
+	  height: 3.5em;
 	  margin-bottom:1em;
+		font-size: 20px;
+		line-height: 40px;
+		background: url('/images/line.png') repeat 0 -1px;
 	}
 
 textarea {
