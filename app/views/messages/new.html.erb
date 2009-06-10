@@ -8,11 +8,13 @@
   <br 
   <p>
     <%= f.submit 'SUBMIT', :class=>'button inner' %>
-  </p>  
-  
+  </p>
+<% end %>
+
+<% if @random_message %>
   <div id="random-message">
     <%= @random_message.body %>
-    
+  
     by <%= @random_message.author %>
   </div>
 <% end %>
