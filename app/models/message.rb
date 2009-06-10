@@ -43,7 +43,7 @@ class Message < ActiveRecord::Base
   
     # This is called from after_save and after_destroy on Vote
     def update_rating!
-      update_attributes({
+      update_attributes!({
         # not using count because lates some votes might be something other than +/- 1
         :positive_vote_count => votes.positive.sum(:value).abs,
         :negative_vote_count => votes.negative.sum(:value).abs,

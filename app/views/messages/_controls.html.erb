@@ -1,5 +1,4 @@
 <div id="controls-<%= message.id %>" class="controls">
-  <span class="num"><%= message.rating %></span><br />
-  <span class="vote"><a href="" title="Agree">agree</a></span>
-  <span class="vote"><a href="" title="Disagree">disagree</a></span>
+  <span class="vote"><a href="" title="Agree"><agree><%= image_tag '/images/agree.png' %>(<%= message.positive_vote_count %>)</a></span>
+  <span class="vote"><a href="" title="Disagree"><%= image_tag '/images/disagree.png' %>(<%= message.negative_vote_count %>)</a></span>
 </div>
