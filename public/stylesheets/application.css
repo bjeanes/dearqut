@@ -1,8 +1,8 @@
 body {
 	margin: 0;
-	padding: 0;
+	padding 0;
 	border-top: solid 5px #000;
-	background: url('/images/bg.jpg') repeat;
+	background: url('/images/margin.png') repeat-x #E5E2DB 0 60px;
 }
 
 #container 
@@ -48,8 +48,8 @@ body {
 	
 #title 
 {
+	padding-top:10px;
 	clear: right;
-	margin-top: 50px;
 	font-size: 36pt;
 }
 	#title a
@@ -60,7 +60,7 @@ body {
 
 #content
 {
-	margin-top: 50px;
+	margin-top: 60px;
 	font:15pt "Helvetica", "Arial";
 }
 
@@ -271,6 +271,23 @@ body {
 	width: 600px;
 }
 
+h2 {
+	margin: 5px 0;
+	letter-spacing: -2px;
+	font-size:1.3em;
+	text-transform: uppercase;
+}
+
+a 
+{
+	color: #000;
+}
+
+a:hover
+{
+	color: #999;
+}
+
 form {
   line-height: 160%;
 }
@@ -297,6 +314,16 @@ input.text_field, input.password_field, textarea {
 	border: none;
 	font-size: 14pt;
 	padding: 10px;
+}
+
+.small
+{
+	font-size: 0.8em;
+}
+
+.inner
+{
+	margin-right:100px;
 }
 
 #create-comment {
