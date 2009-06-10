@@ -7,7 +7,7 @@
       <% link_to "#{message_path(message)}#comments" do %>
         <strong>Comments</strong><br />
         <%= image_tag "commentsicon.png" %>
-        <strong><%= message.comments.count %></strong>
+        <strong><%= message.comments_count %></strong>
       <% end %>
     </li>
     <li class="tags">

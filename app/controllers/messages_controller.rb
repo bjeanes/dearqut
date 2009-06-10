@@ -49,7 +49,7 @@ class MessagesController < ApplicationController
   
     def load_resources
       if collection?
-        @messages = Message.all
+        @messages = Message.all(:include => [:tags, :user])
       else
         @message = case action_name
           when 'new' then Message.new
