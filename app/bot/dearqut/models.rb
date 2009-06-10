@@ -1,13 +1,10 @@
 require 'active_record'
 
 class ActiveRecord::Base
-  def logger
-    $logger
-  end
-  
-  def self.logger
-    $logger
-  end
+  def logger; $logger; end
+  def self.logger; $logger; end
+  def self.acts_as_taggable; end;
+  def self.acts_as_tagger; end
 end
 
 unless defined? TwitterAuth::GenericUser
@@ -15,7 +12,6 @@ unless defined? TwitterAuth::GenericUser
     class GenericUser < ActiveRecord::Base
       # Hack to get the User model to load
       def self.table_name; 'users' end
-      def self.acts_as_tagger; end
     end
   end
 end
