@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/acts_as_taggable_redux"]
 	path = vendor/plugins/acts_as_taggable_redux
 	url = git://github.com/geemus/acts_as_taggable_redux.git
+[submodule "vendor/plugins/tab_fu"]
+	path = vendor/plugins/tab_fu
+	url = git://github.com/bjeanes/tab_fu.git
