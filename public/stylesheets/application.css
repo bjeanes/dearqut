@@ -127,14 +127,8 @@ body {
 		.msglist a
 		{
 			color: #000;
-			text-decoration: none;
 		}
 	
-		.msglist a:hover
-		{
-			color: #000;
-		}
-		
 		.popularity-item
 		{
 			color: #555;
@@ -168,18 +162,49 @@ body {
 		{
 			font-size: 10pt;
 			color: #9999A0;
+			text-align: right;
+			
 		}
 		
 		.postedby strong
 		{
 			color: #000;
 			font-weight: bold;
+			
 		}
 		
 		.msg-item
 		{
+			float: right;
 			line-height: 1.6em;
 		}
+		
+.msg-extras
+{
+	
+	width: 600px;
+}
+
+	.msg-extras ul
+	{
+		height: 50px;
+		list-style-type:none;
+	}
+	
+	.msg-extras li
+	{
+		padding: 0 10px;
+		float:left;
+		display: block;
+		font-size:0.5em;
+	}
+	
+	.msg-extras .h1
+	{
+		text-transform: uppercase;
+		font-size: 1em;
+	}
+
 #footer
 {
 	clear: both;

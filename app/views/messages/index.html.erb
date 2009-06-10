@@ -9,16 +9,22 @@
 	<br />
 	All Tags
 </div>
-<ul class="msglist">
 <% @messages.each do |message| %>
-  <li class="msg-item">
+  <span class="msg-item">
     <%= render :partial => 'controls', :locals => {:message => message} %>
     <p class="message"><%= link_to message.body, message %></p>
     <p class="postedby">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
-    <%= link_to 'Reply', "#{message_path(message)}#comments" %>
-  </li>
+    <div class="msg-extras">
+      <ul>
+        <li><strong><%= link_to 'Comments', "#{message_path(message)}#comments" %></strong></h1></li>
+        <li><strong>Tagged Under</strong> <br />
+          tag, tag tag</li>
+        <li><strong>Happened at</strong><br />
+          Gardens Point</li>
+      </ul>
+    </div>
+  </span>
 <% end %>
-</ul>
 
 <br />
 
