@@ -1,24 +1,6 @@
 require 'active_record'
-
-class ActiveRecord::Base
-  def logger
-    $logger
-  end
-  
-  def self.logger
-    $logger
-  end
-end
-
-unless defined? TwitterAuth::GenericUser
-  module TwitterAuth
-    class GenericUser < ActiveRecord::Base
-      # Hack to get the User model to load
-      def self.table_name; 'users' end
-      def self.acts_as_tagger; end
-    end
-  end
-end
+require 'model_hacks'
+require 'acts_as_taggable_redux'
 
 Dir[File.join(RAILS_ROOT, "app", "models", "*.rb")].each do |model|
   require model
