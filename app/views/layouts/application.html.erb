@@ -12,13 +12,13 @@
 		  <div id="menu">
 		  <% tabs do |tab| %>
   		    <%= tab.home "Home", root_path %>
+  		    <%= tab.browse "Browse", messages_path %>
   		    <% if logged_in? %>
   		      <%= tab.logout "Log out", logout_path %>
   		    <% else %>
   		      <%= tab.login "Log in", login_path %>
   		      <%= tab.signup "Sign up", signup_path %>
   		      <%= tab.about "About", root_path %>
-  		      <%= tab.browse "Browse", messages_path %>
   		      <%= tab.contact "Contact", root_path %>
   		    <% end %>
 		    <% end %>
