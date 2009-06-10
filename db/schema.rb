@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090610132701) do
+ActiveRecord::Schema.define(:version => 20090610134656) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -32,11 +32,9 @@ ActiveRecord::Schema.define(:version => 20090610132701) do
     t.integer  "rating",              :default => 0, :null => false
     t.integer  "negative_vote_count", :default => 0, :null => false
     t.integer  "positive_vote_count", :default => 0, :null => false
-    t.integer  "comment_count"
-    t.integer  "comments_count"
+    t.integer  "comments_count",      :default => 0, :null => false
   end
 
-  add_index "messages", ["comment_count"], :name => "index_messages_on_comment_count"
   add_index "messages", ["comments_count"], :name => "index_messages_on_comments_count"
   add_index "messages", ["negative_vote_count"], :name => "index_messages_on_negative_vote_count"
   add_index "messages", ["positive_vote_count"], :name => "index_messages_on_positive_vote_count"

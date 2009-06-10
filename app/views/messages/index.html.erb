@@ -20,6 +20,9 @@
 <%= render :partial => 'message', :locals => {:message => message} %>
 </span>
 <% end %>
+<div id ="pagination">
+<%= will_paginate @messages %>
+</div>
 
 
 <br />

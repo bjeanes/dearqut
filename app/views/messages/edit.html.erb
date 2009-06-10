@@ -1,22 +1,29 @@
 <% form_for(@message, :html => { :id => "msgform"}) do |f| %>
   <%= f.error_messages %>
+  <%= f.hidden_field 'adding_context', :value => true %>
   <h2 class="center">Your Message</h2>
   
-  <p>
     <div id="message_body">
       <%= f.text_area :body %>
      </div>
      	<br />
+
    		<span class="right">
    		  sincerely, <strong><%=@message.author %></strong>
    		  <%= message_time(@message) %>
+
+   		  <% if !current_user %>
+   		    <%= link_to '(login?)', login_path %>
+   		  <% end %>
    		</span>
-  </p>
-  
-  <%= f.label :tag_list, "Tags" %>
-  <%= f.text_field :tag_list %>
-  <br /> 
-  <p>
-    <%= f.submit 'SUBMIT', :class=>'button inner' %> or <%= link_to "View your message", @message %>
-  </p>  
+  <br />
+
+  <div id="add-tags">
+    <h2>Add Tags</h2>
+    <%= f.text_area 'tag_list' %>
+    <br />
+    <%= f.submit 'SUBMIT', :class=>'button inner' %>
+    
+  </div>
+
 <% end %>
