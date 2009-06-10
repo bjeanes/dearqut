@@ -7,7 +7,10 @@
       <%= f.text_area :body %>
      </div>
      	<br />
-   		<span class="right">sincerely, <strong><%= current_user || "Anonymous" %></strong> <%= Time.now.to_s(:short) %></span>
+   		<span class="right">
+   		  sincerely, <strong><%=@message.author %></strong>
+   		  <%= message_time(@message) %>
+   		</span>
   </p>
   <br 
   <p>
