@@ -68,8 +68,9 @@ body {
 
 #content
 {
+	line-height: 1.5em;
 	margin-top: 60px;
-	font:15pt "Helvetica", "Arial";
+	font:14pt "Helvetica", "Arial";
 }
 
 	#msgform textarea
@@ -525,6 +526,12 @@ textarea {
 	border: none;
 	background-color: #fff;
 	line-height: 1.5em;
+}
+
+p
+{
+	line-height:1.5em;
+	font-size:10pt;
 }
 
 img {
