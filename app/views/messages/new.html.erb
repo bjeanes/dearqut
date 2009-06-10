@@ -13,8 +13,8 @@
 
 <% if @random_message %>
   <div id="random-message">
-    <%= @random_message.body %>
-  
-    by <%= @random_message.author %>
+    <% link_to '#', :class=>'nextmessage' do %>Show me another <%= image_tag "/images/nextmsg.png" %><% end %>
+    
+    <%= render :partial => 'message', :locals => {:message => @random_message} %>
   </div>
 <% end %>

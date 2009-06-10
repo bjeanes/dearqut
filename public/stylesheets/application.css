@@ -179,21 +179,38 @@ body {
 			
 		}
 		
-		.postedby strong
-		{
-			color: #000;
-			font-weight: bold;
-			
-		}
+	.postedby strong
+	{
+		color: #000;
+		font-weight: bold;
 		
-		.msg-item
-		{
-			width: 600px;
-			margin-bottom: 40px;
-			float: right;
-			line-height: 1.5em;
-		}
+	}
 		
+.msg-item
+{
+	width: 600px;
+	margin-bottom: 40px;
+	float: right;
+	line-height: 1.5em;
+}
+
+#random-message
+{
+	padding-top: 50px;
+	margin-left: 100px;
+	width: 600px;
+}
+
+.nextmessage
+{
+	clear:both;
+	font-size: 0.6em;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #00A43D
+}	
+	
 .vote a
 {
 	text-decoration:none;
@@ -439,8 +456,8 @@ textarea {
 }
 
 img {
-	padding: 30px 0 20px 0;
-}
+	border:none;
+	}
 
 input:focus, 
 select:focus,

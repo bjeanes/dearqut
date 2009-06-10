@@ -1,0 +1,18 @@
+    <%= render :partial => 'controls', :locals => {:message => message} %>
+    <p class="message"><%= link_to message.body, message %></p>
+    <p class="postedby">sincerely, <strong><%= message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
+    <div class="msg-extras">
+      <ul>
+        <li class="comments">
+        <% link_to "#{message_path(message)}#comments" do%>
+        <strong>Comments</strong><br />
+        <%= image_tag "/images/commentsicon.png" %> <strong>20</strong><% end %></li>
+        <li class="tags"><strong>Tagged Under</strong> <br />
+          <p>tag, tag, tag</p></li>
+        <li class="campus"><strong>Happened at</strong><br />
+          <p><span class="blue">Gardens Point</span></p></li>
+          <li class="faculty"><strong>Faculty</strong><br />
+            <p><span class="blue">Business</span></p></li>
+      </ul>
+      <br clear="both" />
+    </div>
