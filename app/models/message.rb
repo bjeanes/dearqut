@@ -14,9 +14,9 @@ class Message < ActiveRecord::Base
   before_save  :strip_and_chomp_body
   after_create :create_initial_vote_for_author, :unless => :guest?
   
-  named_scope :popular,        :order => 'rating DESC'
+  named_scope :popular,        :order => 'rating DESC, tweet_id DESC'
   named_scope :newest,         :order => 'created_at DESC, tweet_id DESC'
-  named_scope :most_commented, :order => 'comments_count DESC'
+  named_scope :most_commented, :order => 'comments_count DESC, tweet_id DESC'
 
   attr_accessor :twitter
   attr_accessible :body, :tag_list

@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   INDEX_VIEWS = %w{most_commented index popular}
   
   before_filter :load_resources, :except => :random
-  before_filter :permission_required, :except => [:index, :popular, :show, :new, :create, :random]
+  before_filter :permission_required, :except => INDEX_VIEWS + [:show, :new, :create, :random]
 
   INDEX_VIEWS.each do |view|
     define_method(view) do
