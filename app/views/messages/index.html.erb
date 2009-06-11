@@ -2,10 +2,14 @@
 	<h2>Browse by</h2>
 	<ul>
 		<li>
-		  <% link_to '#' do %><%= image_tag 'popular.png' %> Popular Vote<% end %>
+		  <% link_to popular_messages_path do %>
+		    <%= image_tag 'popular.png' %> Popular Vote
+		  <% end %>
 		</li>
 		<li>
-		  <% link_to '#' do %><%= image_tag 'freshness.png' %> Freshness <% end %>
+		  <% link_to messages_path do %>
+		    <%= image_tag 'freshness.png' %> Freshness
+		  <% end %>
 		</li>
 		<li>
 		  <%= image_tag 'tags.png' %> Search Tags <%= image_tag 'arrowdown.png' %>
