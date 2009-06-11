@@ -18,21 +18,15 @@
       <p><%= tag_sentence(message.tags) -%></p></li>
     <li class="campus">
       <strong>Happened at</strong><br />
-      <p><span class="blue">
-        <% if message.campus %>
-         <%= message.campus %>
-       <% else %>
-         N/A
-        <% end %></span></p>
+      <p>
+        <span class="blue"><%= message.campus || "N/A" %></span>
+      </p>
     </li>
     <li class="faculty">
       <strong>Faculty</strong><br />
-      <p><span class="blue">
-        <% if message.faculty %>
-         <%= message.faculty %>
-       <% else %>
-         N/A
-        <% end %></span></p>
+      <p>
+        <span class="blue"><%= message.faculty || "N/A" %></span>
+      </p>
     </li>
   </ul>
   <br clear="both" />
