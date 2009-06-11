@@ -20,7 +20,15 @@
 		    <% end %>
 		  </div>
 		  <div id="menu">
+
 		  <% tabs do |tab| %>
+		  <% if logged_in? %>
+		    <span class="current-user">
+		      <% if current_user.twitter? %>@
+  		    <% end %>
+  	      <%= current_user.login %>
+	      </span>
+	    <% end %>
   		    <%= tab.home "Home", root_path %>
   		    <%= tab.browse "Browse", messages_path %>
   		    <% if logged_in? %>
