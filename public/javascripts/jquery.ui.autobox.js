@@ -65,6 +65,7 @@
   var KEY={
     ESC: 27,
     RETURN: 13,
+    SPACE: 32,
     TAB: 9,
     BS: 8,
     DEL: 46,
@@ -143,7 +144,7 @@
       .bind("keydown.autobox", function(e){
         var k=e.which || e.keyCode;
         if(k == KEY.ESC){ $("body").trigger("cancel.autobox"); }
-        else if(k == KEY.RETURN){ $("body").trigger("activate.autobox"); e.preventDefault(); }
+        else if(k == KEY.RETURN || k == KEY.SPACE){ $("body").trigger("activate.autobox"); e.preventDefault(); }
         else if(k == KEY.UP || k == KEY.TAB || k == KEY.DOWN){
           switch(k){
             case KEY.DOWN:
@@ -234,11 +235,11 @@
             if(k == KEY.TAB || k == KEY.UP || k == KEY.DOWN) return false;
           }
           if($.data(document.body, "autoboxMode") && k < 32 && k != KEY.BS && k != KEY.DEL) return false;
-          else if(k == KEY.RETURN){
+          else if(k == KEY.RETURN || k == KEY.SPACE){
             if(input.val()){ addBox(input, input.val(), opt.name); }
             e.preventDefault();
           }
-          else if(k == KEY.BS || k == KEY.DEL || k > 32){ // more than ESC and RETURN and the like
+          else if(k == KEY.BS || k == KEY.DEL || k >= 32){ // more than ESC and RETURN and the like
             startTypingTimeout(e, this, opt.timeout);
           }
         })

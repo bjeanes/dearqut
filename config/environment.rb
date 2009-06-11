@@ -28,3 +28,4 @@ Rails::Initializer.run do |config|
 end
 
 ActiveRecord::Base.include_root_in_json = false
+require 'aatr_ext'
