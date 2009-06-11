@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
+  INDEX_VIEWS = %w{most_commented index popular}
+  
   before_filter :load_resources, :except => :random
   before_filter :permission_required, :except => [:index, :popular, :show, :new, :create, :random]
 
-  %w{index popular most_commented}.each do |view|
+  INDEX_VIEWS.each do |view|
     define_method(view) do
       tab :browse
       render :action => :index
@@ -71,7 +73,7 @@ class MessagesController < ApplicationController
     end
     
     def collection?
-      %w{index popular}.include? action_name.to_s
+      INDEX_VIEWS.include? action_name.to_s
     end
     
     # This is so when users are anonymous they can still edit 
