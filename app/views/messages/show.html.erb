@@ -17,7 +17,7 @@
       <div id="comment-<%= comment.id %>" class="comment <%= cycle("even", "odd") %><%= ' anonymous' if comment.anonymous? %>">
         <p class="postedby">Posted by: <strong><%= comment.author %></strong> on <%= h comment.created_at.to_s(:short) %></p>
         <div class="message">
-          <%= simple_format comment.body %>
+          <%= simple_format h(comment.body) %>
         </div>
       </div>
     <% end %>
