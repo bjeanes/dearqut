@@ -1,12 +1,25 @@
 <h2>Sign up to get started</h2>
 <span class="small">or <%= link_to "log in here", twitter_login_path %></span>
 <br /><br />
-
-<% form_for @user do |f| %>
-  <p>I would like to create an account with the <%= f.label :login, "login" %>
-  <%= f.text_field :login, :class => 'text_field' %> and <%= f.label :password, "password" %>
-  <%= f.password_field :password, :class => 'password_field' %>. Here is my <%= f.label :password_confirmation, "password again" %> just to be sure:
-  <%= f.password_field :password_confirmation, :class => 'password_field' %></p>
+<div id = "signup" class="user-box">
+  <div class="error"><%= flash[:error] %></div>
+  <% form_for @user do |f| %>
   
-  <%= f.submit 'SUBMIT', :class=>'button inner' %>
-<% end %>
+    <%= f.label :login, "Username" %>
+    <br />
+    <%= f.text_field :login, :class => 'text_field' %>
+    <br />
+  
+    <%= f.label :password, "Password" %>
+    <br />
+    <%= f.password_field :password, :class => 'password_field' %>
+    <br/>
+  
+    <%= f.label :password_confirmation, "Password again" %>
+    <br />
+    <%= f.password_field :password_confirmation, :class => 'password_field' %></p>
+    <br />
+  
+    <%= f.submit 'Sign Up', :class=>'button' %>
+  <% end %>
+</div>

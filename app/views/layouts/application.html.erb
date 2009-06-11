@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Dear QUT</title>
-  
+  <link rel="shortcut icon" href="/fav_ri.gif" />
   <%= stylesheet_link_tag 'application', 'acts_as_taggable', 'jquery.ui.autobox' %>
   <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js', 
         'jquery.templating',
@@ -14,6 +14,11 @@
 </head>
 	<body>
 		<div id="container">
+		  <div id="twitter-badge">
+		    <% link_to 'http://www.twitter.com?status=@dearQUT' do%>
+		      <%= image_tag 'TwitterBadge.png' %>
+		    <% end %>
+		  </div>
 		  <div id="menu">
 		  <% tabs do |tab| %>
   		    <%= tab.home "Home", root_path %>

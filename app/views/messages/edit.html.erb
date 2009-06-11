@@ -3,7 +3,7 @@
   <%= f.hidden_field 'adding_context', :value => true %>
   <h2 class="center">Your Message</h2>
   
-    <div id="message_body">
+    <div id="message-body">
       <%= f.text_area :body %>
      </div>
      	<br />
@@ -20,6 +20,7 @@
 
   <div id="add-tags">
     <h2>Add Tags</h2>
+    <p>Type in your tag and press enter after each one</p>
     <%= f.text_field 'tag_list', :class => 'autobox tags' %>
     <br />
     <%= f.submit 'SUBMIT', :class=>'button inner' %>
