@@ -17,7 +17,7 @@ class User < TwitterAuth::GenericUser
   end
   
   def twitter?
-    !access_token.nil?
+    !twitter_id.nil?
   end
   
   def name_for_display

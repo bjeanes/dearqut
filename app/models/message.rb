@@ -34,7 +34,7 @@ class Message < ActiveRecord::Base
   end
   
   def author?(user)
-    params[:user] == user
+    self[:user_id] == user.id
   end
   
   def rating
