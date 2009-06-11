@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090611061508) do
+ActiveRecord::Schema.define(:version => 20090611145817) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -46,9 +46,13 @@ ActiveRecord::Schema.define(:version => 20090611061508) do
     t.integer  "negative_vote_count", :default => 0, :null => false
     t.integer  "positive_vote_count", :default => 0, :null => false
     t.integer  "comments_count",      :default => 0, :null => false
+    t.integer  "faculty_id"
+    t.integer  "campus_id"
   end
 
+  add_index "messages", ["campus_id"], :name => "index_messages_on_campus_id"
   add_index "messages", ["comments_count"], :name => "index_messages_on_comments_count"
+  add_index "messages", ["faculty_id"], :name => "index_messages_on_faculty_id"
   add_index "messages", ["negative_vote_count"], :name => "index_messages_on_negative_vote_count"
   add_index "messages", ["positive_vote_count"], :name => "index_messages_on_positive_vote_count"
   add_index "messages", ["rating"], :name => "index_messages_on_rating"
