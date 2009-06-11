@@ -8,7 +8,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
-  require "will_paginate"
   config.gem 'json'
   config.gem 'twitter'
   config.gem 'twitter-auth', :lib => 'twitter_auth', :version => "~> 0.1.21"

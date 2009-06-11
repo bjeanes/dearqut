@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
     mes.resources :comments
     mes.resource  :vote, :member => {:up => :post, :down => :post}, :only => []
   end
+  map.resources(:site, :collection => {:about => :get, :help=>:get, :privacy=>:get, :contact=>:get})
   
   map.signup '/signup', :controller => "users", :action => "new"
   map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true

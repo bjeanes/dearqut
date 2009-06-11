@@ -24,8 +24,9 @@
   		      <%= tab.login "Log in", login_path %>
   		      <%= tab.signup "Sign up", signup_path %>
   		    <% end %>
-		      <%= tab.about "About", root_path %>
-		      <%= tab.contact "Contact", root_path %>
+  		    <%= tab.help "Help", help_site_path %>
+		      <%= tab.about "About", about_site_path %>
+		      <%= tab.contact "Contact", contact_site_path %>
 		    <% end %>
 		  </div>
 			<h1 id="title"><a href="/">Dear QUT,</a></h1>
@@ -36,10 +37,10 @@
 			</div>
 			<div id="footer">
 				<ul>
-					<li class="footer1"><% link_to 'http://www.qut.edu.au' do %>dearQUT is the place for anyone to contribute ideas/grips about the Queensland University of Technology<% end %></li>
+					<li class="footer1"><% link_to about_site_path do %>dearQUT is the place for anyone to contribute ideas/grips about the Queensland University of Technology<% end %></li>
 					<li class="footer2"><% link_to 'http://www.twitter.com/dearqut' do %>Get notified of new updates by following dearQUT on twitter.<% end %></li>
-					<li class="footer3"><% link_to '#' do %>Your privacy is important to us. Here are the ground rules.<% end %></li>
-					<li class="footer4"><% link_to '#' do %>Unsure how to begin? Check out our tutorials and FAQ<% end %></li>
+					<li class="footer3"><% link_to privacy_site_path do %>Your privacy is important to us. Here are the ground rules.<% end %></li>
+					<li class="footer4"><% link_to help_site_path do %>Unsure how to begin? Check out our tutorials and FAQ<% end %></li>
 					<li>
 				</ul>
 			</div>
