@@ -8,20 +8,27 @@ class User < TwitterAuth::GenericUser
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :password, :within => 6..40, :if => :password_required?
   
+  validates_uniqueness_of :twitter_id, :message => "ID has already been taken.", :allow_blank => true
+  validates_presence_of   :twitter_id, :if => :twitter?
+  
   before_save :encrypt_password
 
-  attr_accessor :password, :password_confirmation
+  attr_accessor :password, :password_confirmation, :normal_user
   
   def to_s
     protected? ? "Anonymous" : name_for_display
   end
   
   def twitter?
-    !twitter_id.nil?
+    !normal_user? || !twitter_id.nil?
+  end
+  
+  def normal_user?
+    !!@normal_user
   end
   
   def name_for_display
-    name.blank? ? login_for_display : name
+    name.blank? || name == login ? login_for_display : name
   end
   
   def login_for_display
