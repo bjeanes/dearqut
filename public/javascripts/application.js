@@ -1,12 +1,16 @@
 $(function() {
-  $('.controls span a').click(vote);
-  
   $("input.autobox.tags").autobox({
     ajax: "/tags",
-    match: function(typed) { return this.text.match(new RegExp(typed, "i")); },
-    insertText: function(obj) { return obj.text; },
-    templateText: "<li>Hey: <%= text %></li>"
+    match: function(typed) { return this.name.match(new RegExp(typed, "i")); },
+    insertText: function(obj) { return obj.name; },
+    templateText: "<li><%= name %> (<%= taggings_count %>)</li>"
   });
+  
+  $('ul.autobox-hldr').click(function() { 
+    $('li.autobox-input input', this).focus(); 
+  });
+    
+  $('.controls span a').click(vote);
 });
 
 function vote() {
