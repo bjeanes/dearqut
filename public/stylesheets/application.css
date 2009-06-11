@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	border-top: solid 5px #000;
-	background: url('/images/margin.png') repeat-x #E5E2DB 0 60px;
+	background: url('/images/margin.png') repeat-x #E5E2DB 0 80px;
 }
 
 #container 
@@ -19,6 +19,15 @@ body {
 	padding: 10px;
 	color: #f2f2f2;
 	background-color: #2CADE3;
+}
+
+#twitter-badge
+{
+	float:left;
+	margin-left:20px;
+	margin-top:-29px;
+	height: 76px;
+	width:181px;
 }
 
 #menu
@@ -56,7 +65,7 @@ body {
 	
 #title 
 {
-	padding-top:10px;
+	padding-top:30px;
 	clear: right;
 	font-size: 36pt;
 }
@@ -73,7 +82,7 @@ body {
 	font:14pt "Helvetica", "Arial";
 }
 
-	#msgform textarea
+	#msgform textarea, #message_body
 	{
 		font-size: 20px;
 		line-height: 40px;
