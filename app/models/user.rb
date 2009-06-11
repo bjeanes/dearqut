@@ -19,7 +19,7 @@ class User < TwitterAuth::GenericUser
   end
   
   def twitter?
-    !normal_user? || !twitter_id.nil?
+    !twitter_id.nil? || !normal_user?
   end
   
   def normal_user?
@@ -31,7 +31,7 @@ class User < TwitterAuth::GenericUser
   end
   
   def login_for_display
-    "#{'@' if twitter?}#{login}"
+    "#{'@' if twitter_id?}#{login}"
   end
   
   def self.find_or_create_by_twitter_user(user)

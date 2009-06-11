@@ -55,7 +55,7 @@ class Message < ActiveRecord::Base
   end
 
   def self.per_page
-    5
+    10
   end
 
   private
