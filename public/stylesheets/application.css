@@ -37,12 +37,12 @@ body {
 	#menu ul
 	{
 		list-style-type: none;
-		font-size: 10pt;
+		font-size: 12pt;
 	}
 	
 	#menu li
 	{
-		padding-left: 20px;
+		padding-left: 10px;
 		display: inline;
 	}
 	
@@ -61,6 +61,14 @@ body {
 	#menu a:hover
 	{
 		color: #ff0000;
+	}
+	
+	#menu .current-user
+	{
+		font-weight: bold;
+		font-style:italic;
+		color: #00A43D;
+		margin-right:10px;
 	}
 	
 #title 

@@ -16,24 +16,24 @@
 		    <%= image_tag 'commentsort.png' %> Freshness
 		  <% end %>
     </li>
-		  
-		
 	  <li>
 	    <%= image_tag 'tags.png' %> Search Tags <%= image_tag 'arrowdown.png' %>
+		  <br />
   	  <%= text_field_tag :search_tag %>
   	</li>
 	</ul>
   
 </div>
-<% @messages.each do |message| %>
-<span class="msg-item">
-<%= render :partial => 'message', :locals => {:message => message} %>
-</span>
-<% end %>
-<div id ="pagination">
-<%= will_paginate @messages %>
-</div>
 
+<% @messages.each do |message| %>
+  <span class="msg-item">
+    <%= render :partial => 'message', :locals => {:message => message} %>
+  </span>
+<% end %>
+
+<div id ="pagination">
+  <%= will_paginate @messages %>
+</div>
 
 <br />
 
