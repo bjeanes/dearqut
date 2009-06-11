@@ -1,5 +1,8 @@
 class Message < ActiveRecord::Base
   belongs_to :user
+  belongs_to :campus
+  belongs_to :faculty
+  
   has_many   :votes,    :dependent => :destroy
   has_many   :comments, :dependent => :destroy
   
@@ -11,8 +14,9 @@ class Message < ActiveRecord::Base
   before_save  :strip_and_chomp_body
   after_create :create_initial_vote_for_author, :unless => :guest?
   
-  named_scope :popular, :order => 'rating DESC'
-  named_scope :newest, :order => 'created_at DESC, tweet_id DESC'
+  named_scope :popular,        :order => 'rating DESC'
+  named_scope :newest,         :order => 'created_at DESC, tweet_id DESC'
+  named_scope :most_commented, :order => 'comments_count DESC'
 
   attr_accessor :twitter
   attr_accessible :body, :tag_list

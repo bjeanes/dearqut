@@ -12,9 +12,15 @@
 		  <% end %>
 		</li>
 		<li>
-		  <%= image_tag 'tags.png' %> Search Tags <%= image_tag 'arrowdown.png' %>
-		  <br />
-		  <%= text_field_tag :bla %>
+		  <% link_to most_commented_messages_path do %>
+		    <%= image_tag 'commentsort.png' %> Freshness
+		  <% end %>
+    </li>
+		  
+		
+	  <li>
+	    <%= image_tag 'tags.png' %> Search Tags <%= image_tag 'arrowdown.png' %>
+  	  <%= text_field_tag :search_tag %>
   	</li>
 	</ul>
   

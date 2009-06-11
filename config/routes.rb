@@ -1,7 +1,16 @@
+message_options     = {
+  :member           => {:delete => :get}, 
+  :collection       => {
+    :random         => :get, 
+    :popular        => :get,
+    :most_commented => :get
+  }
+}
+
 ActionController::Routing::Routes.draw do |map|
   map.resources :users, :tags
   
-  map.resources(:messages, :member => {:delete => :get}, :collection => {:random => :get, :popular => :get}) do |mes|
+  map.resources(:messages, message_options) do |mes|
     mes.resources :comments
     mes.resource  :vote, :member => {:up => :post, :down => :post}, :only => []
   end
