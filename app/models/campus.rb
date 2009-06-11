@@ -1,5 +1,5 @@
 class Campus < ActiveRecord::Base
-  def name
-    to_s
+  def to_s
+    name
   end
 end
