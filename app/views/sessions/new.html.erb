@@ -1,20 +1,24 @@
-<h2>Let me log in</h2>
-
+<h2>Welcome Back</h2>
+<div id ="loginbox" class="user-box">
 <% form_tag session_path, :id => 'login_form' do %>
   <div class="error"><%= flash[:error] %></div>
 
-  <div class='field'>
-    Using <a href="/login/twitter">Twitter</a>, or
-    
-    using my <label for='login'>username</label>, 
-    <%= text_field_tag 'login', nil, :class => 'text_field' %>,
-    and <label for='password'>password</label>
-    <%= password_field_tag 'password', nil, :class => 'password_field' %>.
-    and <%= select_tag 'remember_me', options_for_select([['keep', true], ['don\'t keep', false]]) %> <label for="remember_me">me logged in</label>.
-</div>
-<br />
+    Have Twitter login? <a href="/login/twitter">Go here.</a>
+    <br />
+    <br />
+    <label for='login'>Username</label>
+    <br />
+    <%= text_field_tag 'login', nil, :class => 'text_field' %>
+    <br />
+    <label for='password'>Password</label>
+    <br />
+    <%= password_field_tag 'password', nil, :class => 'password_field' %>
+    <br />
+    <%= select_tag 'remember_me', options_for_select([['keep', true], ['don\'t keep', false]]) %> <label for="remember_me"> me logged in</label>.
+<br /><br />
   <div class='field submit'>
-    <%= submit_tag 'Log In', :class => 'submit' %>
+    <%= submit_tag 'Log In', :class => 'button' %>
   </div>
 <% end %>
+</div>
 

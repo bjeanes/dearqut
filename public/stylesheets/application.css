@@ -344,6 +344,37 @@ body {
 	text-align: center;
 }
 
+#loginbox, #signup
+{
+	width:420px;
+}
+
+.user-box
+{
+	font-size: 12pt;
+	font-weight: bold;
+	padding: 40px 40px 80px 40px;
+	background-color: #f2f2f2;
+}
+
+	.user-box .text_field, .password_field
+	{
+		font: 18pt "Helvetica", "Arial";
+		color: #5e5e5e;  
+		margin-bottom: 30px;
+	}
+	
+	.user-box .button
+	{
+		text-align:left;
+	}
+	
+.fieldWithErrors label
+{
+	color: #ff000;
+}
+
+	
 #footer
 {
 	clear: both;
@@ -441,10 +472,15 @@ body {
 }
 
 h2 {
-	margin: 5px 0;
+	margin: 10px 0;
 	letter-spacing: -2px;
-	font-size:1.3em;
+	font-size:1.5em;
 	text-transform: uppercase;
+}
+
+p
+{
+	margin: 25px 0;
 }
 
 a 
@@ -461,7 +497,7 @@ form {
   line-height: 160%;
 }
 
-select, input.text_field, input.password_field, textarea {
+/*select, input.text_field, input.password_field, textarea {
   font: 15pt "Helvetica", "Arial";  
   color:#5e5e5e;
   margin:0;
@@ -474,10 +510,9 @@ input.text_field, input.password_field, textarea {
   border:0;
   border-bottom: 2px solid #5e5e5e;
 }
-
+*/
 .button 
 {
-	float: right;
 	background-color: #000;
 	color: #fff;
 	border: none;
@@ -493,6 +528,11 @@ input.text_field, input.password_field, textarea {
 .button:hover, .button-inner:hover
 {
 	background-color:#ff0000;
+}
+
+.right
+{
+	float:right;
 }
 
 .center
@@ -520,6 +560,11 @@ input.text_field, input.password_field, textarea {
 		font-size: 20px;
 		line-height: 40px;
 		background: url('/images/line.png') repeat 0 -1px;
+	}
+	
+	#create-comment .button
+	{
+		margin: 0;
 	}
 
 textarea {

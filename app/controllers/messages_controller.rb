@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
         'Thank you for your message. <br /><br />
         Please add more information below, or <a href="%s">view your message</a>' % 
         message_path(@message)
-      redirect_to(add_context_message_path(@message))
+      redirect_to(edit_message_path(@message))
     else
       render :action => "new"
     end
