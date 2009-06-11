@@ -8,8 +8,7 @@ class User < TwitterAuth::GenericUser
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :password, :within => 6..40, :if => :password_required?
   
-  validates_uniqueness_of :twitter_id, :message => "ID has already been taken.", :allow_blank => true
-  validates_presence_of   :twitter_id, :if => :twitter?
+  validate :validate_twitter_id_not_required, :if => :normal_user?
   
   before_save :encrypt_password
 
@@ -80,6 +79,10 @@ class User < TwitterAuth::GenericUser
       !twitter? && (crypted_password.blank? || !password.blank?)
     end
   
+    def validate_twitter_id_not_required
+      errors.delete('twitter_id')
+      true
+    end
   
     class << self
       def password_digest(password, salt)
