@@ -6,13 +6,15 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.normal_user = true
     @user.login = params[:user][:login]
     
-    if @user.save
+    if @user.save!
       self.current_user = @user
       flash[:notice] = "You have successfully created an account"
       redirect_to root_path
     else
+      flash[:error] = "There was an error creating your account :("
       render :action => :new
     end
   end

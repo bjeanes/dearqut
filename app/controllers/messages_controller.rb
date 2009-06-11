@@ -1,10 +1,14 @@
 class MessagesController < ApplicationController
   before_filter :load_resources, :except => :random
-  before_filter :permission_required, :except => [:index, :show, :new, :create, :random]
+  before_filter :permission_required, :except => [:index, :popular, :show, :new, :create, :random]
 
   def index
     tab :browse
-    
+    render :action => :index
+  end
+  
+  def popular
+    index
   end
   
   def new
@@ -49,7 +53,10 @@ class MessagesController < ApplicationController
   
     def load_resources
       if collection?
-        @messages = Message.paginate(:page => params[:page], :include => [:tags, :user])
+        @messages = case action_name
+          when 'index'   then Message.newest
+          when 'popular' then Message.popular
+        end.paginate(:page => params[:page], :include => [:tags, :user])
         
       else
         @message = case action_name
@@ -61,7 +68,7 @@ class MessagesController < ApplicationController
     end
     
     def collection?
-      action_name == 'index'
+      %w{index popular}.include? action_name.to_s
     end
     
     # This is so when users are anonymous they can still edit 

@@ -1,6 +1,4 @@
 class Message < ActiveRecord::Base
-  default_scope :order => 'created_at DESC, tweet_id DESC'
-  
   belongs_to :user
   has_many   :votes,    :dependent => :destroy
   has_many   :comments, :dependent => :destroy
@@ -12,6 +10,9 @@ class Message < ActiveRecord::Base
   before_save  :convert_hash_tags_to_tags
   before_save  :strip_and_chomp_body
   after_create :create_initial_vote_for_author, :unless => :guest?
+  
+  named_scope :popular, :order => 'rating DESC'
+  named_scope :newest, :order => 'created_at DESC, tweet_id DESC'
 
   attr_accessor :twitter
   attr_accessible :body, :tag_list
