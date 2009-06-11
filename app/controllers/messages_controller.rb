@@ -39,13 +39,18 @@ class MessagesController < ApplicationController
     end
   end
   
+  def destroy
+    @message.destroy
+    redirect_to(messages_path)
+  end
+  
   def random
     redirect_to('/#random_message')
   end
   
   protected
     def permission_required
-      unless message_in_session? || @message.author?(current_user)
+      unless admin? || message_in_session? || @message.author?(current_user)
         flash[:error] = "You do not have permission to do that"
         redirect_to @message
       end

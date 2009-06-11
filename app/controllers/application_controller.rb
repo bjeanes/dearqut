@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     def anonymous?
       current_user.nil?
     end
+    
+    def admin?
+      current_user.admin? rescue false
+    end
 end

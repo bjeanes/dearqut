@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090610134656) do
+ActiveRecord::Schema.define(:version => 20090611061508) do
+
+  create_table "campus", :force => true do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -21,6 +28,12 @@ ActiveRecord::Schema.define(:version => 20090610134656) do
 
   add_index "comments", ["message_id"], :name => "index_comments_on_message_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "faculties", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
@@ -91,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20090610134656) do
     t.datetime "updated_at"
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
+    t.boolean  "admin",                                   :default => false, :null => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
