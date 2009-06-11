@@ -200,6 +200,7 @@ body {
 		
 		.postedby
 		{
+			margin: 0;
 			line-height:1em;
 			font-size: 10pt;
 			color: #999999;			
@@ -252,10 +253,9 @@ body {
 	.comment
 	{
 		background: url('/images/comment-large.png') no-repeat 40px 25px;
-		padding:10px 20px 10px 100px;
+		padding:10px 20px 5px 100px;
 		line-height:0em;
 		font-size:12pt;
-		height: 60px;
 	}
 
 	.even
@@ -489,7 +489,6 @@ h2 {
 
 p
 {
-	margin: 25px 0;
 }
 
 a 
