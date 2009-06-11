@@ -19,7 +19,7 @@ class Message < ActiveRecord::Base
   named_scope :most_commented, :order => 'comments_count DESC, tweet_id DESC'
 
   attr_accessor :twitter
-  attr_accessible :body, :tag_list
+  attr_accessible :body, :tag_list, :campus_id, :faculty_id
   
   acts_as_taggable
   
