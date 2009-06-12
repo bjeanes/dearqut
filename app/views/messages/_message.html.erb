@@ -27,11 +27,11 @@
       <p>
         <span class="blue">
         <% if message.faculty %>
-          <% if message.faculty = 'Science and Technology'%>
+          <% if message.faculty == 'Science and Technology'%>
             Scitech
-          <% elsif message.faculty = 'Built Environment and Engineering'%>
+          <% elsif message.faculty == 'Built Environment and Engineering'%>
             BEE
-          <% elsif message.faculty = 'QUT International College' %>
+          <% elsif message.faculty == 'QUT International College' %>
             International
           <% else %>
             <%= message.faculty %>
