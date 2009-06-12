@@ -1,6 +1,9 @@
 class MessagesController < ApplicationController
   INDEX_VIEWS = %w{most_commented index popular}
-  
+
+  around_filter :load_tag, :only => INDEX_VIEWS
+
+  before_filter :remove_tag_from_url, :only => :show
   before_filter :load_resources, :except => :random
   before_filter :permission_required, :except => INDEX_VIEWS + [:show, :new, :create, :random]
 
@@ -49,13 +52,35 @@ class MessagesController < ApplicationController
   end
   
   protected
+    def load_tag
+      if params[:tag_id]
+        unless @tag = Tag.with_type_scope('Message') {Tag.find(params[:tag_id])}
+          flash[:error] = "No such tag or no messages use the tag"
+          redirect_to messages_path
+          return
+        end
+        
+        Message.tagged_with_scope(@tag.name) { yield }
+      else
+        yield
+      end
+    end
+    
+    def remove_tag_from_url
+      redirect_to message_path(params[:id].to_i) if tag?
+    end
+    
+    def tag?
+      !!@tag
+    end
+  
     def permission_required
       unless admin? || message_in_session? || @message.author?(current_user)
         flash[:error] = "You do not have permission to do that"
         redirect_to @message
       end
     end
-  
+    
     def load_resources
       if collection?
         @messages = case action_name

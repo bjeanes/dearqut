@@ -1,13 +1,20 @@
 class TagsController < ApplicationController
   def index
     respond_to do |wants|
-      wants.html
+      wants.html { @tags = message_tags{Tag.all} }
       wants.js { autocomplete_tag_suggestions }
     end
   end
   
+  # TODO - this can be used to suggest tags to the user that they can then click
+  # on to add to their message
+  def suggest
+    (Message.find_related_tags(params[:current_tags]) + 
+      tags_from_text(params[:message_body])).sort(&:taggings_count)
+  end
+  
   def show
-    path = if (@tag = Tag.find(params[:id]))
+    path = if (@tag = message_tags{Tag.find(params[:id])})
       tag_messages_path(@tag)
     else
       flash[:error] = "That tag does not exist"
@@ -18,6 +25,15 @@ class TagsController < ApplicationController
   end
   
   protected
+  
+    def message_tags(&block)
+      Tag.with_type_scope('Message', &block)
+    end
+    
+    def tags_from_text(text)
+      [] # TODO
+    end
+    
   
     def autocomplete_tag_suggestions
       tags = Tag.popular.search(params[:val]).limit(params[:limit] || 5)
