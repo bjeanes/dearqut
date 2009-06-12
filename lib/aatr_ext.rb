@@ -3,4 +3,8 @@ class Tag < ActiveRecord::Base
   named_scope :popular, :order => "taggings_count DESC, name ASC"
   named_scope :search, lambda {|q| {:conditions => ["name LIKE ?", "%#{q}%"]} }
   named_scope :limit, lambda {|l| {:limit => l} }
+  
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end

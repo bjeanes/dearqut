@@ -76,6 +76,7 @@
   };
 
   function addBox(input, text, name){
+    console.log(text);
     var ii = $('<input type="hidden"></input>');ii.attr('name', name);ii.val(text);
     var li=$('<li class="bit-box"></li>').attr('id', 'bit-' + count++).text(text);
     li.append($('<a href="#" class="closebutton"></a>')
@@ -291,7 +292,7 @@
       var self=$(this);
       var input=createHolder(self);
       input=input.find('input');
-      opt.name=this.name;
+      opt.name=this.name + "[]";
       self.removeAttr('name');
       self.hide();
 

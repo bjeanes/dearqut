@@ -53,6 +53,11 @@ class Message < ActiveRecord::Base
   def twitter?
     tweet_id? || !!@twitter
   end
+  
+  def tag_list=(tags)
+    tags = tags.join(" ") if tags.respond_to? :join
+    super(tags)
+  end
 
   def self.per_page
     10
