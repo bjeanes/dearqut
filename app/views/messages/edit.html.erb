@@ -20,14 +20,13 @@
 
   <div id="context">
     <div id="more-details">
-      <div id="campus">
-        <%= f.label :campus_id %>
-        <%= f.collection_select(:campus_id, Campus.all, :id, :name, :include_blank => true) %>
-      </div>
-      
       <div id="faculty">
         <%= f.label :faculty_id %>
         <%= f.collection_select(:faculty_id, Faculty.all, :id, :name, :include_blank => true) %>
+      </div>
+      <div id="campus">
+        <%= f.label :campus_id %>
+        <%= f.collection_select(:campus_id, Campus.all, :id, :name, :include_blank => true) %>
       </div>
     </div>
     

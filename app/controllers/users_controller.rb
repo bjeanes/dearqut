@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user.normal_user = true
     @user.login = params[:user][:login]
     
-    if @user.save!
+    if @user.save
       self.current_user = @user
       flash[:notice] = "You have successfully created an account"
       redirect_to root_path

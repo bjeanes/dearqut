@@ -140,15 +140,16 @@ body {
 			font-size: 12pt;
 			list-style: none;
 			padding: 0;
+			
 		}
 		
-		#filter li
+		#filter .taller
 		{
-			margin: 10px 0;
+			padding-top:10px;
 		}
 		
 		#filter a
-		{
+		{		
 			color:#000;
 			text-decoration: none;
 		}
@@ -361,6 +362,25 @@ body {
 	text-align: center;
 }
 
+#more-details
+{
+	width: 600px;
+	margin-left: 100px;
+	margin-bottom:20px;
+}
+
+	#campus
+	{
+		width: 200px;
+		margin-top: 40px;
+	}
+
+	#faculty
+	{
+		float: right;
+		width: 320px;
+	}
+
 #loginbox, #signup
 {
 	width:420px;
@@ -388,7 +408,9 @@ body {
 	
 .fieldWithErrors label
 {
-	color: #ff000;
+	color: #ff0000;
+	padding: 0;
+	margin: 0;
 }
 
 	
