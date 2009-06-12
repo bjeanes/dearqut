@@ -299,7 +299,12 @@ body {
 	
 	.msg-extras .tags
 	{
-			width:180px;
+			width:170px;
+	}
+	
+	.msg-extras .faculty
+	{
+			width:100px;
 	}
 	
 	.msg-extras strong
