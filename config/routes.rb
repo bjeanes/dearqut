@@ -8,7 +8,10 @@ message_options     = {
 }
 
 ActionController::Routing::Routes.draw do |map|
-  map.resources :users, :tags
+  map.resources :users
+  map.resources :tags do |tag|
+    tag.resources(:messages, message_options)
+  end
   
   map.resources(:messages, message_options) do |mes|
     mes.resources :comments
