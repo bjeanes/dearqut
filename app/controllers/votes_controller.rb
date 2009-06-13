@@ -23,7 +23,7 @@ class VotesController < ApplicationController
       success = @vote.save
       
       render :json => [{
-        :success        => success.inspect,
+        :success        => success,
         :id             => @vote.message_id,
         :rating         => @vote.message.rating,
         :positive_count => @vote.message.positive_vote_count,
