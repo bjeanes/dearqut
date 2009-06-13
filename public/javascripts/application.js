@@ -54,10 +54,13 @@ function vote() {
 function voteCallback(data) {
   for (var i = data.length - 1; i >= 0; i--){
 		var v = data[i];
+		var c = $('#controls-' + v.id);
 	
 		if(v.success) {
-			var up = $('#controls-' + v.id + ' .up');
-	    var down = $('#controls-' + v.id + ' .down');
+			$('a', c).click = null;
+			
+			var up   = $('.up',   c);
+	    var down = $('.down', c);
 	
 			$('.num',   up).text(v.positive_count);
 	    $('.num', down).text(v.negative_count);
@@ -68,7 +71,7 @@ function voteCallback(data) {
 				$('img',   up).attr("src", "/images/youagreed.png");
 			}
 		} else {
-			alert("Are you sure you are logged in?");
+			// not logged in or already voted
 		}
   };
 }

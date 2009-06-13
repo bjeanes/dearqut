@@ -7,4 +7,9 @@ module ApplicationHelper
   def admin?
     controller.send :admin?
   end
+  
+  def tag_path(tag)
+    # save a redirect
+    tag_messages_path(tag)
+  end
 end
