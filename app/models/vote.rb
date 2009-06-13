@@ -14,6 +14,14 @@ class Vote < ActiveRecord::Base
   
   attr_accessible # nothing
   
+  def agreed?
+    value > 0
+  end
+  
+  def disagreed?
+    value < 0
+  end
+  
   private
   
     def update_message_rating_cache

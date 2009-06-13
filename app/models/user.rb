@@ -30,6 +30,19 @@ class User < TwitterAuth::GenericUser
     name.blank? || name == login ? login_for_display : name
   end
   
+  def voted?(message)
+    id = message =~ /\d+/ ? message : message.id
+    votes.first(:conditions => ["message_id = ?", id])
+  end
+  
+  def agreed?(message)
+    voted?(message).agreed?
+  end
+  
+  def disagreed?(message)
+    voted?(message).disagreed?
+  end
+  
   def login_for_display
     "#{'@' if twitter_id?}#{login}"
   end
