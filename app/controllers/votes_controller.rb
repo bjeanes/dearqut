@@ -14,9 +14,10 @@ class VotesController < ApplicationController
   protected
   
     def build_vote
-      message = Message.find(params[:message_id])
-      @vote = message.votes.build
-      @vote.user = current_user
+      message          = Message.find(params[:message_id])
+      @vote            = message.votes.build
+      @vote.user       = current_user
+      @vote.session_id = session[:session_id]
     end
     
     def save_vote

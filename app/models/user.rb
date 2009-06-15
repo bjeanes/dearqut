@@ -71,6 +71,13 @@ class User < TwitterAuth::GenericUser
     self
   end
   
+  
+  def valid?
+    return true if id == 0
+    super
+  end
+
+  
   protected
     # Encrypts the password with the user salt
     def encrypt(password)

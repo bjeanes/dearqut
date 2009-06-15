@@ -1,9 +1,9 @@
 <div id="controls-<%= message.id %>" class="controls">
   <span class="vote up">
-    <%= agree_link(message) %>
+    <%= vote_link(:agree, message) %>
   </span>
   
   <span class="vote down">
-    <%= disagree_link(message) %>
+    <%= vote_link(:disagree, message) %>
   </span>
 </div>

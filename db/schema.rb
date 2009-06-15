@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090611145817) do
+ActiveRecord::Schema.define(:version => 20090615131745) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -114,15 +114,18 @@ ActiveRecord::Schema.define(:version => 20090611145817) do
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
   create_table "votes", :force => true do |t|
-    t.integer  "user_id",    :null => false
+    t.integer  "user_id"
     t.integer  "message_id", :null => false
     t.integer  "value",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "session_id"
   end
 
+  add_index "votes", ["message_id", "session_id"], :name => "index_votes_on_message_id_and_session_id"
   add_index "votes", ["message_id"], :name => "index_votes_on_message_id"
-  add_index "votes", ["user_id", "message_id"], :name => "index_votes_on_user_id_and_message_id", :unique => true
+  add_index "votes", ["session_id"], :name => "index_votes_on_session_id"
+  add_index "votes", ["user_id", "message_id"], :name => "index_votes_on_user_id_and_message_id"
   add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

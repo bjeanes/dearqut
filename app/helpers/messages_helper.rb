@@ -22,33 +22,34 @@ module MessagesHelper
     end
   end
   
-  def agree_link(message)
-    image = nil
-    count = '(<span class="num">%s</span>)' % message.positive_vote_count
+  def vote_link(direction, message)
+    return unless [:agree, :disagree].include? direction
     
-    if logged_in?
-      if !current_user.voted?(message)       
-        return %Q{<a href="" title="agree">#{image_tag 'agree.png'} #{count}</a>}
-      elsif current_user.agreed?(message)
-        image = image_tag('youagreed.png')
-      end
-    end
+    count = direction == :agree ? 
+              message.positive_vote_count : 
+              message.negative_vote_count
+    count = '(<span class="num">%s</span>)' % count
+    image = vote_image(direction, user_vote_for(message))
     
-    %Q{#{image || image_tag('agree.png')} #{count}}
+    %Q{<a href="" title="agree">#{image} #{count}</a>}
   end
   
-  def disagree_link(message)
-    image = nil
-    count = '(<span class="num">%s</span>)' % message.negative_vote_count
-    
-    if logged_in?
-      if !current_user.voted?(message)         
-        return %Q{<a href="" title="Disagree">#{image_tag 'disagree.png'} #{count}</a>}
-      elsif current_user.disagreed?(message)     
-        image = image_tag('youdisagreed.png')
+  protected
+    def user_vote_for(message)
+      if logged_in?
+        message.votes.find_by_user_id(current_user.id)
+      else
+        message.votes.find_by_session_id(session[:session_id])
       end
     end
-    
-    %Q{#{image || image_tag('disagree.png')} #{count}}
-  end
+  
+    def vote_image(direction, vote)
+      img = if vote.nil? || !vote.direction?(direction)
+        "#{direction}.png"
+      else
+        "you#{direction}d.png"
+      end
+      
+      image_tag(img)
+    end
 end
