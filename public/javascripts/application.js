@@ -53,10 +53,25 @@ function vote() {
 
 function voteCallback(data) {
   for (var i = data.length - 1; i >= 0; i--){
-    var up_num = $('#controls-' + data[i].id + ' .up num');
-    var down_num = $('#controls-' + data[i].id + ' .down num');
-    console.log(num);
-    up_num.text(data[i].positive_count);
-    down_num.text(data[i].negative_count);
+		var v = data[i];
+		var c = $('#controls-' + v.id);
+	
+		if(v.success) {
+			$('a', c).click = null;
+			
+			var up   = $('.up',   c);
+	    var down = $('.down', c);
+	
+			$('.num',   up).text(v.positive_count);
+	    $('.num', down).text(v.negative_count);
+	
+			if(data[i].value < 0) {
+				$('img', down).attr("src", "/images/youdisagreed.png");
+			} else {
+				$('img',   up).attr("src", "/images/youagreed.png");
+			}
+		} else {
+			// not logged in or already voted
+		}
   };
 }

@@ -1,6 +1,6 @@
 campuses = { 
   # TODO check abbreviations here
-  "GP" => "Gardens Proint",
+  "GP" => "Gardens Point",
   "KG" => "Kelvin Grove",
   "CA" => "Carseldine",
   "CB" => "Caboolture"

@@ -8,26 +8,35 @@ class User < TwitterAuth::GenericUser
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :password, :within => 6..40, :if => :password_required?
   
-  validate :validate_twitter_id_not_required, :if => :normal_user?
+  validate :validate_twitter_id_not_required, :if => :creating_normal_user?
   
   before_save :encrypt_password
 
-  attr_accessor :password, :password_confirmation, :normal_user
+  attr_accessor :password, :password_confirmation, :creating_normal_user
   
   def to_s
     protected? ? "Anonymous" : name_for_display
   end
   
   def twitter?
-    !twitter_id.nil? || !normal_user?
-  end
-  
-  def normal_user?
-    !!@normal_user
+    !twitter_id.nil?
   end
   
   def name_for_display
     name.blank? || name == login ? login_for_display : name
+  end
+  
+  def voted?(message)
+    id = message =~ /\d+/ ? message : message.id
+    votes.first(:conditions => ["message_id = ?", id])
+  end
+  
+  def agreed?(message)
+    voted?(message).agreed?
+  end
+  
+  def disagreed?(message)
+    voted?(message).disagreed?
   end
   
   def login_for_display
@@ -66,6 +75,10 @@ class User < TwitterAuth::GenericUser
     # Encrypts the password with the user salt
     def encrypt(password)
       self.class.password_digest(password, salt)
+    end
+    
+    def creating_normal_user?
+      !!@creating_normal_user
     end
   
     # before filter 

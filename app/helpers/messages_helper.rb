@@ -13,4 +13,34 @@ module MessagesHelper
        <ins>#{Time.now.to_s(:short)}</ins>"
     end
   end
+  
+  def agree_link(message)
+    image = nil
+    count = '(<span class="num">%s</span>)' % message.positive_vote_count
+    
+    if logged_in?
+      if !current_user.voted?(message)       
+        return %Q{<a href="" title="agree">#{image_tag 'agree.png'} #{count}</a>}
+      elsif current_user.agreed?(message)
+        image = image_tag('youagreed.png')
+      end
+    end
+    
+    %Q{#{image || image_tag('agree.png')} #{count}}
+  end
+  
+  def disagree_link(message)
+    image = nil
+    count = '(<span class="num">%s</span>)' % message.negative_vote_count
+    
+    if logged_in?
+      if !current_user.voted?(message)         
+        return %Q{<a href="" title="Disagree">#{image_tag 'disagree.png'} #{count}</a>}
+      elsif current_user.disagreed?(message)     
+        image = image_tag('youdisagreed.png')
+      end
+    end
+    
+    %Q{#{image || image_tag('disagree.png')} #{count}}
+  end
 end

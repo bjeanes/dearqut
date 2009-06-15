@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    @user.normal_user = true
+    @user.creating_normal_user = true
     @user.login = params[:user][:login]
     
     if @user.save
