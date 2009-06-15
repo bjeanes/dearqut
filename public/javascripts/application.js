@@ -1,4 +1,6 @@
 $(function() {
+  $('#message_body').focus();
+  
   var tagInput = $("input.autobox.tags");
   
   if(tagInput.length != 0) {
