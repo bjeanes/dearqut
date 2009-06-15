@@ -6,9 +6,9 @@ class Message < ActiveRecord::Base
   has_many   :votes,    :dependent => :destroy
   has_many   :comments, :dependent => :destroy
   
-  validates_presence_of :body, :message => "^Please enter a message."
-  validates_presence_of :tweet_id, :on => :create, :if => :twitter?
-  validates_uniqueness_of :tweet_id, :allow_blank => true
+  validates_presence_of   :body, :message => "^Please enter a message."
+  validates_presence_of   :tweet_id, :on => :create, :if => :twitter?
+  validates_uniqueness_of :tweet_id, :on => :create, :allow_blank => true
   
   before_save  :convert_hash_tags_to_tags
   before_save  :strip_and_chomp_body
