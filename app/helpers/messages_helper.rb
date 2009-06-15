@@ -14,6 +14,14 @@ module MessagesHelper
     end
   end
   
+  def message_body(message)
+    if controller.action_name == "show"
+      h(message.body)
+    else
+      link_to h(truncate(message.body, :length => 100, :omission => "... (continued)" )), message
+    end
+  end
+  
   def agree_link(message)
     image = nil
     count = '(<span class="num">%s</span>)' % message.positive_vote_count

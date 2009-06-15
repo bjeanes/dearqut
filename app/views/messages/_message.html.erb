@@ -1,5 +1,5 @@
 <%= render :partial => 'controls', :locals => {:message => message} %>
-<p class="message-text"><%= link_to h(message.body), message %></p>
+<p class="message-text"><%= message_body(message) %></p>
 <p class="postedby right-text">sincerely, <strong><%=h message.author %></strong>, <%= h message.created_at.to_s(:short) %></p>
 <% if admin? %>
 <p class="admin"><%= link_to "delete", delete_message_path(message) %> <%= link_to "edit", edit_message_path(message) %></p>
