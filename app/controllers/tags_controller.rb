@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   def index
     respond_to do |wants|
-      wants.html { @tags = message_tags{Tag.all} }
+      wants.html
       wants.js { autocomplete_tag_suggestions }
     end
   end

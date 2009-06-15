@@ -1,1 +1,1 @@
-<%= tag_cloud %>
+<%= Tag.with_type_scope('Message') { tag_cloud } %>
