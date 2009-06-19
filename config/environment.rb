@@ -11,6 +11,7 @@ Rails::Initializer.run do |config|
   config.gem 'json'
   config.gem 'twitter'
   config.gem 'twitter-auth', :lib => 'twitter_auth', :version => "~> 0.1.21"
+  config.gem 'mbbx6spp-twitter4r', :lib => false, :source => "http://gems.github.com"
   config.gem 'twibot',       :lib => false,          :version => '= 0.1.7'
   # config.gem 'shorturl'
 

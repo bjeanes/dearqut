@@ -1,14 +1,13 @@
 set :application,             "dearqut"
 set :repository,              "git@github.com:bjeanes/dearqut.git"
-set :domain,                  "#{application}.com"
+set :domain,                  "97.107.138.116"
                               
 set :user,                    "deploy"
                               
-set :deploy_to,               "/var/www/#{application}"
+set :deploy_to,               "/srv/http/#{application}.com"
                               
 set :scm, :git                
 set :repository,              "git@github.com:bjeanes/#{application}.git"
-set :deploy_to,               "/var/www/#{application}"
 set :branch,                  "master"
 set :deploy_via,              :remote_cache
 set :git_enable_submodules,   true
