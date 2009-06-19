@@ -3,7 +3,7 @@ require 'twibot'
 
 configure do |c|
   c.login = 'dearqut'
-  c.password = %Q(qm"60%$9.k?12N=[Q/C3?b^e`TLt}sg?H6uc`CWppmA]Hxk6C'2Q?bF$#Orfg1P)
+  c.password = %Q(w)
   
   # c.log_file  = File.join(RAILS_ROOT, 'log', 'bot.log')
   c.log_level = "error"

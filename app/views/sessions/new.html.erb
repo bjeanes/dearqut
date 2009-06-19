@@ -3,7 +3,7 @@
 <% form_tag session_path, :id => 'login_form' do %>
   <div class="error"><%= flash[:error] %></div>
 
-    Have Twitter login? <a href="/login/twitter">Go here.</a>
+    <a href="/login/twitter"><%= image_tag "twitter_login.png" %></a>
     <br />
     <br />
     <label for='login'>Username</label>
