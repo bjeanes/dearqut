@@ -17,9 +17,9 @@
 		  <% end %>
     </li>
 	  <li>
-	    <%= image_tag 'tags.png' %> Search Tags <%= image_tag 'arrowdown.png' %>
-		  <br />
-  	  <%= text_field_tag :search_tag %>
+	    <% link_to tags_path do %>
+	    <%= image_tag 'tags.png' %> Tags
+	    <% end %>
   	</li>
 	</ul>
   
