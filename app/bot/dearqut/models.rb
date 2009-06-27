@@ -8,7 +8,8 @@ Dir[File.join(RAILS_ROOT, "app", "models", "*.rb")].each do |model|
 end
 
 def last_tweet
-  Message.maximum(:tweet_id, :conditions => "tweet_id IS NOT NULL")
+  l = Message.maximum(:tweet_id, :conditions => "tweet_id IS NOT NULL")
+  l == 0 ? 1 : l
 end
 
 config = YAML.load_file(File.join(RAILS_ROOT, "config", "database.yml"))[RAILS_ENV]

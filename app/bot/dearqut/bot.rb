@@ -8,7 +8,7 @@ configure do |c|
   # c.log_file  = File.join(RAILS_ROOT, 'log', 'bot.log')
   c.log_level = "error"
   
-  c.process = last_tweet || 0
+  c.process = last_tweet || 1
   
   bot.log.info("Starting from tweet ##{c.process}")
   
