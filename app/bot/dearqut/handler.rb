@@ -14,5 +14,7 @@ def add_message(m, options = {})
   message.tweet_id   = tweet_id
   message.created_at = m.created_at if m.created_at
   
+  puts "@#{user.login} says: #{message.body}"
+  
   message.save && message
 end

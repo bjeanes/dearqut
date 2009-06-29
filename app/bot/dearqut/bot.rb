@@ -25,7 +25,7 @@ end
 
 reply do |message, params|
   # Only process replies that begin with @dearqut
-  add_message(message, :text => $1) if message.to_s =~ /^@dearqut\s+(.+)$/i
+  add_message(message, :text => $1) if message.to_s =~ /^@dearqut[,:;]?\s+(.+)$/i
 end
 
 $logger = bot.log
