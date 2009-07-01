@@ -8,7 +8,7 @@ Feature: Submitting a messae
     And I am on the home page
     And I do not fill in "message_body"
     
-    When I press "Send"
+    When I press "SUBMIT"
 
     Then I should see "Please enter a message"
    
@@ -17,7 +17,7 @@ Feature: Submitting a messae
     And I am on the home page
 
     When I fill in "message_body" with "Needs more icecream"
-    And I press "Send"
+    And I press "SUBMIT"
     
     Then I should see "Thank you for your message"
 
@@ -26,7 +26,7 @@ Feature: Submitting a messae
     And I am on the home page
     
     When I fill in "message_body" with "Free chocolate please"
-    And I press "Send"
+    And I press "SUBMIT"
     
     Then I should see "Thank you for your message"
     And the message will be under the name "Anonymous"

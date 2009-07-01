@@ -9,8 +9,8 @@ Feature: Logging in
     And I am on the home page
 
     When I follow "log in"
-    And I fill in "login" with "fooballz"
-    And I fill in "password" with "h4x0rk1d"
+    And I fill in "Username" with "fooballz"
+    And I fill in "Password" with "h4x0rk1d"
     And I press "log in"
 
     And I should see "fooballz"

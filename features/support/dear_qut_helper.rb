@@ -12,6 +12,7 @@ module DearQutHelper
     User.find_by_login(login) || begin
       u = User.new(:password => password, :password_confirmation => password)
       u.login = login
+      u.creating_normal_user = true
       u.save!
       u
     end
