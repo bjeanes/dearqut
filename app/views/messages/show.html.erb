@@ -12,7 +12,7 @@
   </div>
   
   <div id="comments">
-  <% @message.comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <% unless comment.new_record? %>
       <div id="comment-<%= comment.id %>" class="comment <%= cycle("even", "odd") %><%= ' anonymous' if comment.anonymous? %>">
         <p class="postedby">Posted by: <strong><%= comment.author %></strong> on <%= h comment.created_at.to_s(:short) %></p>

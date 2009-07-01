@@ -14,6 +14,10 @@ class MessagesController < ApplicationController
     end
   end
   
+  def show
+    @comments = @message.comments
+  end
+  
   def new
     tab :home if request.path == '/'
     @random_message = Message.random

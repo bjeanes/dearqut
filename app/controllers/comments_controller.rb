@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :get_message
   
   def index
-    redirect_to @message
+    redirect_to @message unless params[:format] == "rss"
   end
 
   # POST /comments
