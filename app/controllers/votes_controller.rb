@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_filter :build_vote
+  skip_before_filter :verify_authenticity_token
   
   def up
     @vote.value = 1
