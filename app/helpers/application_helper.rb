@@ -15,7 +15,7 @@ module ApplicationHelper
   
   def rss_feeds
     feeds =  auto_discovery_link_tag(:rss, 
-                messages_url(:format => :rss), 
+                "http://feeds.feedburner.com/dearqut", 
                 :title => "Newest Messages")
 
     if @messages && controller_name == "messages" && action_name != "index" && !@tag

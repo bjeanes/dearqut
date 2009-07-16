@@ -10,6 +10,13 @@ class MessagesController < ApplicationController
   INDEX_VIEWS.each do |view|
     define_method(view) do
       tab :browse
+      
+      if view == 'index' && params[:format] == 'rss' && 
+         params[:feedburner] != 'true' && !tag?
+        redirect_to 'http://feeds.feedburner.com/dearqut'
+        return
+      end
+
       render :action => :index
     end
   end
