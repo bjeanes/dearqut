@@ -71,6 +71,11 @@ body {
 		margin-right:10px;
 	}
 	
+	#menu img
+	{
+		margin: 0 8px;
+	}
+	
 #title 
 {
 	padding-top:30px;
