@@ -23,7 +23,6 @@ body {
 
 #twitter-badge
 {
-	float:left;
 	margin-left:20px;
 	margin-top:-29px;
 	height: 76px;
@@ -32,6 +31,7 @@ body {
 
 #menu
 {
+	margin-top:-59px;
 	float: right;
 }
 	#menu ul
@@ -78,14 +78,54 @@ body {
 	
 #title 
 {
-	padding-top:30px;
-	clear: right;
+	padding-top:2px;
 	font-size: 36pt;
 }
 	#title a
 	{
 		color: #000;
 		text-decoration: none;
+	}
+
+#updates
+{
+	margin-top: 16px;
+	padding: 10px;
+	display:block;
+	float:right;
+	background-image: url('/images/post-it.png');
+	width: 305px;
+	height: 45px;
+	font-size:11pt;
+	color:#787878;
+}
+
+	#updates h1
+	{
+		color: #000;
+		font-size:10pt;
+		padding: 5px 0 2px 0;
+		margin: 0;
+	}
+	
+	#updates a
+	{
+		text-decoration:none;
+	}
+	
+	#updates a:hover
+	{
+		text-decoration: underline;
+	}
+	
+	#updates a#new
+	{
+		color:#2cace2;
+	}
+	
+	#updates a#blog
+	{
+		color:#00a43d;
 	}
 
 #content
