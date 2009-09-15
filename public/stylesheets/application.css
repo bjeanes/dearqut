@@ -147,6 +147,20 @@ body {
 		background-color:transparent;
 	}
 	
+	#msgform h2
+	{
+		letter-spacing: 0.5px;
+	}
+	
+	#msgform p.note
+	{
+		color: #383838;
+		font-size:8pt;
+		margin-left: 160px;
+		width:480px;
+		text-align: center;
+	}
+	
 	#single
 	{
 		margin-right: 50px;

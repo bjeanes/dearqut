@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  INDEX_VIEWS = %w{most_commented index popular}
+  INDEX_VIEWS = %w{most_commented index popular latest_commented}
 
   around_filter :load_tag, :only => INDEX_VIEWS
 
@@ -98,6 +98,7 @@ class MessagesController < ApplicationController
           when 'index'          then Message.newest
           when 'popular'        then Message.popular
           when 'most_commented' then Message.most_commented
+          when 'latest_commented' then Message.latest_commented
         end.paginate(:page => params[:page], :include => [:tags, :user])
       else
         @message = case action_name
