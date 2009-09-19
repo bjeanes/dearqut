@@ -1,6 +1,11 @@
 <div id="filter">
 	<h2>Browse by</h2>
 	<ul>
+	  <li>
+      <% link_to latest_commented_messages_path do %>
+      <%= image_tag 'latest-comment.png', :class=>'taller' %> Last Commented
+      <% end %>
+    </li>
 		<li>
 		  <% link_to popular_messages_path do %>
 		    <%= image_tag 'popular.png' %> Popular Vote

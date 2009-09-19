@@ -39,11 +39,15 @@
   		    <%= tab.help "Help", help_site_path %>
 		      <%= tab.about "About", about_site_path %>
 		      <%= tab.contact "Contact", contact_site_path %>
-		      <% link_to messages_path, :format => :rss do %>
+		      <% link_to "http://feeds.feedburner.com/dearqut", :format => :rss do %>
 		        <%= image_tag 'rss.png' %>
 		      <% end %>
 		    <% end %>
 		  </div>
+		  <span id="updates">
+			  <h1 class="update">You can now browse by latest comments!</h1>
+			  Find out what else is <a id="new" href="http://blog.dearqut.com/tagged/updates">new</a> and read our <a id="blog" href="http://blog.dearqut.com">blog</a>
+			</span>
 			<h1 id="title"><a href="/">Dear QUT,</a></h1>
 			<div id="content">
 			<%= render :partial => 'layouts/notices' %>

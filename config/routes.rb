@@ -3,7 +3,8 @@ message_options     = {
   :collection       => {
     :random         => :get, 
     :popular        => :get,
-    :most_commented => :get
+    :most_commented => :get,
+    :latest_commented => :get
   }
 }
 

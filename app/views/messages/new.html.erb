@@ -1,7 +1,6 @@
 <% form_for(@message, :html => { :id => "msgform"}) do |f| %>
   <%= f.error_messages %>
   <h2 class="center">Type your message below</h2>
-  <p>
     <%= f.text_area :body %>
 		<br />
 		<span class="right">sincerely, <strong><%= current_user || "Anonymous" %></strong> <%= Time.now.to_s(:short) %></span>
