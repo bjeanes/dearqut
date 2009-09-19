@@ -17,7 +17,7 @@ class Message < ActiveRecord::Base
   named_scope :popular,        :order => 'rating DESC, tweet_id DESC'
   named_scope :newest,         :order => 'created_at DESC, tweet_id DESC'
   named_scope :most_commented, :order => 'comments_count DESC, tweet_id DESC'
-  named_scope :latest_commented, :select => "DISTINCT messages.*", :joins => :comments, :order => 'comments.created_at DESC'
+  named_scope :latest_commented, :joins => :comments, :order => 'comments.created_at DESC', :uniq => true
   
   attr_accessor :twitter
   attr_accessible :body, :tag_list, :campus_id, :faculty_id
