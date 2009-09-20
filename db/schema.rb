@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090920025303) do
+ActiveRecord::Schema.define(:version => 20090920033342) do
 
   create_table "campus", :force => true do |t|
     t.string   "name"
@@ -20,12 +20,16 @@ ActiveRecord::Schema.define(:version => 20090920025303) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "message_id", :null => false
-    t.text     "body",       :null => false
+    t.integer  "message_id",   :null => false
+    t.text     "body",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ip"
+    t.string   "forwarded_ip"
   end
 
+  add_index "comments", ["forwarded_ip"], :name => "index_comments_on_forwarded_ip"
+  add_index "comments", ["ip"], :name => "index_comments_on_ip"
   add_index "comments", ["message_id"], :name => "index_comments_on_message_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -49,11 +53,15 @@ ActiveRecord::Schema.define(:version => 20090920025303) do
     t.integer  "faculty_id"
     t.integer  "campus_id"
     t.datetime "last_commented_at"
+    t.string   "ip"
+    t.string   "forwarded_ip"
   end
 
   add_index "messages", ["campus_id"], :name => "index_messages_on_campus_id"
   add_index "messages", ["comments_count"], :name => "index_messages_on_comments_count"
   add_index "messages", ["faculty_id"], :name => "index_messages_on_faculty_id"
+  add_index "messages", ["forwarded_ip"], :name => "index_messages_on_forwarded_ip"
+  add_index "messages", ["ip"], :name => "index_messages_on_ip"
   add_index "messages", ["last_commented_at"], :name => "index_messages_on_last_commented_at"
   add_index "messages", ["negative_vote_count"], :name => "index_messages_on_negative_vote_count"
   add_index "messages", ["positive_vote_count"], :name => "index_messages_on_positive_vote_count"
