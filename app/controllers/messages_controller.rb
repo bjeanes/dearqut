@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message.user = current_user
+    @message.user = current_user || nil
     @message.ip   = request.remote_ip
   
     if @message.save
