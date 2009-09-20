@@ -8,8 +8,9 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = @message.comments.build(params[:comment])
+    @comment      = @message.comments.build(params[:comment])
     @comment.user = current_user
+    @comment.ip   = request.remote_ip
 
     respond_to do |format|
       if @comment.save

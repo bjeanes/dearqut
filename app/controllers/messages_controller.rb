@@ -32,6 +32,7 @@ class MessagesController < ApplicationController
 
   def create
     @message.user = current_user
+    @message.ip   = request.remote_ip
   
     if @message.save
       add_message_to_session
