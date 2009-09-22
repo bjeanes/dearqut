@@ -3,6 +3,7 @@ import nltk
 import re
 import string
 import BaseHTTPServer
+import urllib
 
 class KeywordServer(BaseHTTPServer.BaseHTTPRequestHandler):
   def do_POST(s):
@@ -12,7 +13,7 @@ class KeywordServer(BaseHTTPServer.BaseHTTPRequestHandler):
     s.send_response(200)
     s.send_header("Content-type", "text/plain")
     s.end_headers()
-    s.wfile.write(':'.join(get_keywords(input_data)))
+    s.wfile.write(':'.join(get_keywords(urllib.unquote(input_data.strip('=')))))
     
 def get_keywords(string):
   tags = nltk.pos_tag(nltk.word_tokenize(string))
@@ -35,7 +36,7 @@ def get_keywords(string):
   
 # print get_keywords("When you stop at the bus stop, you should hail a bus.")
 def main():
-  server = BaseHTTPServer.HTTPServer(('', 8000), KeywordServer)
+  server = BaseHTTPServer.HTTPServer(('localhost', 8000), KeywordServer)
   server.serve_forever()
   
 if __name__ == '__main__':
