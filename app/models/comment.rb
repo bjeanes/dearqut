@@ -6,11 +6,20 @@ class Comment < ActiveRecord::Base
   
   attr_accessible :body
   
+  after_create :set_message_commented_at
+  
   def author
     (user || "Anonymous").to_s
   end
   
   def anonymous?
     user.nil?
+  end
+  
+  private
+  
+  def set_message_commented_at
+    message.last_commented_at = Time.now
+    message.save(false)
   end
 end
