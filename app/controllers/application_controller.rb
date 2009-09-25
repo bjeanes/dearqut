@@ -2,6 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  before_filter :check_for_banned_ip
+  
   include TabFu
   helper :all
   protect_from_forgery
@@ -17,5 +19,12 @@ class ApplicationController < ActionController::Base
     
     def admin?
       current_user.admin? rescue false
+    end
+    
+    def check_for_banned_ip
+      if @ban = Ban.find_by_ip(request.ip)
+        render "users/banned"        
+        response.status = 403
+      end
     end
 end
