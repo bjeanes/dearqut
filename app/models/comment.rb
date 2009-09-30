@@ -8,6 +8,8 @@ class Comment < ActiveRecord::Base
   
   after_create :set_message_commented_at
   
+  acts_as_snook
+  
   def author
     (user || "Anonymous").to_s
   end
