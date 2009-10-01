@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="Reflect Template" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <title>dearQUT Admin Login Page</title>
+        <link rel="stylesheet" href="/stylesheets/style_all.css" type="text/css" media="screen" />
+        
+
+        <!-- to choose another color scheme uncomment one of the foloowing stylesheets and wrap styl1.css into a comment -->
+        <link rel="stylesheet" href="/stylesheets/style1.css" type="text/css" media="screen" />
+        
+        <!-- 
+        <link rel="stylesheet" href="/stylesheets/style2.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/stylesheets/style3.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/stylesheets/style4.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/stylesheets/style5.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/stylesheets/style6.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/stylesheets/style7.css" type="text/css" media="screen" />
+         -->
+        
+        
+        <link rel="stylesheet" href="/stylesheets/jquery-ui.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="/stylesheets/jquery.wysiwyg.css" type="text/css" media="screen" />
+        
+        <!--Internet Explorer Trancparency fix-->
+        <!--[if IE 6]>
+        <script src="/javascripts/ie6pngfix.js"></script>
+        <script>
+          DD_belatedPNG.fix('#head, a, a span, img, .message p, .click_to_close, .ie6fix');
+        </script>
+        <![endif]--> 
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/javascripts/jquery.wysiwyg.js"></script>
+        <script type="text/javascript" src="/javascripts/admin.js"></script>
+    </head>
+    
+    <body class="nobackground">
+    	
+        <div id="login-page">
+        
+        	<h1 class="logo">
+            	<a href="/">dearQUT Admin</a>
+            </h1>
+            <h2 class="loginheading">Login</h2>
+            <div class="icon_login ie6fix"></div>
+                
+          <!-- <form id="login-form" action="<%= session_path %>" method="post"> -->
+        	<% form_tag(session_path, :id => "login-form", :method => "post") do %>
+          	<%= hidden_field_tag :redirect_to_admin, true %>
+            <p>
+            	<label for="login">Username</label>
+            	<input class="input-medium" type="text" value="" name="login" id="login"/>
+        	</p>
+        	<p>
+            	<label for="password">Password</label>
+            	<input class="input-medium" type="password" value="" name="password" id="password"/>
+        	</p>
+        
+        	<p class="remember">
+            	<label for="remember_me" class="inline">Remember me?</label>
+            	<input type="checkbox" value="true" name="remember_me" id="remember_me" />
+                
+                
+        	</p>
+        	<div class="forgot_pw"><a href="index.html">Forgot password?</a></div>
+        	<p class="clearboth">
+            	<input class="button" name="submit" type="submit" value="Login"/>
+        	</p>
+          <% end %>
+        </div>
+        
+        <div class="login_message message error">
+          <p>Wrong Username or password.</p>
+        </div>
+    </body>
+    
+</html>

@@ -1,28 +1,31 @@
 class Message < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :campus
-  belongs_to :faculty
+  belongs_to                     :user
+  belongs_to                     :campus
+  belongs_to                     :faculty
+                                 
+  has_many                       :votes,    :dependent => :destroy
+  has_many                       :comments, :dependent => :destroy
   
-  has_many   :votes,    :dependent => :destroy
-  has_many   :comments, :dependent => :destroy
+  validates_presence_of          :body, :message => "^Please enter a message."
+  validates_presence_of          :tweet_id, :if => :twitter?
+  validates_uniqueness_of        :tweet_id, :allow_blank => true
   
-  validates_presence_of   :body, :message => "^Please enter a message."
-  validates_presence_of   :tweet_id, :if => :twitter?
-  validates_uniqueness_of :tweet_id, :allow_blank => true
+  before_save                    :convert_hash_tags_to_tags
+  before_save                    :strip_and_chomp_body
+  after_create                   :create_initial_vote_for_author, :unless => :guest?
   
-  before_save  :convert_hash_tags_to_tags
-  before_save  :strip_and_chomp_body
-  after_create :create_initial_vote_for_author, :unless => :guest?
+  named_scope :popular,          :order => 'rating DESC, tweet_id DESC'
+  named_scope :newest,           :order => 'created_at DESC, tweet_id DESC'
+  named_scope :most_commented,   :order => 'comments_count DESC, tweet_id DESC'
+  named_scope :latest_commented, :conditions => 'last_commented_at IS NOT NULL', 
+                                 :order => 'last_commented_at DESC, tweet_id DESC'
   
-  named_scope :popular,        :order => 'rating DESC, tweet_id DESC'
-  named_scope :newest,         :order => 'created_at DESC, tweet_id DESC'
-  named_scope :most_commented, :order => 'comments_count DESC, tweet_id DESC'
-  named_scope :latest_commented, :include => 'comments', :order => 'comments.created_at DESC, tweet_id DESC'
-  
-  attr_accessor :twitter
-  attr_accessible :body, :tag_list, :campus_id, :faculty_id
+  attr_accessor                  :twitter
+  attr_accessible                :body, :tag_list, :campus_id, :faculty_id
   
   acts_as_taggable
+  
+  acts_as_snook
   
   # If sent via DM, lets make it Anonymous by default. All other 
   # messages are public, unless the user has a protected profile,

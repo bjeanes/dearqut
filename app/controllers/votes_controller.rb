@@ -17,12 +17,14 @@ class VotesController < ApplicationController
     def build_vote
       message          = Message.find(params[:message_id])
       @vote            = message.votes.build
-      @vote.user       = current_user
+      @vote.user       = current_user || nil
       @vote.session_id = session[:session_id]
     end
     
     def save_vote
-      success = @vote.save
+      @vote.ip         = request.remote_ip
+      @vote.user_agent = request.env["HTTP_USER_AGENT"]
+      success          = @vote.save
       
       render :json => [{
         :success        => success,

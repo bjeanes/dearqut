@@ -15,6 +15,7 @@ Cucumber::Rails.use_transactional_fixtures
 Cucumber::Rails.bypass_rescue
 
 require 'webrat'
+require 'cucumber/webrat/element_locator' # Lets you do table.diff!(element_at('#my_table_or_dl_or_ul_or_ol').to_table)
 
 Webrat.configure do |config|
   config.mode = :rails
@@ -22,6 +23,3 @@ end
 
 require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
-
-require 'rr'
-World(RR::Adapters::RRMethods)

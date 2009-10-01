@@ -23,5 +23,6 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => "users", :action => "new"
   map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true
   
+  map.admin '/admin', :controller => 'admin', :action => 'index'
   map.root :controller => "messages", :action => "new"
 end

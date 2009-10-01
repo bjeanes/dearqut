@@ -1,0 +1,25 @@
+body{
+	background:#fff url(../images/scheme5/bg.jpg) repeat-x;
+	}
+	
+th {
+	background:#eda1d3 url(../images/highlight_line.gif) repeat-x scroll 0 0;
+}
+
+td.alt {
+	background: #fcf1f7 url(../images/highlight_line.gif) repeat-x scroll 0 0;
+	color: #797268;
+}
+
+th.specalt {
+	background: #fcf1f7 url(../images/scheme5/bullet1.gif) no-repeat;
+	color: #797268;
+}
+
+.button{
+	background:#eda1d3 url(../images/highlight_line.gif) repeat-x top left;
+}
+
+.button:hover{
+	background:#e5c1da;
+}
