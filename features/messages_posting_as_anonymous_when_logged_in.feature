@@ -22,6 +22,3 @@ Feature: Messages posting as anonymous when logged in
     Then I should not see "sincerely, bjeanes"
     But I should see "sincerely, Anonymous"
     
-  
-  
-  
