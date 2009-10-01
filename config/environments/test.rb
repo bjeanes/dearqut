@@ -30,7 +30,8 @@ config.action_mailer.delivery_method = :test
 config.gem 'webrat',      :lib => false,        :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
 config.gem "rspec",       :lib => false,        :version => ">=1.2.6" unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
 config.gem "rspec-rails", :lib => 'spec/rails', :version => ">=1.2.6" unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
-config.gem "mocha"
-config.gem "faker"
+config.gem "mocha",       :lib => false
+config.gem "faker",       :lib => false
+config.gem "notahat-machinist", :lib => false
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
