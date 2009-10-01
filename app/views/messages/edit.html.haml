@@ -5,8 +5,7 @@
   #message-body= f.text_area :body
   %br
   %span.right
-    sincerely,
-    %strong= @message.author
+    = "sincerely, #{content_tag :strong, @message.author}"
     = message_time(@message)
   %br
   #context
