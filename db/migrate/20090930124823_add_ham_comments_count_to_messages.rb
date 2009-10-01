@@ -4,7 +4,7 @@ class AddHamCommentsCountToMessages < ActiveRecord::Migration
     add_index :messages, :ham_comments_count
     
     Message.all.each do |message|
-      message.ham_comments_count ||= message.comments.ham.count
+      message.ham_comments_count ||= message.comments.ham.size
       message.save(false)
     end
   end
