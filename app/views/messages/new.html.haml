@@ -1,0 +1,39 @@
+- form_for(@message, :html => { :id => "msgform"}) do |f|
+  = f.error_messages
+  %h2.center
+    Type your message below
+  = f.text_area :body
+  %br
+  %span.right
+    sincerely,
+    %strong= @message.author
+    = Time.now.to_s(:short)
+  %br
+  - if logged_in?
+    = f.label :private, "Post Anonymously"
+    = f.check_box :private
+  = f.submit 'SUBMIT', :class=>'button inner right'
+  
+%a{:name => "random_message"}
+%br
+%br
+%br
+%br
+
+- if @random_message
+  #random-message.left
+    - link_to random_messages_path, :class=>'nextmessage' do
+      Show me another
+      = image_tag "/images/nextmsg.png"
+    = render :partial => 'message', :locals => {:message => @random_message}
+  #recent-messages
+    %h1
+      Latest Messages
+    = link_to  "see more", messages_path, :class=>'link-more'
+    - @messages.each do |message|
+      %span{ :class => "recent-message #{cycle('odd','even')}" }
+      %p.message-text
+        = message_body(message)
+      %p.postedby.right-text
+        sincerely,
+        %strong= h message.author
