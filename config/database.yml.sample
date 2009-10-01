@@ -1,0 +1,16 @@
+global: &global
+  adapter: mysql
+  username: root
+  password: 
+  host: localhost
+
+development:
+  database: dearqut_development
+  <<: *global
+
+test: &test
+  database: dearqut_test
+  <<: *global
+
+cucumber:
+  <<: *test
