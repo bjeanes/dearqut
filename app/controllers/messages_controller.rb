@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
   def new
     tab :home if request.path == '/'
     @random_message = Message.random
+    @messages = Message.newest.all(:limit => 5)
   end
 
   def create

@@ -11,9 +11,19 @@
 <a name="random_message" />
 <br /><br /><br /><br />
 <% if @random_message %>
-  <div id="random-message">
+  <div id="random-message" class="left">
       <% link_to random_messages_path, :class=>'nextmessage' do %>Show me another <%= image_tag "/images/nextmsg.png" %><% end %>
       
     <%= render :partial => 'message', :locals => {:message => @random_message} %>
   </div>
+  <div id="recent-messages">
+    <h1>Latest Messages</h1>
+    <%= link_to  "see more", messages_path, :class=>'link-more' %>
+    <% @messages.each do |message| %>
+      <span class="recent-message <%=cycle('odd','even')%>">
+        <p class="message-text"><%= message_body(message) %></p>
+        <p class="postedby right-text">sincerely, <strong><%=h message.author %></strong></p>
+      </span>
+    <% end %>
+      </div>
 <% end %>
