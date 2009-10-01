@@ -10,8 +10,9 @@
     = Time.now.to_s(:short)
   %br
   - if logged_in?
-    = f.label :private, "Post Anonymously"
-    = f.check_box :private
+    #anon
+      = f.label :private, "Post Anonymously"
+      = f.check_box :private
   = f.submit 'SUBMIT', :class=>'button inner right'
   
 %a{:name => "random_message"}

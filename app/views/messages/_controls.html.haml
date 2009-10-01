@@ -1,0 +1,5 @@
+.controls{ :id => "controls-#{message.id}" }
+  %span.vote.up
+    = vote_link(:agree, message)
+  %span.vote.down
+    = vote_link(:disagree, message)

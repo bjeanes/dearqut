@@ -1,6 +1,0 @@
-<% form_tag(message_path, :method => :delete) do %>
-  <p>Are you sure you want to delete this message #<%= @message.id %>?</p>
-  
-  <%= submit_tag "Destroy" %>
-  <%= link_to "Cancel", message_path %>
-<% end %>
