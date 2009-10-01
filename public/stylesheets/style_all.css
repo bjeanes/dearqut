@@ -32,7 +32,7 @@ body.nobackground{ /*Login page doesnt need a background-image*/
 	background-image:none;
 	}
 
-#login{
+#login-page{
 	background:#FFFFFF url(../images/scheme1/bg.jpg) repeat-x scroll 0 -20px;
 	height:360px;
 	margin:0 auto;
@@ -41,7 +41,7 @@ body.nobackground{ /*Login page doesnt need a background-image*/
 	width:252px;
 	}
 	
-#login .logo a{
+#login-page .logo a{
 	left:37px;
 	top:10px;
 	}
