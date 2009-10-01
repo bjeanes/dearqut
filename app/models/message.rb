@@ -21,7 +21,7 @@ class Message < ActiveRecord::Base
                                  :order => 'last_commented_at DESC, tweet_id DESC'
   
   attr_accessor                  :twitter
-  attr_accessible                :body, :tag_list, :campus_id, :faculty_id
+  attr_accessible                :body, :tag_list, :campus_id, :faculty_id, :private
   
   acts_as_taggable
   

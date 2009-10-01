@@ -19,7 +19,7 @@ Given /^I have an existing account(?: with login "([^"]+)")?$/ do |login|
   login.nil? ? create_user : create_user(login)
 end
 
-Given /^I am logged in(?: as (.+))?$/ do |user|
+Given /^I am logged in(?: as "([^\"]+)")?$/ do |user|
   user = user ? create_user(user) : create_user
   post_via_redirect '/session', :login => user.login, :password => user.password
 end

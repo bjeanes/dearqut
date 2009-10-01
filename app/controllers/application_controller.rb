@@ -14,12 +14,21 @@ class ApplicationController < ActionController::Base
   protected
   
     def anonymous?
-      current_user.nil?
+      !logged_in?
+    end
+    
+    def logged_in?
+      current_user
     end
     
     def admin?
       current_user.admin? rescue false
     end
+    
+    def current_user_with_nil
+      current_user_without_nil || nil
+    end
+    alias_method_chain :current_user, :nil
     
     def check_for_banned_ip
       if @ban = Ban.find_by_ip(request.ip)
