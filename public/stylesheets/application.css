@@ -301,10 +301,22 @@ body {
 	clear: both;
 }
 
+#random-message.front
+{
+	margin-top: 20px;
+}
+
+#random-message.center
+{
+	margin-bottom:20px;
+}
+
 #recent-messages
 {
 	float: right;
 	width: 180px;
+	margin-top: 20px;
+	
 }
 	
 	#recent-messages h1
@@ -366,6 +378,17 @@ body {
 	{
 		text-decoration:none;
 	}
+	
+#anon
+{
+	margin-left: 100px;
+	color: #9999A0;
+}
+
+#message_submit
+{
+	margin-top:10px;
+}
 
 #comments
 {
@@ -398,7 +421,6 @@ body {
 
 	.msg-extras ul
 	{
-		
 		padding: 10px 10px;
 		list-style-type:none;
 	}
@@ -448,7 +470,7 @@ body {
 	{
 		text-decoration: none;
 	}
-	
+
 	.blue
 	{
 		color:#2CADE3;
@@ -699,7 +721,6 @@ input.text_field, input.password_field, textarea {
 {
 	line-height: 0em;
 	text-align: center;
-	color: #999999;
 }
 .inner
 {

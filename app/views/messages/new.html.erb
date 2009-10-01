@@ -4,18 +4,18 @@
     <%= f.text_area :body %>
 		<br />
 		<span class="right">sincerely, <strong><%= @message.author %></strong> <%= Time.now.to_s(:short) %></span>
-  </p>
-  <br />
     <%- if logged_in? %>
+    <div id="anon">
       <%= f.label :private, "Post Anonymously" %>
       <%= f.check_box :private %>
+      </div>
     <% end %>
     <%= f.submit 'SUBMIT', :class=>'button inner right' %>
 <% end %>
 <a name="random_message" />
 <br /><br /><br /><br />
 <% if @random_message %>
-  <div id="random-message" class="left">
+  <div id="random-message" class="left front">
       <% link_to random_messages_path, :class=>'nextmessage' do %>Show me another <%= image_tag "/images/nextmsg.png" %><% end %>
       
     <%= render :partial => 'message', :locals => {:message => @random_message} %>
