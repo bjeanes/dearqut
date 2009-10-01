@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
   
   def new
     tab :home if request.path == '/'
+    @message.user   = current_user
     @random_message = Message.random
     @messages = Message.newest.all(:limit => 5)
   end
@@ -104,7 +105,7 @@ class MessagesController < ApplicationController
         end.paginate(:page => params[:page], :include => [:tags, :user])
       else
         @message = case action_name
-          when 'new' then Message.new
+          when 'new'    then Message.new
           when 'create' then Message.new(params[:message])
           else Message.find(params[:id])
         end

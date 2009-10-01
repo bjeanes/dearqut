@@ -5,6 +5,8 @@ require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_
 require 'spec/autorun'
 require 'spec/rails'
 
+require File.dirname(__FILE__) + '/blueprints'
+
 Spec::Runner.configure do |config|
   config.mock_with :mocha
   

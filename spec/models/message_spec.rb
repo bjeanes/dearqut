@@ -36,7 +36,6 @@ describe Message do
       end
     end
   end
-  
   describe "#strip_and_chomp_body" do
     def stripped_message_with(body)      
       message = Message.new
@@ -59,6 +58,15 @@ describe Message do
     
     it "should not modify the body when there is a single word" do
       stripped_message_with("asingleword").body.should == "asingleword"
+    end
+  end
+  describe "when private" do
+    before do
+      @message = Message.make_unsaved(:private, :user => User.make(:login => "my_super_login"))
+    end
+    
+    it "returns 'Anonymous' as the #author" do
+      @message.author.should == 'Anonymous'
     end
   end
 end
