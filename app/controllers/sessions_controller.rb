@@ -67,7 +67,7 @@ class SessionsController < ApplicationController
   end
   
   def authentication_succeeded_with_admin
-    if current_user.admin? && session.delete(:redirect_to_admin)
+    if current_user.admin? && (session.delete(:redirect_to_admin) || params[:redirect_to_admin])
       redirect_to admin_path
     else
       authentication_succeeded_without_admin
