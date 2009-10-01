@@ -25,7 +25,7 @@
     <%= link_to  "see more", messages_path, :class=>'link-more' %>
     <% @messages.each do |message| %>
       <span class="recent-message <%=cycle('odd','even')%>">
-        <p class="message-text"><%= message_body(message, 74) %></p>
+        <p class="message-text"><%= message_body(message, 70) %></p>
         <p class="postedby right-text">sincerely, <strong><%=h message.author %></strong></p>
       </span>
     <% end %>
