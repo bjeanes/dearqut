@@ -28,6 +28,7 @@ after  'deploy',              'deploy:migrate'
 after  'deploy',              'bot:start'
 after  'deploy:symlink',      'deploy:restart'
 after  'deploy:symlink',      'deploy:create_symlinks'
+after  'deploy:symlink',      'deploy:update_crontab'
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
@@ -50,6 +51,11 @@ namespace :deploy do
   task :create_symlinks, :roles => :app do
     run "rm -f #{release_path}/config/database.yml"
     run "ln -s #{shared_path}/database.yml #{current_path}/config/database.yml"
+  end
+  
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
 end
 

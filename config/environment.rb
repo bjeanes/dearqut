@@ -10,10 +10,12 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
   config.gem 'json'
   config.gem 'twitter'
-  config.gem 'twitter-auth', :lib => 'twitter_auth', :version => "~> 0.1.21"
+  config.gem 'twitter-auth',       :lib => 'twitter_auth', :version => "~> 0.1.21"
   config.gem 'mbbx6spp-twitter4r', :lib => false, :source => "http://gems.github.com"
-  config.gem 'twibot',       :lib => false,          :version => '= 0.1.7'
+  config.gem 'twibot',             :lib => false,          :version => '= 0.1.7'
   config.gem 'haml'
+  config.gem 'javan-whenever',     :lib => false, :source => 'http://gems.github.com'
+  
   # config.gem 'shorturl'
 
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
