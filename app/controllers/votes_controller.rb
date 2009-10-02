@@ -22,17 +22,20 @@ class VotesController < ApplicationController
     end
     
     def save_vote
-      @vote.ip         = request.remote_ip
-      @vote.user_agent = request.env["HTTP_USER_AGENT"]
-      success          = @vote.save
-      
-      render :json => [{
+      @vote.ip          = request.remote_ip
+      @vote.user_agent  = request.env["HTTP_USER_AGENT"]
+      success           = @vote.save rescue false
+      vote              = {
         :success        => success,
         :id             => @vote.message_id,
         :rating         => @vote.message.rating,
         :positive_count => @vote.message.positive_vote_count,
         :negative_count => @vote.message.negative_vote_count,
         :value          => @vote.value
-      }]
+      }
+      
+      vote[:errors] = @vote.errors.full_messages unless success
+      
+      render :json => [vote]
     end
 end

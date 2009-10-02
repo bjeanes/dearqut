@@ -2,11 +2,12 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :message
   
-  validates_presence_of   :message_id, :value
+  validates_presence_of   :message_id, :value, :ip, :user_agent, :session_id
   validates_inclusion_of  :value, :in => [-1, 1]
 
   validates_uniqueness_of :user_id,    :scope => :message_id, :allow_blank => true
-  validates_uniqueness_of :session_id, :scope => :message_id, :allow_blank => true, :if => :anonymous?
+  validates_uniqueness_of :session_id, :scope => :message_id, :if => :anonymous?
+  validates_uniqueness_of :user_agent, :scope => [:message_id, :ip], :if => :anonymous?
 
   named_scope :positive, :conditions => "value > 0"
   named_scope :negative, :conditions => "value < 0"
