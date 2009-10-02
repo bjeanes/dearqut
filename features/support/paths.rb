@@ -10,8 +10,8 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
-    when /the admin page/
-      admin_path
+    when /the admin( dashboard)? page/
+      admin_root_path
     when /the sign up page/
       signup_path
     
