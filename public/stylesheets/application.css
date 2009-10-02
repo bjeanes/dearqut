@@ -290,10 +290,79 @@ body {
 #random-message
 {
 	background-color: #EAE8E4;
-	margin-left: 100px;
 	padding-top:10px;
 	width: 600px;
+	float: left;
 }
+
+#random-message.center
+{
+	margin-left: 100px;
+	clear: both;
+}
+
+#random-message.front
+{
+	margin-top: 20px;
+}
+
+#random-message.center
+{
+	margin-bottom:20px;
+}
+
+#recent-messages
+{
+	float: right;
+	width: 185px;
+	margin-top: 20px;
+	
+}
+	
+	#recent-messages h1
+	{
+		font-size: 12pt;
+		text-align: right;
+		margin: 5px;
+		text-transform: uppercase;
+	}
+	
+	#recent-messages .message-text
+	{
+		text-align: right;
+		font-size: 10pt;
+		font-weight: normal;
+		clear: both;
+	}
+	
+	#recent-messages .postedby
+	{
+		font-size:8pt
+	}
+	
+	#recent-messages .link-more
+	{
+		color: #2CACE2;
+		font-size: 8pt;
+		float: right;
+	}
+	
+	#recent-messages .message-text
+	{
+		padding: 0;
+	}
+	
+	.recent-message 
+	{
+		display:block;		
+		clear:both;
+		padding: 10px 5px  10px 10px;
+	}
+	
+	#recent-messages .odd
+	{
+		background-color: #F2F2F2;
+	}
 
 .nextmessage
 {
@@ -309,6 +378,17 @@ body {
 	{
 		text-decoration:none;
 	}
+	
+#anon
+{
+	margin-left: 100px;
+	color: #9999A0;
+}
+
+#message_submit
+{
+	margin-top:10px;
+}
 
 #comments
 {
@@ -325,7 +405,7 @@ body {
 		font-size:12pt;
 	}
 
-	.even
+	#comments .even
 	{
 		background-color: #EEEEEE;
 	}
@@ -341,7 +421,6 @@ body {
 
 	.msg-extras ul
 	{
-		
 		padding: 10px 10px;
 		list-style-type:none;
 	}
@@ -391,7 +470,7 @@ body {
 	{
 		text-decoration: none;
 	}
-	
+
 	.blue
 	{
 		color:#2CADE3;
@@ -642,7 +721,6 @@ input.text_field, input.password_field, textarea {
 {
 	line-height: 0em;
 	text-align: center;
-	color: #999999;
 }
 .inner
 {
@@ -689,7 +767,3 @@ img {
 input:focus, 
 select:focus,
 textarea:focus { outline: none; }
-
-#random-message {
-  clear:both;
-}

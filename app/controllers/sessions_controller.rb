@@ -18,16 +18,11 @@ class SessionsController < ApplicationController
   def create
     # logout_keeping_session!
     if @user = User.authenticate(params[:login], params[:password])
-      logger.info @user.inspect
       self.current_user = @user
-      logger.info @current_user.inspect
-      logger.info session.inspect
-      
       authentication_succeeded
     else
       authentication_failed('Unable to verify your credentials. Please try again.', '/login')
     end
-    logger.info session.inspect
   end
  
   def oauth_callback
@@ -38,15 +33,10 @@ class SessionsController < ApplicationController
    unless params[:oauth_token].blank? || session[:request_token] ==  params[:oauth_token]
      authentication_failed('Authentication information does not match session information. Please try again.') and return
    end
-    
     @request_token = OAuth::RequestToken.new(TwitterAuth.consumer, session[:request_token], session[:request_token_secret])
-    
     @access_token = @request_token.get_access_token
-
     @user = User.identify_or_create_from_access_token(@access_token)
-
     self.current_user = @user
- 
     authentication_succeeded 
   rescue Net::HTTPServerException, Net::HTTPFatalError, TwitterAuth::Dispatcher::Error => e
     case e.message
@@ -75,4 +65,13 @@ class SessionsController < ApplicationController
   def twitter?
     TwitterAuth.oauth? && params[:twitter]
   end
+  
+  def authentication_succeeded_with_admin
+    if current_user.admin? && (session.delete(:redirect_to_admin) || params[:redirect_to_admin])
+      redirect_to admin_path
+    else
+      authentication_succeeded_without_admin
+    end
+  end
+  alias_method_chain :authentication_succeeded, :admin
 end

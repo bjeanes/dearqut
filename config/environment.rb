@@ -13,6 +13,7 @@ Rails::Initializer.run do |config|
   config.gem 'twitter-auth', :lib => 'twitter_auth', :version => "~> 0.1.21"
   config.gem 'mbbx6spp-twitter4r', :lib => false, :source => "http://gems.github.com"
   config.gem 'twibot',       :lib => false,          :version => '= 0.1.7'
+  config.gem 'haml'
   # config.gem 'shorturl'
 
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -23,7 +24,7 @@ Rails::Initializer.run do |config|
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
-  config.time_zone = 'Brisbane'
+  config.time_zone = 'UTC'
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

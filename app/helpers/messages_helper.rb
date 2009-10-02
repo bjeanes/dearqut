@@ -14,11 +14,11 @@ module MessagesHelper
     end
   end
   
-  def message_body(message)
+  def message_body(message, char=160, more="...")
     if controller.action_name == "show"
       h(message.body)
     else
-      link_to h(truncate(message.body, :length => 160, :omission => "... (more)" )), message
+      link_to h(truncate(message.body, :length => char, :omission => more )), message
     end
   end
   

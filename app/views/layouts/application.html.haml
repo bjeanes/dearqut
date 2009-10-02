@@ -1,0 +1,66 @@
+!!!
+%html
+  %head
+    %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "content-type" }
+    %title Dear QUT
+    %link{ :href => "/fav_ri.gif", :rel => "shortcut icon" }
+    = rss_feeds
+    = stylesheet_link_tag 'application', 'acts_as_taggable', 'jquery.ui.autobox'
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'
+    = javascript_include_tag 'jquery.templating', 'jquery.ui.autobox.ext', 'jquery.ui.autobox'                                                                  
+    = javascript_include_tag 'application'                                                                   
+  %body
+    #container
+      #twitter-badge= link_to image_tag('TwitterBadge.png'), 'http://www.twitter.com?status=@dearQUT+'
+      #menu
+        - tabs do |tab|
+          - if logged_in?
+            %span.current-user
+              = "#{'@' if current_user.twitter?}#{current_user.login}"
+              = tab.logout "Log out", logout_path
+          - else
+            = tab.login "Log in", login_path
+            = tab.signup "Sign up", signup_path
+          = tab.home "Home", root_path
+          = tab.browse "Browse", messages_path
+          = tab.help "Help", help_site_path
+          = tab.about "About", about_site_path
+          = tab.contact "Contact", contact_site_path
+          - link_to "http://feeds.feedburner.com/dearqut", :format => :rss do
+            = image_tag 'rss.png'
+      %span#updates
+        %h1.update You can now browse by latest comments!
+        Find out what else is
+        %a#new{ :href => "http://blog.dearqut.com/tagged/updates" } new
+        and read our
+        %a#blog{ :href => "http://blog.dearqut.com" } blog
+        
+      %h1#title
+        %a{ :href => "/" }
+          Dear QUT,
+          
+      #content
+        = render :partial => 'layouts/notices'
+        = yield
+        
+      #footer
+        %ul
+          %li.footer1
+            - link_to about_site_path do
+              dearQUT is the place for anyone to contribute 
+              ideas/gripes about the Queensland University of 
+              Technology
+          %li.footer2
+            - link_to 'http://www.twitter.com/dearqut' do
+              Get notified of new updates by following dearQUT 
+              on twitter.
+          %li.footer3
+            - link_to privacy_site_path do
+              Your privacy is important to us. Here are the 
+              ground rules.
+          %li.footer4
+            - link_to help_site_path do
+              Unsure how to begin? Check out our tutorials 
+              and FAQ
+    = render :partial => 'layouts/google_analytics'
+    = render :partial => 'layouts/uservoice'

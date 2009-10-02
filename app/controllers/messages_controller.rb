@@ -27,11 +27,14 @@ class MessagesController < ApplicationController
   
   def new
     tab :home if request.path == '/'
+    @message.user   = current_user
     @random_message = Message.random
+    @messages = Message.newest.all(:limit => 5)
   end
 
   def create
-    @message.user = current_user
+    @message.user = current_user || nil
+    @message.ip   = request.remote_ip
   
     if @message.save
       add_message_to_session
@@ -102,7 +105,7 @@ class MessagesController < ApplicationController
         end.paginate(:page => params[:page], :include => [:tags, :user])
       else
         @message = case action_name
-          when 'new' then Message.new
+          when 'new'    then Message.new
           when 'create' then Message.new(params[:message])
           else Message.find(params[:id])
         end

@@ -1,0 +1,31 @@
+#filter
+  %h2
+    Browse by
+  %ul
+    %li
+      - link_to latest_commented_messages_path do
+        = image_tag 'latest-comment.png', :class=>'taller'
+        Last Commented
+    %li
+      - link_to popular_messages_path do
+        = image_tag 'popular.png'
+        Popular Vote
+    %li
+      - link_to messages_path do
+        = image_tag 'freshness.png'
+        Freshness
+    %li
+      - link_to most_commented_messages_path do
+        = image_tag 'commentsort.png' , :class=>'taller'
+        Most Commented
+    %li
+      - link_to tags_path do
+        = image_tag 'tags.png'
+        Tags
+- @messages.each do |message|
+  %span.msg-item
+    = render :partial => 'message', :locals => {:message => message}
+
+#pagination
+  = will_paginate @messages
+%br

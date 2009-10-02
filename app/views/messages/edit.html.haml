@@ -1,0 +1,24 @@
+- form_for(@message, :html => { :id => "msgform"}) do |f|
+  = f.error_messages
+  = f.hidden_field 'adding_context', :value => true
+  %h2.center Your Message
+  #message-body= f.text_area :body
+  %br
+  %span.right
+    = "sincerely, #{content_tag :strong, @message.author}"
+    = message_time(@message)
+  %br
+  #context
+    #more-details
+      #faculty
+        = f.label :faculty_id
+        = f.collection_select(:faculty_id, Faculty.all, :id, :name, :include_blank => true)
+      #campus
+        = f.label :campus_id
+        = f.collection_select(:campus_id, Campus.all, :id, :name, :include_blank => true)
+    #add-tags
+      %h2 Add Tags
+      %p Type in your tag and press enter after each one
+      = f.text_field 'tag_list', :class => 'autobox tags'
+      %br
+      = f.submit 'SUBMIT', :class=>'button inner'
