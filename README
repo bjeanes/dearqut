@@ -1,4 +1,16 @@
-run the following to get all 3rd party libraries required
+# run the following to get all 3rd party libraries required
 
-git submodule update --init
-sudo rake gems:install
+  git submodule update --init
+  sudo rake gems:install
+
+---- 
+
+# on deployment server:
+
+/etc/ssh/sshd_config needs to have following line:
+
+  PermitUserEnvironment yes
+  
+~deploy/.ssh/environment (deploy should be whatever user you are deploying as) should have any env variables needed:
+
+  PATH=/a/b/c

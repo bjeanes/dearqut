@@ -1,5 +1,5 @@
 set :application,             "dearqut"
-set :repository,              "git@github.com:bjeanes/dearqut.git"
+set :repository,              "git@github.com:bjeanes/#{application}.git"
 set :domain,                  "97.107.138.116"
                               
 set :user,                    "deploy"
@@ -28,6 +28,7 @@ after  'deploy',              'deploy:migrate'
 after  'deploy',              'bot:start'
 after  'deploy:symlink',      'deploy:restart'
 after  'deploy:symlink',      'deploy:create_symlinks'
+after  'deploy:symlink',      'deploy:install_gems'
 after  'deploy:symlink',      'deploy:update_crontab'
 
 namespace :deploy do
@@ -54,8 +55,13 @@ namespace :deploy do
   end
   
   desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
+  task :update_crontab, :roles => :app do
     run "cd #{release_path} && whenever --update-crontab #{application}"
+  end
+  
+  desc "Install gems"
+  task :install_gems, :roles => :app do
+    run "cd #{release_path} && rake gems:install"
   end
 end
 
