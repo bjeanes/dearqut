@@ -34,7 +34,7 @@
     - @messages.each do |message|
       %span{ :class => "recent-message #{cycle('odd','even')}" }
         %p.message-text
-          = message_body(message)
+          = message_body(message, 56)
         %p.postedby.right-text
           sincerely,
           %strong= h message.author
