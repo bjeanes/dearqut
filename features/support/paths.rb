@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the admin page/
       admin_path
+    when /the sign up page/
+      signup_path
     
     # Add more mappings here.
     # Here is a more fancy example:

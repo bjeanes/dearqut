@@ -7,27 +7,27 @@ Feature: Creating normal account
   Scenario: Creating an account
     Given I am on the home page
     When I follow "Sign Up"
-    And I fill in "Login" with "student"
-    And I fill in "Email" with "student@student.com"
+    And I fill in "Username" with "student"
+    # And I fill in "Email" with "student@student.com"
     And I fill in "Password" with "password"
-    And I fill in "Password Confirmation" with "password"
+    And I fill in "Password again" with "password"
     And I press "Sign up"
-    Then I should see "Your account has been created successfully!"
+    Then I should see "You have successfully created an account"
     And I should be on the home page
     
   Scenario: Creating an account with invalid details
-    Given a user named "student"
+    Given there is the following user
+      | login   | password |
+      | student | password |
     Given I am on the home page
     When I follow "Sign Up"
-    And I fill in "Login" with "student"
-    And I fill in "Email" with "student@student.com"
+    And I fill in "Username" with "student"
+    # And I fill in "Email" with "student@student.com"
     And I fill in "Password" with "password"
-    And I fill in "Password Confirmation" with "pass"
+    And I fill in "Password again" with "pass"
     And I press "Sign up"
-    Then I should see "Login has been taken"
-    Then I should see "Email has been taken"
-    Then I should see "Password does not match confirmation"
-    And I should be on the sign up page
+    Then I should see "There was an error creating your account"
+    And I should see "Sign up"
 
 
   
