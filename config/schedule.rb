@@ -22,5 +22,6 @@
 set :cron_log, File.join(RAILS_ROOT, 'log', 'cron.log')
 
 every 15.minutes do
-  rake 'bot:restart'
+  # Ensure that the bot is running
+  rake 'bot:start'
 end
