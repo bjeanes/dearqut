@@ -4,7 +4,7 @@
     %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
     %meta{ :name => "description", :content => "Reflect Template" }
     %meta{ :content => "IE=EmulateIE7", "http-equiv" => "X-UA-Compatible" }
-    %title Flexy Admin
+    %title dearQUT Admin
     %link{ :href => "/stylesheets/style_all.css", :rel => "stylesheet", :type => "text/css", :media => "screen" }
     %link{ :href => "/stylesheets/style1.css", :rel => "stylesheet", :type => "text/css", :media => "screen" }
     %link{ :href => "/stylesheets/jquery-ui.css", :rel => "stylesheet", :type => "text/css", :media => "screen" }
@@ -52,8 +52,7 @@
               1 Private Message received
       #bg_wrapper
         #main
-          #content
-
+          #content= yield
         #sidebar
           %ul.nav
             %li
