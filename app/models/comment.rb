@@ -18,6 +18,11 @@ class Comment < ActiveRecord::Base
     user.nil?
   end
   
+  def get_keywords
+    @keywords ||= KeywordFinder.get_keywords(body)
+  end
+  
+  
   private
   
   def set_message_commented_at
