@@ -267,13 +267,9 @@ body{
 				border-top:1px solid #c0c0c0;
 				}
 								
-			#top #sidebar .item1{ background:transparent url(../images/icons/Computer.png) no-repeat 15px center;	}
-			#top #sidebar .item2{ background:transparent url(../images/icons/advanced.png) no-repeat 15px center;	}
-			#top #sidebar .item3{ background:transparent url(../images/icons/applications.png) no-repeat 15px center;	}
-			#top #sidebar .item4{ background:transparent url(../images/icons/edit.png) no-repeat 15px center;	}
-			#top #sidebar .item5{ background:transparent url(../images/icons/search.png) no-repeat 15px center;	}
-			#top #sidebar .item6{ background:transparent url(../images/icons/trash.png) no-repeat 15px center;	}
-			#top #sidebar .item7{ background:transparent url(../images/icons/copy%20doc.png) no-repeat 15px center;	}
+			#top #sidebar .dashboard{ background:transparent url(../images/icons/Computer.png) no-repeat 15px center;	}
+			#top #sidebar .moderation{ background:transparent url(../images/icons/edit.png) no-repeat 15px center;	}
+			#top #sidebar .users{ background:transparent url(../images/icons/users.png) no-repeat 15px center;	}
 			
 			/*----------------------------------------
 			2.2.3) Content
@@ -339,13 +335,13 @@ body{
 				#top .button1 .dashboard_button_heading{ background:transparent url(../images/icons/Computer.png) no-repeat 0px top;	}
 				#top .button2 .dashboard_button_heading{ background:transparent url(../images/icons/advanced.png) no-repeat 0px top;	}
 				#top .button3 .dashboard_button_heading{ background:transparent url(../images/icons/applications.png) no-repeat 0px top;	}
-				#top .button4 .dashboard_button_heading{ background:transparent url(../images/icons/edit.png) no-repeat 0px top;	}
+				#top .moderation .dashboard_button_heading{ background:transparent url(../images/icons/edit.png) no-repeat 0px top;	}
 				#top .button5 .dashboard_button_heading{ background:transparent url(../images/icons/search.png) no-repeat 0px top;	}
 				#top .button6 .dashboard_button_heading{ background:transparent url(../images/icons/trash.png) no-repeat 0px top;	}
-				#top .button7 .dashboard_button_heading{ background:transparent url(../images/icons/window.png) no-repeat 0px top;	}
+				#top .dashboard .dashboard_button_heading{ background:transparent url(../images/icons/window.png) no-repeat 0px top;	}
 				#top .button8 .dashboard_button_heading{ background:transparent url(../images/icons/archive.png) no-repeat 0px top;	}
 				#top .button9 .dashboard_button_heading{ background:transparent url(../images/icons/send.png) no-repeat 0px top;	}
-				#top .button10 .dashboard_button_heading{ background:transparent url(../images/icons/users.png) no-repeat 0px top;	}
+				#top .users .dashboard_button_heading{ background:transparent url(../images/icons/users.png) no-repeat 0px top;	}
 				#top .button11 .dashboard_button_heading{ background:transparent url(../images/icons/picture.png) no-repeat 0px top;	}
 				#top .button12 .dashboard_button_heading{ background:transparent url(../images/icons/help.png) no-repeat 0px top;	}
 				
