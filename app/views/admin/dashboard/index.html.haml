@@ -3,7 +3,7 @@
 %p= pluralize(m = Message.count, "message")
 %p
   = pluralize(c = Comment.count, "comments")
-  = "(#{(c/m.to_f).round(2)} per message)"
+  = "(#{(c/m.to_f).round(2) rescue 0} per message)"
 %p
   = pluralize(v = Vote.count, "votes")
-  = "(#{(v/m.to_f).round(2)} per message)"
+  = "(#{(v/m.to_f).round(2) rescue 0} per message)"
