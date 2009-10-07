@@ -69,4 +69,23 @@ describe Message do
       @message.author.should == 'Anonymous'
     end
   end
+  
+  it "marks most spam messages as spam" do
+    spam_count = 0
+    
+    20.times do
+      m = Message.make_unsaved(:spam)
+      m.save
+      
+      spam_count += 1 if m.spam?
+    end
+    
+    spam_count.should >= (20 - spam_count)
+  end
+  
+  it "creates a vote for the author" do
+    pending "messages need to track user agent and IP to pass to vote"
+    message = Message.make
+    Vote.find_all_by_user_id_and_message_id(message.user_id, message.id).should have(1).item
+  end
 end
