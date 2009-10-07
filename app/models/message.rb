@@ -24,7 +24,6 @@ class Message < ActiveRecord::Base
   attr_accessible                :body, :tag_list, :campus_id, :faculty_id, :private
   
   acts_as_taggable
-  
   acts_as_snook
   
   # If sent via DM, lets make it Anonymous by default. All other 
