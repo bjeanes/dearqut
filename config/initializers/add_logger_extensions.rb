@@ -10,6 +10,8 @@ module ActionController
       logger.info "  Cookies: #{cookies.inspect}"
       logger.info "  User Agent: #{request.user_agent}"
       logger.info "  Session ID: #{session[:session_id]}"
+      forwarded_for = request.headers.find { |k, v| k =~ /forwarded/i }
+      logger.info "  X-Forwarded-For: #{forwarded_for.last}" if forwarded_for
     end
   end
 end
