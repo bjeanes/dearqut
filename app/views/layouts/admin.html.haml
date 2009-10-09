@@ -66,9 +66,7 @@
               %a.headitem.moderation{ :href => "#" }
                 Moderation
               %ul
-                %li
-                  %a{:href => "#"}
-                    Spam
+                %li= link_to("Spam", admin_spam_index_path)
                 %li
                   %a{ :href => "#" }
                     Messages

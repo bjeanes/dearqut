@@ -1,0 +1,20 @@
+%h1 Dashboard
+%h2 Spam
+
+= will_paginate @messages
+
+%table#spam-messages{:cellspacing => 0}
+  %caption= @message_moderation_count
+  %thead
+    %tr
+      %th Author
+      %th Body
+      %th Status
+  - @messages.each do |message|
+    - cls = cycle('','alt')
+    %tr
+      %td{:class => "spec#{cls}"}= message.author
+      %td{:class => cls}= message.body
+      %td{:class => cls}= message.spam_status
+      
+= will_paginate @messages

@@ -3,6 +3,7 @@ Given /^I am not logged in$/ do
 end
 
 Then /^I should be logged in$/ do
+  should_be_logged_in
 end
 
 Then /^I should be logged(?: in as "([^"]+)")?$/ do |login|
@@ -26,4 +27,9 @@ end
 
 Given /^I do not fill in "([^\"]*)"$/ do |field|
   fill_in field, :with => ''
+end
+
+Given /^I am logged in as an admin user$/ do
+  user = create_user('admin', 'password', true)
+  post_via_redirect '/session', :login => user.login, :password => user.password
 end

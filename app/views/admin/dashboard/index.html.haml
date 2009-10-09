@@ -1,9 +1,14 @@
-%h2 Dashboard - Statistics
+%h1 Dashboard
+%h2 Statistics
 
-%p= pluralize(m = Message.count, "message")
+%p= pluralize(@messages_count, "message")
 %p
-  = pluralize(c = Comment.count, "comments")
-  = "(#{(c/m.to_f).round(2) rescue 0} per message)"
+  = pluralize(@comments_count, "comments")
+  = "(#{@comments_per_message} per message)"
 %p
-  = pluralize(v = Vote.count, "votes")
-  = "(#{(v/m.to_f).round(2) rescue 0} per message)"
+  = pluralize(@votes_count, "votes")
+  = "(#{@votes_per_message} per message)"
+
+%h2 Moderation
+%p= link_to @message_moderation_count, admin_spam_index_path
+ 

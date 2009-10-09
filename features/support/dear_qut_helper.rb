@@ -8,11 +8,12 @@ module DearQutHelper
     current_user.should_not be_nil
   end
   
-  def create_user(login = "leet", password = "h4x0rk1d")
+  def create_user(login = "leet", password = "h4x0rk1d", admin = false)
     User.find_by_login(login) || begin
       u = User.new(:password => password, :password_confirmation => password)
       u.login = login
       u.creating_normal_user = true
+      u.admin = admin
       u.save!
       u
     end
