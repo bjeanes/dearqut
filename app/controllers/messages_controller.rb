@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   end
   
   def show
-    @comments = @message.comments
+    @comments = @message.comments.ham
   end
   
   def new
@@ -102,12 +102,12 @@ class MessagesController < ApplicationController
           when 'popular'        then Message.popular
           when 'most_commented' then Message.most_commented
           when 'latest_commented' then Message.latest_commented
-        end.paginate(:page => params[:page], :include => [:tags, :user])
+        end.ham.paginate(:page => params[:page], :include => [:tags, :user])
       else
         @message = case action_name
           when 'new'    then Message.new
           when 'create' then Message.new(params[:message])
-          else Message.find(params[:id])
+          else Message.find(params[:id], :conditions => {:spam_status => "ham"})
         end
       end
     end
