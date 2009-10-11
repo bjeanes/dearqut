@@ -53,6 +53,27 @@ class Message < ActiveRecord::Base
     first(:offset => rand(count))
   end
   
+  def self.update_last_commented_at
+    connection.execute(
+      %Q[UPDATE messages 
+         SET last_commented_at =
+           (SELECT created_at 
+            FROM comments 
+            WHERE message_id = messages.id 
+            ORDER BY created_at DESC 
+            LIMIT 1)])
+  end
+  
+  def self.update_ham_comments_count
+    connection.execute(
+      %Q[UPDATE messages 
+         SET ham_comments_count =
+           (SELECT COUNT(*) 
+            FROM comments 
+            WHERE message_id = messages.id 
+            AND comments.spam_status = 'ham')])
+  end
+  
   def twitter?
     tweet_id? || !!@twitter
   end

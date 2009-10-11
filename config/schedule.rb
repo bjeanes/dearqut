@@ -25,3 +25,7 @@ every 15.minutes do
   # Ensure that the bot is running
   rake 'bot:start'
 end
+
+every 1.hour do
+  runner "Message.update_last_commented_at; Message.update_ham_comments_count"
+end
