@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090930124823) do
+ActiveRecord::Schema.define(:version => 20091011060504) do
 
   create_table "bans", :force => true do |t|
     t.string   "ip",         :null => false
@@ -50,21 +50,22 @@ ActiveRecord::Schema.define(:version => 20090930124823) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.text     "body",                                            :null => false
+    t.text     "body",                                                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tweet_id",            :limit => 8
     t.boolean  "private"
-    t.integer  "rating",                           :default => 0, :null => false
-    t.integer  "negative_vote_count",              :default => 0, :null => false
-    t.integer  "positive_vote_count",              :default => 0, :null => false
-    t.integer  "comments_count",                   :default => 0, :null => false
+    t.integer  "rating",                           :default => 0,     :null => false
+    t.integer  "negative_vote_count",              :default => 0,     :null => false
+    t.integer  "positive_vote_count",              :default => 0,     :null => false
+    t.integer  "comments_count",                   :default => 0,     :null => false
     t.integer  "faculty_id"
     t.integer  "campus_id"
     t.datetime "last_commented_at"
     t.string   "ip"
     t.string   "spam_status"
     t.integer  "ham_comments_count"
+    t.boolean  "moderated",                        :default => false
   end
 
   add_index "messages", ["campus_id"], :name => "index_messages_on_campus_id"
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20090930124823) do
   add_index "messages", ["ham_comments_count"], :name => "index_messages_on_ham_comments_count"
   add_index "messages", ["ip"], :name => "index_messages_on_ip"
   add_index "messages", ["last_commented_at"], :name => "index_messages_on_last_commented_at"
+  add_index "messages", ["moderated"], :name => "index_messages_on_moderated"
   add_index "messages", ["negative_vote_count"], :name => "index_messages_on_negative_vote_count"
   add_index "messages", ["positive_vote_count"], :name => "index_messages_on_positive_vote_count"
   add_index "messages", ["rating"], :name => "index_messages_on_rating"

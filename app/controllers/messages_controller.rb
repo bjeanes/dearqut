@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
     tab :home if request.path == '/'
     @message.user   = current_user
     @random_message = Message.random
-    @messages = Message.newest.all(:limit => 5)
+    @messages = Message.newest.ham(:limit => 5)
   end
 
   def create

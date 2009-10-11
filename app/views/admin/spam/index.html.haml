@@ -1,4 +1,4 @@
-%h1 Dashboard
+%h1 Moderation
 %h2 Spam
 
 = will_paginate @messages
@@ -14,7 +14,7 @@
     - cls = cycle('','alt')
     %tr
       %td{:class => "spec#{cls}"}= message.author
-      %td{:class => cls}= message.body
+      %td{:class => cls}= link_to message.body, admin_spam_path(message)
       %td{:class => cls}= message.spam_status
       
 = will_paginate @messages

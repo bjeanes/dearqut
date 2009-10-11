@@ -20,7 +20,6 @@ Feature: Admin - Spam moderation
     And I am on the admin dashboard page
     
   Scenario: The admin dashboard shows how many messages are currently spam
-    When I eval "p Message.all.map{|m| [m.body[0,10], m.spam_status]}"
     Then I should see "2 spam, 1 need moderation"
     When I follow "2 spam, 1 need moderation"
     Then I should be on the admin spam index page
@@ -38,8 +37,7 @@ Feature: Admin - Spam moderation
       | Anonymous | plz can buy some viagra at http://awesome.ru. rolex!   | moderate |
       | Anonymous | cool website!                                          | spam     |
       | Anonymous | interesting point. rolexes are better than viagra      | spam     |
-  
-  @wip
+
   Scenario: Marking message as spam removes it from the site and from the moderation queue
     When I follow "Moderation"
     And I follow "Spam"
@@ -48,9 +46,9 @@ Feature: Admin - Spam moderation
     Then I should be on the admin spam index page
     And I should see "You have successfully marked that message as spam."
     Then I should see the following in table "#spam-messages"
-      | Author    | Body                                                   | Status   |
-      | Anonymous | cool website!                                          | moderate |
-      | Anonymous | ZOMG PORN FOR ONLY $1.99/month - no credit card needed | spam     |
+      | Author    | Body                                              | Status |
+      | Anonymous | cool website!                                     | spam   |
+      | Anonymous | interesting point. rolexes are better than viagra | spam   |
     When I go to the home page
     Then I should not see "plz can buy some viagra"
     But I should see "please make the carpark more affordable"
@@ -60,13 +58,13 @@ Feature: Admin - Spam moderation
     When I follow "Moderation"
     And I follow "Spam"
     And I follow "plz can buy some viagra at http://awesome.ru. rolex!"
-    And I press "This Is Not Spam"
+    And I press "This Is Ham"
     Then I should be on the admin spam index page
-    And I should see "You have successfully marked that message as spam."
+    And I should see "You have successfully marked that message as ham."
     Then I should see the following in table "#spam-messages"
-      | Author    | Body                                                   | Status   |
-      | Anonymous | cool website!                                          | moderate |
-      | Anonymous | ZOMG PORN FOR ONLY $1.99/month - no credit card needed | spam     |
+      | Author    | Body                                              | Status |
+      | Anonymous | cool website!                                     | spam   |
+      | Anonymous | interesting point. rolexes are better than viagra | spam   |
     When I go to the home page
     Then I should see "plz can buy some viagra"
     And I should see "please make the carpark more affordable"

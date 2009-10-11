@@ -27,14 +27,14 @@
       Show me another
       = image_tag "/images/nextmsg.png"
     = render :partial => 'message', :locals => {:message => @random_message}
-  #recent-messages
-    %h1
-      Latest Messages
-    = link_to  "see more", messages_path, :class=>'link-more'
-    - @messages.each do |message|
-      %span{ :class => "recent-message #{cycle('odd','even')}" }
-        %p.message-text
-          = message_body(message, 56)
-        %p.postedby.right-text
-          sincerely,
-          %strong= h message.author
+#recent-messages
+  %h1
+    Latest Messages
+  = link_to  "see more", messages_path, :class=>'link-more'
+  - @messages.each do |message|
+    %span{ :class => "recent-message #{cycle('odd','even')}" }
+      %p.message-text
+        = message_body(message, 56)
+      %p.postedby.right-text
+        sincerely,
+        %strong= h message.author

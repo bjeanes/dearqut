@@ -17,7 +17,7 @@
   %body
     /
       this is the content for the dialog that pops up on window start
-    - if @message
+    - if @message_box
       #dialog{ :title => "Welcome to flexy admin" }
         %p
           = "Hello #{current_user}! welcome back."
@@ -27,7 +27,7 @@
             1 new Message
           in your inbox
         %p
-          This is a messagebox, you can fill it with content of your choice ;)
+          This is a message box, you can fill it with content of your choice ;)
     #top
       #head
         %h1.logo
@@ -36,7 +36,7 @@
         .head_memberinfo
           .head_memberinfo_logo
             %span 1
-            %img{ :src => "images/unreadmail.png", :alt => "" }
+            %img{ :src => "/images/unreadmail.png", :alt => "" }
           %span.memberinfo_span
             Welcome
             %a{ :href => "" }
@@ -52,7 +52,11 @@
               1 Private Message received
       #bg_wrapper
         #main
-          #content= yield
+          #content
+            - flash.each do |type, message|
+              %div.message.closeable{:class => type.to_s}
+                %p= message
+            = yield
         #sidebar
           %ul.nav
             %li

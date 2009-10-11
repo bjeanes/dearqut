@@ -1,0 +1,24 @@
+%h1 Moderation
+%h2 Viewing message ##{@message.id}
+
+%dl
+  %dt Author
+  %dd= @message.author
+  %dt Message
+  %dd= @message.body
+  %dt Spam Status
+  %dd= @message.spam_status.titleize
+  %dt Spam Score
+  %dd= @message.snook_credits
+  %dt Posted At
+  %dd= @message.created_at
+  
+  - if @message.ip?
+    %dt IP
+    %dd= @message.ip
+    %dt Posted from QUT?
+    %dd= @message.qut? ? 'yes' : 'no'
+    
+- form_for @message, :url => admin_spam_path(@message) do |f|
+  = f.submit 'This is Spam', :name => 'spam'
+  = f.submit 'This is Ham', :name => 'ham'

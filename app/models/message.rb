@@ -53,6 +53,10 @@ class Message < ActiveRecord::Base
     first(:offset => rand(count))
   end
   
+  def qut?
+    ip =~ /^131\.181\./
+  end
+  
   def self.update_last_commented_at
     connection.execute(
       %Q[UPDATE messages 
