@@ -11,17 +11,16 @@ class Comment < ActiveRecord::Base
   acts_as_snook
   
   def author
-    (user || "Anonymous").to_s
+    anonymous? ? "Anonymous" : user.to_s
   end
   
   def anonymous?
-    user.nil?
+    user.nil? || private? || user.protected?
   end
   
   def get_keywords
     @keywords ||= KeywordFinder.get_keywords(body)
   end
-  
   
   private
   
