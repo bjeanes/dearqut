@@ -64,23 +64,17 @@ module LuckySneaks
         
         attr_reader :snook_credits
         # attr_protected fields_for_snooking[:spam_status_field]
-      end
-      
-      # Returns all instances which have been marked as safe for display
-      def ham(options = {})
-        find :all, options.merge(:conditions => {fields_for_snooking[:spam_status_field] => "ham"})
-      end
-      
-      # Returns all instances which have been marked as spam
-      def spam(options = {})
-        find :all, options.merge(:conditions => {fields_for_snooking[:spam_status_field] => "spam"})
-      end
-      
-      # Returns all instances which have been marked as neither obvious spam nor obviously safe
-      # for displaying. This should be a really small number of your comments as it is _very_
-      # hard to hit this spot.
-      def moderate(options = {})
-        find :all, options.merge(:conditions => {fields_for_snooking[:spam_status_field] => "moderate"})
+        
+        # Returns all instances which have been marked as safe for display
+        named_scope :ham, :conditions => {fields_for_snooking[:spam_status_field] => "ham"}
+        
+        # Returns all instances which have been marked as spam
+        named_scope :spam, :conditions => {fields_for_snooking[:spam_status_field] => "spam"}
+        
+        # Returns all instances which have been marked as neither obvious spam nor obviously safe
+        # for displaying. This should be a really small number of your comments as it is _very_
+        # hard to hit this spot.
+        named_scope :moderate, :conditions => {fields_for_snooking[:spam_status_field] => "moderate"}
       end
     end
     
