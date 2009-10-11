@@ -31,6 +31,6 @@ Feature: Signed in users can choose to comment on a message anonymously
     And I follow "Please make the QUT Garden's Point parking cheaper"
     And I fill in "comment_body" with "I totally agree. Let's get this fixed!"
     And I check "Post Anonymously"
-    And I press "Submit"
-    Then I should not see "Posted by: bjeanes"
-    But I should see "Posted by: Anonymous"
+    And I press "Post Comment"
+    Then I should not see /Posted by:\s+bjeanes/
+    But I should see /Posted by:\s+Anonymous/

@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :body, :message_id
   
-  attr_accessible :body
+  attr_accessible :body, :private
   
   after_create :set_message_commented_at
   
