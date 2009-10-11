@@ -14,7 +14,7 @@ ul.autobox-list li {
   display: block;
   padding: .3em .5em .3em .3em;
   overflow: hidden;
-  width: 100%;
+  //XXXwidth: 100%;
 }
 ul.autobox-list li.active {
   background-color: #3875d7;
@@ -23,14 +23,12 @@ ul.autobox-list li.active {
 
 /* autobx-hldr is the selected list */
 ul.autobox-hldr {
-  width: 100%;
+  width: 500px;
   border: 1px solid #999;
   overflow: hidden;
   height: auto !important;
-  height: 1%;
   padding: 4px 5px 0;
   font: 11px "Lucida Grande", "Verdana";
-  background: white;
 }
 ul.autobox-hldr li {
   float: left;
@@ -38,7 +36,7 @@ ul.autobox-hldr li {
   padding: 0 5px 4px 0;
   margin-right: 5px;
 }
-ul.autobox-hldr li.bit-box {
+li.bit-box {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
@@ -47,29 +45,28 @@ ul.autobox-hldr li.bit-box {
   padding: 1px 5px 2px;
   margin-bottom: 3px;
 }
-ul.autobox-hldr li.bit-box {
+li.bit-box {
   padding-right: 15px;
   position: relative;
 }
 ul.autobox-hldr li.autobox-input input {
   width: 150px;
   margin: 0;
-  border: none;
-  background:transparent;
+  border: 1px solid #666;
   outline: 0;
   padding: 3px 0 2px 2px;
 } /* no left/right padding here please */
-ul.autobox-hldr li.bit-box a.closebutton {
+li.bit-box a.closebutton {
   position: absolute;
   right: 4px; top: 5px;
   display: block;
   width: 7px; height: 7px;
   font-size: 1px;
-  background: url('/images/close.gif'); }
-ul.autobox-hldr li.bit-box a.closebutton:hover {
+  background: url('close.gif'); }
+li.bit-box a.closebutton:hover {
   background-position: 7px;
 }
-ul.autobox-hldr li.bit-box-focus a.closebutton,
-ul.autobox-hldr li.bit-box-focus a.closebutton:hover {
+li.bit-box-focus a.closebutton,
+li.bit-box-focus a.closebutton:hover {
   background-position: bottom;
 }

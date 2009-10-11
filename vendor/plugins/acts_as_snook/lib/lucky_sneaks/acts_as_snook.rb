@@ -217,7 +217,12 @@ module LuckySneaks
       self.send("#{self.class.fields_for_snooking[:spam_status_field]}=", status)
       @forced_snook_status = nil
       # Dont save if snook_credits under -10
-      snook_credits >= -10
+      if snook_credits >= -10
+        true
+      else
+        errors.add(:message, "has a snook score under -10 -- not saving")
+        false
+      end
     end
     
     def force_snook_status(value)

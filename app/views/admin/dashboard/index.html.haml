@@ -1,0 +1,14 @@
+%h1 Dashboard
+%h2 Statistics
+
+%p= pluralize(@messages_count, "message")
+%p
+  = pluralize(@comments_count, "comments")
+  = "(#{@comments_per_message} per message)"
+%p
+  = pluralize(@votes_count, "votes")
+  = "(#{@votes_per_message} per message)"
+
+%h2 Moderation
+%p= link_to @message_moderation_count, admin_spam_index_path
+ 
