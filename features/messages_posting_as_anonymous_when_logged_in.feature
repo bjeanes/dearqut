@@ -1,8 +1,14 @@
+@http://www.pivotaltracker.com/story/show/1167104
 Feature: Messages posting as anonymous when logged in
   In order to hide my identity but still track my messages to my account
-  As a user
+  As an authenticated user
   I want to choose to post my messages anonymously
-  
+
+  Acceptance:
+  * When posting, there should be a checkbox that says "post anonymously"
+  * RSS feeds and everywhere in site that uses message should say that it's an anonymous message
+  * Message should still be tied to account so author can keep track of it or choose to make it non-anonymous later
+
   Scenario: Anonymous option should not be shown to guests
     Given I am not logged in
     When I go to the home page
