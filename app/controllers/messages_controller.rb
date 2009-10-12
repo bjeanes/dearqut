@@ -44,6 +44,7 @@ class MessagesController < ApplicationController
         message_path(@message)
       redirect_to(edit_message_path(@message))
     else
+      new
       render :action => "new"
     end
   end
