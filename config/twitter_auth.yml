@@ -7,7 +7,7 @@ development:
   remember_for: 14 # days
   oauth_callback: "http://dearqut.local/oauth_callback"
   authorize_path: "/oauth/authenticate"
-test:
+test: &TEST
   strategy: oauth
   oauth_consumer_key: 
   oauth_consumer_secret: 
@@ -16,6 +16,8 @@ test:
   remember_for: 14 # days
   oauth_callback: "http://dearqut.local/oauth_callback"
   authorize_path: "/oauth/authenticate"
+cucumber:
+  <<: *TEST
 production:
   strategy: oauth
   oauth_consumer_key: vGcptDOIaRl5kidYbofQ
