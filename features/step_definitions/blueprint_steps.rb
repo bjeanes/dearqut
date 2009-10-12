@@ -10,7 +10,7 @@ Given /^the following (.+?)(|\s+only)$/ do |model_name, only, table|
         c = m[1].singularize.classify.constantize
         h.update(m[1] => v.split(/\s*,\s*/).map{|i| c.make(m[2].to_sym => i) })
       else
-        h.update(k.gsub(/\s+/, "_") => v)
+        h.update(k.gsub(/\s+/, "_") => v.blank? ? nil : v)
       end
     end
     object = klass.make attributes
