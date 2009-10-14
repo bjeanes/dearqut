@@ -22,8 +22,9 @@
       - link_to tags_path do
         = image_tag 'tags.png'
         Tags
+        
 - @messages.each do |message|
-  %span.msg-item
+  .msg-item
     = render :partial => 'message', :locals => {:message => message}
 
 #pagination
