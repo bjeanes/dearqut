@@ -24,7 +24,10 @@ Rails::Initializer.run do |config|
   config.gem 'tidy',               :lib => false
   config.gem 'rack-tidy',          :lib => 'rack/tidy', :source => 'http://gemcutter.org'
   
-  config.middleware.use Rack::Tidy
+  begin
+    config.middleware.use Rack::Tidy
+  rescue LoadError
+  end
   
   # config.gem 'shorturl'
 
