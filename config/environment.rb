@@ -26,7 +26,7 @@ Rails::Initializer.run do |config|
   
   begin
     config.middleware.use Rack::Tidy
-  rescue LoadError
+  rescue
   end
   
   # config.gem 'shorturl'
