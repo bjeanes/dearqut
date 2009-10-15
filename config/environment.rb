@@ -6,12 +6,6 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-begin
-  require 'rack/tidy'
-rescue LoadError
-  # config.gem should catch this below
-end
-
 Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
   config.gem 'json'
@@ -23,11 +17,8 @@ Rails::Initializer.run do |config|
   config.gem 'javan-whenever',     :lib => false, :source => 'http://gems.github.com'
   config.gem 'tidy',               :lib => false
   config.gem 'rack-tidy',          :lib => 'rack/tidy', :source => 'http://gemcutter.org'
-  
-  begin
-    config.middleware.use Rack::Tidy
-  rescue
-  end
+
+  config.middleware.use "Rack::Tidy"
   
   # config.gem 'shorturl'
 
