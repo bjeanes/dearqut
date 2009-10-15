@@ -16,9 +16,9 @@ Rails::Initializer.run do |config|
   config.gem 'haml'
   config.gem 'javan-whenever',     :lib => false, :source => 'http://gems.github.com'
   # config.gem 'tidy',               :lib => false
-  # config.gem 'rack-tidy',          :lib => 'rack/tidy', :source => 'http://gemcutter.org'
+  config.gem 'rack-tidy',          :lib => 'rack/tidy', :source => 'http://gemcutter.org'
 
-  # config.middleware.use "Rack::Tidy"
+  config.middleware.use "Rack::Tidy"
   
   # config.gem 'shorturl'
 

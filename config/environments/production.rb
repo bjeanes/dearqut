@@ -27,4 +27,4 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
-# Tidy.path = '/usr/lib64/libtidy.so'
+Tidy.path = '/usr/lib64/libtidy.so'
