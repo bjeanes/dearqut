@@ -41,3 +41,4 @@ ActiveRecord::Base.include_root_in_json = false
 
 require 'aatr_ext'
 require 'active_record_errors_ext'
+require 'tidy'
