@@ -14,3 +14,7 @@
 ~deploy/.ssh/environment (deploy should be whatever user you are deploying as) should have any env variables needed:
 
   PATH=/a/b/c
+  
+# patch libtidy if you get Segfaults:
+
+http://rubyforge.org/tracker/index.php?func=detail&aid=10007&group_id=435&atid=1744
