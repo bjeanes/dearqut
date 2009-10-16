@@ -5,9 +5,11 @@ Feature: Add 'staff option' to signon form
   I want to select a staff account option when I sign up
 
   *Acceptance:*
-  * Users who select the staff option will be sent an email to a qut.edu.au address confirming their identity
-  * This story doesn't cover including a link they can click to automatically approve themselves
-  ** Instead just tell them to forward the email to staffaccounts@dearqut.com
+  * Users who select the staff option must provide a qut staff email address (not student!!)
+  * They can provide any email address if they don't choose to be a staff member
+  * A message is shown describing to the user that their staff status is pending approval
+  ** We will need to approve who are staff members manually (for now)
+  ** Another story exists in Pivotal Tracker for sending them out an email.
 
   Background:
     Given I am on the home page
@@ -17,14 +19,14 @@ Feature: Add 'staff option' to signon form
     And I fill in "Password again" with "password"
 
   Scenario: Providing a QUT (non-student) address succeeds
-    When I check "I am a staff member"
+    When I check "I am a QUT staff member"
     And I fill in "Email" with "staff@qut.edu.au"
     And I press "Sign up"
-    Then I should see "You have successfully created an account. An email has been set to your staff account to confirm you are a staff member."
+    Then I should see "You have successfully created an account. Your staff account will be activated after an admin confirms that you are a staff member."
     And I should be on the home page
     
   Scenario: Providing a QUT (student) address fails
-    When I check "I am a staff member"
+    When I check "I am a QUT staff member"
     And I fill in "Email" with "staff@student.qut.edu.au"
     And I press "Sign up"
     Then I should see "You must provide a staff email address to register a staff account."

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091011100325) do
+ActiveRecord::Schema.define(:version => 20091016053350) do
 
   create_table "bans", :force => true do |t|
     t.string   "ip",         :null => false
@@ -133,9 +133,15 @@ ActiveRecord::Schema.define(:version => 20091011100325) do
     t.string   "crypted_password",          :limit => 40
     t.string   "salt",                      :limit => 40
     t.boolean  "admin",                                   :default => false, :null => false
+    t.string   "email"
+    t.boolean  "staff",                                   :default => false, :null => false
+    t.boolean  "staff_status_confirmed",                  :default => false, :null => false
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["staff"], :name => "index_users_on_staff"
+  add_index "users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"

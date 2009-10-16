@@ -6,22 +6,13 @@
 %br
 %br
 #signup.user-box
-  .error
-    = flash[:error]
-  - form_for @user do |f|
-    = f.label :login, "Username"
-    %br
-    = f.text_field :login, :class => 'text_field'
-    %br
-    = f.label :password, "Password"
-    %br
-    = f.password_field :password, :class => 'password_field'
-    %br
-    = f.label :password_confirmation, "Password again"
-    %br
-    = f.password_field :password_confirmation, :class => 'password_field'
-    </p>
-    %br
-    = f.submit 'Sign Up', :class=>'button'
-    </haml:block>
-    </haml:silent>
+
+  - semantic_form_for @user do |f|
+    - f.inputs do
+      = f.input :login, :label => "Username"
+      = f.input :password
+      = f.input :password_confirmation, :label => "Password again"
+      = f.input :email
+      = f.input :staff, :label => "I am a QUT staff member", :hint => "You will need a staff email account to register a staff account"
+    - f.buttons do
+      = f.commit_button 'Sign Up'

@@ -7,6 +7,11 @@ class User < TwitterAuth::GenericUser
   validates_presence_of     :password_confirmation,      :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :password, :within => 6..40, :if => :password_required?
+  validates_uniqueness_of   :email, :allow_nil => true
+  validates_format_of       :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :unless => :staff?, :allow_blank => true, :message => "must be a valid email address"
+  validates_format_of       :email, :with => /^.*?@qut\.edu\.au$/, :if => :staff?, :on => :create, :message => "must be a QUT staff email address"
+  
+  attr_protected :admin, :staff, :staff_status_confirmed
   
   validate :validate_twitter_id_not_required, :if => :creating_normal_user?
   
@@ -71,12 +76,10 @@ class User < TwitterAuth::GenericUser
     self
   end
   
-  
   def valid?
     return true if id == 0
     super
   end
-
   
   protected
     # Encrypts the password with the user salt

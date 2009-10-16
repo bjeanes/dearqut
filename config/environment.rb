@@ -7,34 +7,21 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
+  github    = "http://gems.github.com"
+  gemcutter = 'http://gemcutter.org'
+  
+  config.gem 'haml'
   config.gem 'json'
   config.gem 'twitter'
   config.gem 'twitter-auth',       :lib => 'twitter_auth', :version => "~> 0.1.21"
-  config.gem 'mbbx6spp-twitter4r', :lib => false, :source => "http://gems.github.com"
+  config.gem 'mbbx6spp-twitter4r', :lib => false,          :source => github
   config.gem 'twibot',             :lib => false,          :version => '= 0.1.7'
-  config.gem 'haml'
-  config.gem 'javan-whenever',     :lib => false, :source => 'http://gems.github.com'
-  # config.gem 'tidy',               :lib => false
-  config.gem 'rack-tidy',          :lib => 'rack/tidy', :source => 'http://gemcutter.org'
+  config.gem 'javan-whenever',     :lib => false,          :source => github
+  config.gem 'formtastic',         :version => '>= 0.2.5', :source => gemcutter
+  config.gem 'rack-tidy',          :lib => 'rack/tidy',    :source => gemcutter
 
   config.middleware.use "Rack::Tidy"
-  
-  # config.gem 'shorturl'
-
-  # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
-  # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
-
-  # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
-  # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-  # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'Brisbane'
-
-  # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-  # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
 end
 
 ActiveRecord::Base.include_root_in_json = false
