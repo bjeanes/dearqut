@@ -12,12 +12,18 @@ body
   font-family: "Helvetiva", "Arial"
 
 
-.flash, .notice
-  margin-bottom: 30px
-  padding: 10px
-  color: #f2f2f2
-  background-color: #2CADE3
+#flash
+  div
+    margin-bottom: 30px
+    padding: 10px
+  
+    &.notice
+      color: #f2f2f2
+      background-color: #2CADE3
 
+    &.error
+      color: white
+      background-color: #F6545D
 
 #twitter-badge
   margin-left: 20px
@@ -244,7 +250,6 @@ body
   &.center
     margin-bottom: 20px
 
-
 #recent-messages
   float: right
   width: 185px
@@ -424,16 +429,18 @@ body
   width: 420px
 
 
-.user-box
+.user-box, form.formtastic
   font-size: 12pt
   font-weight: bold
   padding: 40px 40px 80px 40px
   background-color: #f2f2f2
 
-  .text_field
+  .text_field 
+    margin-bottom: 30px
+
+  .text_field, li.string input, li.password input
     font: 18pt "Helvetica", "Arial"
     color: #5e5e5e
-    margin-bottom: 30px
 
 
 .password_field
@@ -602,3 +609,37 @@ img
 
 input:focus, select:focus, textarea:focus
   outline: none
+
+
+fieldset
+  &.inputs, &.buttons, ol
+    border: 0
+    margin: 0
+    padding: 0
+  
+    ol
+      list-style: none
+      
+      label
+        clear: both
+      
+      li 
+        margin-bottom: 20px
+        
+        &.string, &.password
+          input
+            max-width: 100%
+            width: 100%
+            min-width: 100%
+          
+        p
+          &.inline-errors
+            color: #F60000
+          &.inline-hints
+            font-style: italic
+            
+        
+      
+form.formtastic
+  padding: 0
+  margin: 0
