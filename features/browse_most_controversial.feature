@@ -1,4 +1,4 @@
-@http://www.pivotaltracker.com/story/show/1167099
+@http://www.pivotaltracker.com/story/show/1167099 @wip
 Feature: Browse messages that are most controversial
   In order to view controversial messages
   As any user
