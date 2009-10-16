@@ -4,7 +4,7 @@ require 'sham'
 require 'faker'
 
 Sham.define do
-  login { Faker::Internet.user_name.gsub(/\./,'') }
+  login { Faker::Internet.user_name.gsub(/\./,'')[0...15] }
   body  { Faker::Lorem.sentences(5).join(' ')     }
 end
 
