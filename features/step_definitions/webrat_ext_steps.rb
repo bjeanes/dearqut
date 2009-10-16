@@ -2,6 +2,10 @@ When /^I dump the page$/ do
   save_and_open_page
 end
 
+Then /^I should not be on (.+)$/ do |page_name|
+  URI.parse(current_url).path.should_not == path_to(page_name)
+end
+
 Then /^the "([^\"]+)" field should exist$/ do |field|
   lambda { field_labeled(field) }.should_not raise_error
 end
