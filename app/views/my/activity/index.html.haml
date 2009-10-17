@@ -1,0 +1,5 @@
+#activities
+  %h1 My Activity
+  - @activities.each do |activity|
+    = render_activity(activity)
+  = will_paginate @activities

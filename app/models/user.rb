@@ -1,7 +1,9 @@
 class User < TwitterAuth::GenericUser
-  has_many :messages, :dependent => :nullify
-  has_many :comments, :dependent => :nullify
-  has_many :votes,    :dependent => :destroy
+  has_many :messages,   :dependent => :nullify
+  has_many :comments,   :dependent => :nullify
+  has_many :votes,      :dependent => :destroy
+  has_many :activities, :dependent => :destroy
+  
   
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?

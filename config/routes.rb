@@ -28,5 +28,13 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :spam
   end
   
+  map.namespace :my do |my|
+    my.root :controller => 'accounts', :action => 'redirect_to_show'
+    my.activity 'activity', :controller => 'activity', :action => 'index'
+    my.resource :account
+    my.resources :messages
+    my.resources :comments
+  end
+  
   map.root :controller => "messages", :action => "new"
 end

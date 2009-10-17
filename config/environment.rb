@@ -21,6 +21,9 @@ Rails::Initializer.run do |config|
   config.gem 'rack-tidy',          :lib => 'rack/tidy',    :source => gemcutter
 
   config.middleware.use "Rack::Tidy"
+  
+  config.active_record.observers = :activity_observer
+  
   config.time_zone = 'Brisbane'
 end
 

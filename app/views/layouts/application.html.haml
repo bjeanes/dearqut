@@ -16,7 +16,7 @@
         - tabs do |tab|
           - if logged_in?
             %span.current-user
-              = "#{'@' if current_user.twitter?}#{current_user.login}"
+              = link_to "#{'@' if current_user.twitter?}#{current_user.login}", my_account_path
               = tab.logout "Log out", logout_path
           - else
             = tab.login "Log in", login_path

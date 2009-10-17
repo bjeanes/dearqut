@@ -1,0 +1,8 @@
+- path = "#{message_path(comment.message)}#comment-#{comment.id}"
+
+You
+= link_to "commented", path
+on message
+= link_to truncate(comment.message.body, :length => 40), path
+on 
+= activity.created_at.to_s(:short)

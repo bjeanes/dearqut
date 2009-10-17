@@ -87,10 +87,6 @@ class Message < ActiveRecord::Base
     super(tags)
   end
 
-  def self.per_page
-    10
-  end
-
   private
   
     # This is called from after_save and after_destroy on Vote

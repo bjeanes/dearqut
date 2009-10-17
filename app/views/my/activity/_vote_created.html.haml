@@ -1,0 +1,6 @@
+You
+= vote.agreed? ? 'agreed' : 'disagreed'
+with message
+= link_to truncate(vote.message.body, :length => 40), vote.message
+on 
+= activity.created_at.to_s(:short)
