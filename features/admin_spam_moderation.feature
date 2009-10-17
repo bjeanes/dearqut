@@ -52,8 +52,7 @@ Feature: Admin - Spam moderation
     When I go to the home page
     Then I should not see "plz can buy some viagra"
     But I should see "please make the carpark more affordable"
-    
-  @wip
+
   Scenario: Marking message as ham adds it back to site but removes it from the moderation queue
     When I follow "Moderation"
     And I follow "Spam"
