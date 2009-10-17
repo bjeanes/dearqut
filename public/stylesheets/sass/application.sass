@@ -232,7 +232,9 @@ body
   margin-bottom: 40px
   float: right
   line-height: 1.5em
-
+  
+  .vote a
+    text-decoration: none
 
 #random-message
   background-color: #EAE8E4
@@ -300,33 +302,23 @@ body
   text-decoration: none
   color: #00A43D
 
-
-
-.vote a
-  text-decoration: none
-
-
 #anon
   margin-left: 100px
   color: #9999A0
 
-
 #message_submit
   margin-top: 10px
-
 
 #comments
   margin-top: 90px
   width: 600px
   margin-left: 100px
 
-
-.comment
-  background: url('/images/comment-large.png') no-repeat 40px 25px
-  padding: 10px 20px 5px 100px
-  line-height: 0em
-  font-size: 12pt
-
+  .comment
+    background: url('/images/comment-large.png') no-repeat 40px 25px
+    padding: 10px 20px 5px 100px
+    line-height: 0em
+    font-size: 12pt
 
 #comments .even
   background-color: #EEEEEE
@@ -637,9 +629,7 @@ fieldset
             color: #F60000
           &.inline-hints
             font-style: italic
-            
-        
-      
+
 form.formtastic
   padding: 0
   margin: 0
@@ -650,6 +640,6 @@ form.formtastic
   .activity
     padding: 7px
     
-  .alt
-    background-color: #EEEEEE
-  
+    &.alt
+      background-color: #EEEEEE
+      

@@ -5,7 +5,10 @@ Feature: View messages I have interacted with
   I want to be able to see a list of every message I've ever commented of voted on
 
   *Acceptance*:
-  * Ordered by most recent activity (by anyone, not just me)
+  * Ordered by most recent 
+  * If I comment, a new entry should appear at the top of the list
+  * If I vote, a new entry should appear at the top of the list
+  * If I post a message, a new entry should appear at the top of the list
 
   Background: 
     Given the following message
