@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091017151003) do
+ActiveRecord::Schema.define(:version => 20091018131816) do
 
   create_table "activities", :force => true do |t|
     t.integer  "target_id"
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(:version => 20091017151003) do
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
 
-  create_table "users", :force => true do |t|
+  create_table "twitter_users", :force => true do |t|
     t.string   "twitter_id"
     t.string   "login"
     t.string   "access_token"
@@ -152,10 +152,10 @@ ActiveRecord::Schema.define(:version => 20091017151003) do
     t.boolean  "staff_status_confirmed",                  :default => false, :null => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
-  add_index "users", ["staff"], :name => "index_users_on_staff"
-  add_index "users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
+  add_index "twitter_users", ["email"], :name => "index_users_on_email"
+  add_index "twitter_users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "twitter_users", ["staff"], :name => "index_users_on_staff"
+  add_index "twitter_users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
