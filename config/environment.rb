@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
   gemcutter = 'http://gemcutter.org'
   
   deps = [
-    ["haml",               "2.3.0"],
+    ["haml",               "2.2.9"],
     ["json",               "1.1.9"],
     ["twitter-auth",       "0.1.22", {:lib => "twitter_auth"}],    
     ["twitter",            "0.6.15"],
