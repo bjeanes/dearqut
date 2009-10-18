@@ -16,3 +16,7 @@ Then /^I should see the following in table "([^"]+)"$/ do |selector, expected_ta
   actual_table.map { |row| row.map { |column| column.gsub!(/<.*?>|^\s+|\s+$/, '').to_s } }
   actual_table.should == expected_table.raw
 end
+
+Then /^I should see "([^\"]*)" before "([^\"]*)"$/ do |first, second|
+  response.body.should contain(Regexp.new("#{first}.*#{second}", Regexp::MULTILINE))
+end

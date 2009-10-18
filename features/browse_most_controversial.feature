@@ -12,7 +12,8 @@ Feature: Browse messages that are most controversial
     When I go to the home page
     And I follow "Browse"
     And I follow "Most Controversial"
-    Then I should see /Very controversial[.\n\t\s]*Slightly controversial[.\n\t\s]*Hardly controversial/
+    Then I should see "Very controversial" before "Slightly controversial"
+    And I should see "Slightly controversial" before "Hardly controversial"
   
   
   
