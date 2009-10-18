@@ -1,13 +1,12 @@
 class VotesController < ApplicationController
   before_filter :build_vote
-  skip_before_filter :verify_authenticity_token
   
-  def up
+  def agree
     @vote.value = 1
     save_vote
   end
   
-  def down
+  def disagree
     @vote.value = -1
     save_vote
   end
@@ -25,17 +24,27 @@ class VotesController < ApplicationController
       @vote.ip          = request.remote_ip
       @vote.user_agent  = request.env["HTTP_USER_AGENT"]
       success           = @vote.save rescue false
-      vote              = {
-        :success        => success,
-        :id             => @vote.message_id,
-        :rating         => @vote.message.rating,
-        :positive_count => @vote.message.positive_vote_count,
-        :negative_count => @vote.message.negative_vote_count,
-        :value          => @vote.value
-      }
       
-      vote[:errors] = @vote.errors.full_messages unless success
+      respond_to do |wants|
+        wants.js do
+          vote              = {
+            :success        => success,
+            :id             => @vote.message_id,
+            :rating         => @vote.message.rating,
+            :positive_count => @vote.message.positive_vote_count,
+            :negative_count => @vote.message.negative_vote_count,
+            :value          => @vote.value
+          }
       
-      render :json => [vote]
+          vote[:errors] = @vote.errors.full_messages unless success
+      
+          render :json => [vote]
+        end
+        
+        wants.html do
+          flash[:error] = "Could not place vote (already voted?)" unless success
+          redirect_to :back
+        end
+      end
     end
 end

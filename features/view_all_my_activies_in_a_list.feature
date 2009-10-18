@@ -27,7 +27,7 @@ Feature: View messages I have interacted with
 
   @wip
   Scenario: Viewing messages I am commented on
-    When I follow "Agree"
+    When I press "Agree"
     And I follow "charlie"
     And I follow "My Activity"
     Then I should see "this is a super duper message. hai"

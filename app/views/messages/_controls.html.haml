@@ -1,5 +1,6 @@
 .controls{ :id => "controls-#{message.id}" }
-  %span.vote.up
-    = vote_link(:agree, message)
-  %span.vote.down
-    = vote_link(:disagree, message)
+
+  - [:agree, :disagree].each do |vote|
+    - form_tag([vote, message, :vote]) do
+      %button.vote{:type=>"submit", :name => vote.to_s, :class => vote.to_s}
+        = vote_link(vote, message)

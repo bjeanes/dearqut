@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources(:messages, message_options) do |mes|
     mes.resources :comments
-    mes.resource  :vote, :member => {:up => :post, :down => :post}, :only => []
+    mes.resource  :vote, :member => {:agree => :post, :disagree => :post}, :only => []
   end
   map.resources(:site, :collection => {:about => :get, :help=>:get, :privacy=>:get, :contact=>:get})
   

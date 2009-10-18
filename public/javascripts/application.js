@@ -39,17 +39,12 @@ $(function() {
       .bind("cancel.autobox", function(e) { console.log("Cancelled"); });
   }
 
-  $('.controls span a').click(vote);
+  $('.controls form').submit(vote);
 });
 
 function vote() {
-  var span      = $(this.parentNode);
-  var id        = span.parent().get(0).id.split('-')[1];
-  var direction = span.is('.up') ? 'up' : 'down';
-  var url       = "/messages/" + id + "/vote/" + direction;
-  
-  $.post(url, {}, voteCallback, 'json');
-  
+  var form = $(this);
+  $.post(form.attr('action'), {}, voteCallback, 'json');
   return false;
 }
 
@@ -61,16 +56,16 @@ function voteCallback(data) {
 		if(v.success) {
 			$('a', c).click = null;
 			
-			var up   = $('.up',   c);
-	    var down = $('.down', c);
+			var agree    = $('.agree',   c);
+	    var disagree = $('.disagree', c);
 	
-			$('.num',   up).text(v.positive_count);
-	    $('.num', down).text(v.negative_count);
+			$('.num',    agree).text(v.positive_count);
+	    $('.num', disagree).text(v.negative_count);
 	
 			if(data[i].value < 0) {
-				$('img', down).attr("src", "/images/youdisagreed.png");
+				$('img', disagree).attr("src", "/images/youdisagreed.png");
 			} else {
-				$('img',   up).attr("src", "/images/youagreed.png");
+				$('img',    agree).attr("src", "/images/youagreed.png");
 			}
 		} else {
 			// not logged in or already voted
