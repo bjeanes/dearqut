@@ -10,22 +10,27 @@ Rails::Initializer.run do |config|
   github    = "http://gems.github.com"
   gemcutter = 'http://gemcutter.org'
   
-  config.gem 'haml'
-  config.gem 'json'
-  config.gem 'twitter'
-  config.gem 'twitter-auth',       :lib => 'twitter_auth', :version => "~> 0.1.21"
-  config.gem 'mbbx6spp-twitter4r', :lib => false,          :source => github
-  config.gem 'twibot',             :lib => false,          :version => '= 0.1.7'
-  config.gem 'chronic',            :version => '>= 0.2.3'
-  config.gem 'javan-whenever',     :lib => false,          :source => github
-  config.gem 'formtastic',         :version => '>= 0.2.5', :source => gemcutter
-  config.gem 'rack-tidy',          :lib => 'rack/tidy',    :source => gemcutter
-
-  config.middleware.use "Rack::Tidy"
+  deps = [
+    ["haml",               "2.2.9"],
+    ["json",               "1.1.9"],
+    ["twitter-auth",       "0.1.22", {:lib => "twitter_auth"}],    
+    ["twitter",            "0.6.15"],
+    ["mbbx6spp-twitter4r", "0.4.0", {:source => github, :lib => false}],
+    ["twibot",             "0.1.7", {:lib => false}],
+    ["chronic",            "0.2.3"]
+    ["whenever",           "0.3.7", {:lib => false}],
+    ["formtastic",         "0.2.5"],
+    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}]
+  ].each do |gem, version, options|
+    options ||= {}
+    options[:version] = version
+    options = {:source => gemcutter}.merge(options)
+    config.gem(gem, options)
+  end
   
+  config.middleware.use            "Rack::Tidy"  
+  config.time_zone               = 'Brisbane'
   config.active_record.observers = :activity_observer
-  
-  config.time_zone = 'Brisbane'
 end
 
 ActiveRecord::Base.include_root_in_json = false

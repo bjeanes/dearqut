@@ -5,7 +5,7 @@ message_options     = {
     :popular        => :get,
     :most_commented => :get,
     :latest_commented => :get,
-    :most_controversial => :get
+    :controversial => :get
   }
 }
 
