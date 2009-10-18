@@ -19,7 +19,10 @@ Rails::Initializer.run do |config|
     ["chronic",            "0.2.3"],
     ["whenever",           "0.3.7", {:lib => false}],
     ["formtastic",         "0.2.5"],
-    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}]
+    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}],
+    ["authlogic",          "2.1.2"],
+    ["oauth",              "0.3.6"],
+    ["authlogic-oauth",    "1.0.8", {:lib => "authlogic_oauth"}]
   ].each do |gem, version, options|
     options ||= {}
     options[:version] = version
