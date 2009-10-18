@@ -1,8 +1,8 @@
-@http://www.pivotaltracker.com/story/show/1167117
-Feature: View messages I have interacted with
-  In order to keep track of messages I am interested in
-  As an authenticated user
-  I want to be able to see a list of every message I've ever commented of voted on
+@http://www.pivotaltracker.com/story/show/1509583
+Feature: Activity log
+  In order to see a history of everything I have done on the site
+  As a user
+  I want to see an log of my activities
 
   *Acceptance*:
   * Ordered by most recent 
@@ -25,7 +25,6 @@ Feature: View messages I have interacted with
     And I follow "My Activity"
     Then I should see "this is a super duper message. hai"
 
-  @wip
   Scenario: Viewing messages I am commented on
     When I press "Agree"
     And I follow "charlie"
