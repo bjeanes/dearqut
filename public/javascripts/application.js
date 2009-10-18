@@ -62,10 +62,15 @@ function voteCallback(data) {
 			$('.num',    agree).text(v.positive_count);
 	    $('.num', disagree).text(v.negative_count);
 	
+	    var agree_img    = $('img', agree);
+	    var disagree_img = $('img', disagree);
+	
 			if(data[i].value < 0) {
-				$('img', disagree).attr("src", "/images/youdisagreed.png");
+				disagree_img.attr("src", "/images/youdisagreed.png");
+        agree_img.attr("src", "/images/agree.png");
 			} else {
-				$('img',    agree).attr("src", "/images/youagreed.png");
+        agree_img.attr("src", "/images/youagreed.png");
+        disagree_img.attr("src", "/images/disagree.png");
 			}
 		} else {
 			// not logged in or already voted

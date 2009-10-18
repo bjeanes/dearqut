@@ -21,23 +21,4 @@ module MessagesHelper
       link_to h(truncate(message.body, :length => char, :omission => more )), message
     end
   end
-  
-  protected
-    def user_vote_for(message)
-      if logged_in?
-        message.votes.find_by_user_id(current_user.id)
-      else
-        message.votes.find_by_session_id(session[:session_id])
-      end
-    end
-  
-    def vote_image(direction, vote)
-      img = if vote.nil? || !vote.direction?(direction)
-        "#{direction}.png"
-      else
-        "you#{direction}d.png"
-      end
-      
-      image_tag(img)
-    end
 end
