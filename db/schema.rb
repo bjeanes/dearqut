@@ -158,26 +158,44 @@ ActiveRecord::Schema.define(:version => 20091018132130) do
   add_index "twitter_users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
-    t.string   "email",                              :null => false
-    t.string   "crypted_password",                   :null => false
-    t.string   "password_salt",                      :null => false
-    t.string   "persistence_token",                  :null => false
-    t.string   "single_access_token",                :null => false
-    t.string   "perishable_token",                   :null => false
-    t.integer  "login_count",         :default => 0, :null => false
-    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.string   "twitter_id"
+    t.string   "login",                                                      :null => false
+    t.string   "access_token"
+    t.string   "access_secret"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "name"
+    t.string   "location"
+    t.string   "description"
+    t.string   "profile_image_url"
+    t.string   "url"
+    t.boolean  "protected"
+    t.integer  "utc_offset"
+    t.string   "time_zone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "crypted_password",          :limit => 40
+    t.string   "password_salt",             :limit => 40
+    t.boolean  "admin",                                   :default => false, :null => false
+    t.string   "email"
+    t.boolean  "staff",                                   :default => false, :null => false
+    t.boolean  "staff_status_confirmed",                  :default => false, :null => false
+    t.string   "persistence_token",                                          :null => false
+    t.string   "single_access_token",                                        :null => false
+    t.string   "perishable_token",                                           :null => false
+    t.integer  "login_count",                             :default => 0,     :null => false
+    t.integer  "failed_login_count",                      :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["staff"], :name => "index_users_on_staff"
+  add_index "users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"

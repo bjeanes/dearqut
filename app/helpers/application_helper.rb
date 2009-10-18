@@ -1,12 +1,6 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def anonymous?
-    controller.send :anonymous?
-  end
-  
-  def admin?
-    controller.send :admin?
-  end
+  delegate :anonymous?, :admin?, :current_user, :logged_in?, :to => :controller
   
   def tag_path(tag)
     # save a redirect

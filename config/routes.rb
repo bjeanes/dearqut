@@ -21,8 +21,11 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources(:site, :collection => {:about => :get, :help=>:get, :privacy=>:get, :contact=>:get})
   
+  map.login '/login', :controller => "user_sessions", :action => "new"
   map.signup '/signup', :controller => "users", :action => "new"
-  map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true
+  
+  map.resources :user_sessions
+  # map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true
   
   map.namespace :admin do |admin|
     admin.root      :controller => 'dashboard', :action => 'index'

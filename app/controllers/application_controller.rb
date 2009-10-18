@@ -25,14 +25,18 @@ class ApplicationController < ActionController::Base
       current_user.admin? rescue false
     end
     
-    def current_user_with_nil
-      current_user_without_nil || nil
+    def current_user_session
+      return @current_user_session if defined?(@current_user_session)
+      @current_user_session = UserSession.find
+    end  
+
+    def current_user
+      @current_user = current_user_session && current_user_session.record
     end
-    alias_method_chain :current_user, :nil
     
     def check_for_banned_ip
       if @ban = Ban.find_by_ip(request.ip)
-        render "users/banned"        
+        render "users/banned"
         response.status = 403
       end
     end

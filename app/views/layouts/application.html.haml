@@ -19,7 +19,7 @@
               = link_to "#{'@' if current_user.twitter?}#{current_user.login}", my_account_path
               = tab.logout "Log out", logout_path
           - else
-            = tab.login "Log in", login_path
+            = tab.login "Log in", new_user_session_path
             = tab.signup "Sign up", signup_path
           = tab.home "Home", root_path
           = tab.browse "Browse", messages_path
