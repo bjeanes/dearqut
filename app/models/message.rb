@@ -17,7 +17,7 @@ class Message < ActiveRecord::Base
   named_scope :popular,            :order => 'rating DESC, tweet_id DESC'
   named_scope :newest,             :order => 'created_at DESC, tweet_id DESC'
   named_scope :most_commented,     :order => 'comments_count DESC, tweet_id DESC'
-  named_scope :most_controversial, :order => '(1 / (positive_vote_count / negative_vote_count)) * (positive_vote_count + negative_vote_count) DESC'
+  named_scope :most_controversial, :order => '(1 / ABS(positive_vote_count - negative_vote_count)) * (positive_vote_count + negative_vote_count) DESC'
   named_scope :latest_commented,   :conditions => 'last_commented_at IS NOT NULL', 
                                    :order => 'last_commented_at DESC, tweet_id DESC'
                                    
