@@ -18,6 +18,7 @@ Rails::Initializer.run do |config|
   config.gem 'twibot',             :lib => false,          :version => '= 0.1.7'
   config.gem 'javan-whenever',     :lib => false,          :source => github
   config.gem 'formtastic',         :version => '>= 0.2.5', :source => gemcutter
+  config.gem 'tidy'
   config.gem 'rack-tidy',          :lib => 'rack/tidy',    :source => gemcutter
 
   config.middleware.use "Rack::Tidy"
