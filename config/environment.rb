@@ -16,9 +16,9 @@ Rails::Initializer.run do |config|
   config.gem 'twitter-auth',       :lib => 'twitter_auth', :version => "~> 0.1.21"
   config.gem 'mbbx6spp-twitter4r', :lib => false,          :source => github
   config.gem 'twibot',             :lib => false,          :version => '= 0.1.7'
+  config.gem 'chronic',            :version => '>= 0.2.3'
   config.gem 'javan-whenever',     :lib => false,          :source => github
   config.gem 'formtastic',         :version => '>= 0.2.5', :source => gemcutter
-  config.gem 'tidy'
   config.gem 'rack-tidy',          :lib => 'rack/tidy',    :source => gemcutter
 
   config.middleware.use "Rack::Tidy"
