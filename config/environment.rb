@@ -13,7 +13,7 @@ Rails::Initializer.run do |config|
   deps = [
     ["haml",               "2.3.0"],
     ["json",               "1.1.9"],
-    ["twitter-auth",       "0.1.22", {:lib => 'twitter_auth'],    
+    ["twitter-auth",       "0.1.22", {:lib => "twitter_auth"}],    
     ["twitter",            "0.6.15"],
     ["mbbx6spp-twitter4r", "0.4.0", {:source => github, :lib => false}],
     ["twibot",             "0.1.7", {:lib => false}],
