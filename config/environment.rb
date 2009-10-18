@@ -17,7 +17,7 @@ Rails::Initializer.run do |config|
     ["twitter",            "0.6.15"],
     ["mbbx6spp-twitter4r", "0.4.0", {:source => github, :lib => false}],
     ["twibot",             "0.1.7", {:lib => false}],
-    ["chronic",            "0.2.3"]
+    ["chronic",            "0.2.3"],
     ["whenever",           "0.3.7", {:lib => false}],
     ["formtastic",         "0.2.5"],
     ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}]
