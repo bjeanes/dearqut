@@ -1,0 +1,6 @@
+You changed your vote to 
+= (vote.agreed? ? 'agreed' : 'disagreed').inspect
+for message
+= link_to truncate(vote.message.body, :length => 40), vote.message
+on 
+= activity.created_at.to_s(:short)
