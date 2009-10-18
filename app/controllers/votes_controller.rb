@@ -22,7 +22,7 @@ class VotesController < ApplicationController
     
     def save_vote
       @vote.ip          = request.remote_ip
-      @vote.user_agent  = request.env["HTTP_USER_AGENT"]
+      @vote.user_agent  = user_agent
       success           = @vote.save rescue false
       
       respond_to do |wants|

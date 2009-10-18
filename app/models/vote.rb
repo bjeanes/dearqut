@@ -9,6 +9,8 @@ class Vote < ActiveRecord::Base
   validates_uniqueness_of :session_id, :scope => :message_id, :if => :anonymous?
   validates_uniqueness_of :user_agent, :scope => [:message_id, :ip], :if => :anonymous?
 
+  validates_format_of :user_agent, :with => /^((?!curl).)*$/, :message => "must be a browser"
+
   named_scope :positive, :conditions => "value > 0"
   named_scope :negative, :conditions => "value < 0"
   

@@ -36,4 +36,10 @@ class ApplicationController < ActionController::Base
         response.status = 403
       end
     end
+    
+    def user_agent
+      request.env["HTTP_USER_AGENT"] || begin
+        "Webrat" if %w(test cucumber).include?(Rails.env)
+      end
+    end
 end

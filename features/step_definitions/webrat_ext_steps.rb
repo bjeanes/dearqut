@@ -1,7 +1,3 @@
-When /^I dump the page$/ do
-  save_and_open_page
-end
-
 Then /^I should not be on (.+)$/ do |page_name|
   URI.parse(current_url).path.should_not == path_to(page_name)
 end
