@@ -1,3 +1,17 @@
+# Server setup
+## Ubuntu
+
+* sudo apt-get install mysql-server
+* sudo apt-get install libmysqlclient15-dev
+* install REE
+* add REE bin path to system $PATH (/etc/environment)
+* sudo passenger-install-nginx-module
+* sudo apt-get install tidy
+* sudo ln -s /usr/lib/libtidy.so /usr/lib/libtidy.A.dylib
+
+----
+
+
 # run the following to get all 3rd party libraries required
 
   git submodule update --init
@@ -5,7 +19,7 @@
 
 ---- 
 
-# on deployment server:
+# on deployment server if you have path issues:
 
 /etc/ssh/sshd_config needs to have following line:
 

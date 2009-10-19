@@ -1,8 +1,8 @@
 set :application,             "dearqut"
 set :repository,              "git@github.com:bjeanes/#{application}.git"
-set :domain,                  "97.107.138.116"
+set :domain,                  "192.168.1.20"
                               
-set :user,                    "deploy"
+set :user,                    application
                               
 set :deploy_to,               "/srv/http/#{application}.com"
                               
