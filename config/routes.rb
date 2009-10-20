@@ -25,6 +25,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => "users", :action => "new"
   
   map.resources :user_sessions
+  map.login 'login', :controller => 'user_sessions', :action => 'new'  
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   # map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true
   
   map.namespace :admin do |admin|

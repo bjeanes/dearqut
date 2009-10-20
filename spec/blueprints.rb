@@ -5,7 +5,8 @@ require 'faker'
 
 Sham.define do
   login { Faker::Internet.user_name.gsub(/\./,'')[0...15] }
-  body  { Faker::Lorem.sentences(5).join(' ')     }
+  body  { Faker::Lorem.sentences(5).join(' ')             }
+  email { Faker::Internet.email                           }
 end
 
 Message.blueprint do
@@ -59,6 +60,7 @@ end
 
 User.blueprint do
   login
+  email
   twitter_id { rand(99999) }
   password               "password"
   password_confirmation  "password"

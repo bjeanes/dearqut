@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   
   acts_as_authentic do |c| 
     # c.transition_from_restful_authentication = true 
-    # c.transition_from_crypto_providers = OldCryptoProvider
-    c.crypto_provider = Authlogic::CryptoProviders::AES256
+    # # c.transition_from_crypto_providers = OldCryptoProvider
+    # # c.crypto_provider = Authlogic::CryptoProviders::AES256
+    # c.crypto_provider = Array
   end
     
   has_many :messages,   :dependent => :nullify

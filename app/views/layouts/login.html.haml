@@ -21,7 +21,7 @@
         %a{ :href => "/" } dearQUT Admin
       %h2.loginheading Login
       .icon_login.ie6fix
-      - form_tag(session_path, :id => "login-form", :method => "post") do
+      - form_tag(user_sessions_path, :id => "login-form", :method => "post") do
         = hidden_field_tag :redirect_to_admin, true
         %p
           %label{ :for => "login" }
