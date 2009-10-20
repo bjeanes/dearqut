@@ -5,7 +5,6 @@ module DearQutHelper
   
   def should_be_logged_in
     controller.should be_logged_in
-    current_user.should_not be_nil
   end
   
   def create_user(login = "leet", password = "h4x0rk1d", admin = false)
@@ -17,6 +16,11 @@ module DearQutHelper
       u.save!
       u
     end
+  end
+  
+  def login(login, password)
+    post_via_redirect '/user_sessions', :user_session => 
+      {:login => login, :password => password}
   end
 end
 

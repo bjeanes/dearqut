@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user.login = params[:user][:login]
     @user.staff = params[:user][:staff]
     
-    if @user.save!
+    if @user.save
       flash[:notice] = "You have successfully created an account."
       flash[:notice] << " Your staff account will be activated after an admin confirms that you are a staff member." if @user.staff?
       redirect_back_or_default root_path

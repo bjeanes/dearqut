@@ -1,8 +1,10 @@
-class User < ActiveRecord::Base  
-  acts_as_authentic do |c| 
-    c.transition_from_restful_authentication = true 
-    # # c.transition_from_crypto_providers = OldCryptoProvider
-    # # c.crypto_provider = Authlogic::CryptoProviders::AES256
+class User < ActiveRecord::Base
+  EmailRegex      = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  StaffEmailRegex = /^.*?@qut\.edu\.au$/
+  
+  acts_as_authentic do |config| 
+    config.transition_from_restful_authentication = true
+    config.validate_email_field                   = false # we'll do this ourselves
   end
     
   has_many :messages,   :dependent => :nullify
@@ -11,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
 
   validates_uniqueness_of   :email, :allow_nil => true
-  validates_format_of       :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :unless => :staff?, :allow_blank => true, :message => "must be a valid email address"
-  validates_format_of       :email, :with => /^.*?@qut\.edu\.au$/, :if => :staff?, :on => :create, :message => "must be a QUT staff email address"
+  validates_format_of       :email, :with => EmailRegex, :unless => :staff?, :allow_nil => true, :allow_blank => true, :message => "must be a valid email address"
+  validates_format_of       :email, :with => StaffEmailRegex, :if => :staff?, :on => :create, :message => "must be a QUT staff email address"
   
   attr_protected :admin, :staff, :staff_status_confirmed
   
