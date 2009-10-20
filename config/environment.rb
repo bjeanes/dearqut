@@ -11,18 +11,20 @@ Rails::Initializer.run do |config|
   gemcutter = 'http://gemcutter.org'
   
   deps = [
+    ["twitter",            "0.6.15",{:lib => false}],
+    ["mbbx6spp-twitter4r", "0.4.0", {:lib => false, :source => github}],
+    ["twibot",             "0.1.7", {:lib => false}],
+    ["chronic",            "0.2.3", {:lib => false}],
+    ["whenever",           "0.3.7", {:lib => false}],
+    
+    ["authlogic",          "2.1.2"],
     ["haml",               "2.2.9"],
     ["json",               "1.1.9"],
-    ["twitter",            "0.6.15"],
-    ["mbbx6spp-twitter4r", "0.4.0", {:source => github, :lib => false}],
-    ["twibot",             "0.1.7", {:lib => false}],
-    ["chronic",            "0.2.3"],
-    ["whenever",           "0.3.7", {:lib => false}],
     ["formtastic",         "0.2.5"],
-    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}],
-    ["authlogic",          "2.1.2"],
-    ["oauth",              "0.3.6"],
-    ["authlogic-oauth",    "1.0.8", {:lib => "authlogic_oauth"}]
+    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}]
+
+    #     ["oauth",              "0.3.6"],
+    #     ["authlogic-oauth",    "1.0.8", {:lib => "authlogic_oauth"}]
   ].each do |gem, version, options|
     options ||= {}
     options[:version] = version

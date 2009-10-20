@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
+  class OldCryptoProvider
+    def self.encrypt(*args)
+      raise "Wtf"
+    end
+  end
+  
   acts_as_authentic do |c| 
-    c.transition_from_restful_authentication = true 
+    # c.transition_from_restful_authentication = true 
+    # c.transition_from_crypto_providers = OldCryptoProvider
+    c.crypto_provider = Authlogic::CryptoProviders::AES256
   end
     
   has_many :messages,   :dependent => :nullify
