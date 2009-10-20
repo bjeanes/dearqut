@@ -23,9 +23,9 @@ role :db,                     domain, :primary => true
 set :rails_env,               "production"
 
 before 'deploy:cold',         'deploy:upload_database_yml'
-before 'deploy',              'bot:stop'
+# before 'deploy',              'bot:stop'
 after  'deploy',              'deploy:migrate'
-after  'deploy',              'bot:start'
+# after  'deploy',              'bot:start'
 after  'deploy:symlink',      'deploy:restart'
 after  'deploy:symlink',      'deploy:create_symlinks'
 after  'deploy:symlink',      'deploy:install_gems'
