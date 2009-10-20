@@ -38,10 +38,11 @@ module Auth
     end
     
     def require_no_user
+      p current_user
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_back_or_default root_url
         return false
       end
     end
