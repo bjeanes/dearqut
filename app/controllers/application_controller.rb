@@ -2,37 +2,16 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include ::Auth
+  
   before_filter :check_for_banned_ip
   
   include TabFu
   helper :all
   protect_from_forgery
   tab :home
-
-  filter_parameter_logging :password
-  
+    
   protected
-  
-    def anonymous?
-      !logged_in?
-    end
-    
-    def logged_in?
-      current_user
-    end
-    
-    def admin?
-      current_user.admin? rescue false
-    end
-    
-    def current_user_session
-      return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
-    end  
-
-    def current_user
-      @current_user = current_user_session && current_user_session.record
-    end
     
     def check_for_banned_ip
       if @ban = Ban.find_by_ip(request.ip)

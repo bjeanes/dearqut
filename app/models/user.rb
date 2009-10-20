@@ -1,15 +1,8 @@
-class User < ActiveRecord::Base
-  class OldCryptoProvider
-    def self.encrypt(*args)
-      raise "Wtf"
-    end
-  end
-  
+class User < ActiveRecord::Base  
   acts_as_authentic do |c| 
-    # c.transition_from_restful_authentication = true 
+    c.transition_from_restful_authentication = true 
     # # c.transition_from_crypto_providers = OldCryptoProvider
     # # c.crypto_provider = Authlogic::CryptoProviders::AES256
-    # c.crypto_provider = Array
   end
     
   has_many :messages,   :dependent => :nullify
@@ -51,6 +44,7 @@ class User < ActiveRecord::Base
   def twitter?
     !twitter_id.nil?
   end
+  
   # def self.find_or_create_by_twitter_user(user)
   #   find_by_login(user.screen_name) || begin
   #     options = {
@@ -67,6 +61,10 @@ class User < ActiveRecord::Base
   #     create(options)
   #   end
   # end
+  
+  def self.find_by_login_or_email(login)
+    find_by_login(login) || find_by_email(login)
+  end
   
   protected
   
