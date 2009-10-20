@@ -74,8 +74,7 @@ class User < TwitterAuth::GenericUser
   end
   
   def authenticate(password)
-    crypted_password == encrypt(password)
-    self
+    (crypted_password == encrypt(password)) && self
   end
   
   def valid?

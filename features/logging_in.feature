@@ -28,6 +28,5 @@ Feature: Logging in
     And I press "log in"
 
     Then I should not see "You have logged in successfully."
-    And I should see "Login failed"
+    And I should see "Unable to verify your credentials"
     And I should not see "fooballz"
-    And I should not be logged in
