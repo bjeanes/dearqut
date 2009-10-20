@@ -9,10 +9,11 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Successfully logged in."
+      flash[:notice] = "You have logged in successfully."
       path = params[:redirect_to_admin] == 'true' ? admin_root_path : root_path
       redirect_back_or_default path
     else
+      flash.now[:error] = "Unable to verify your credentials."
       render :action => 'new'
     end
   end
@@ -20,7 +21,7 @@ class UserSessionsController < ApplicationController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash[:notice] = "Successfully logged out."
+    flash[:notice] = "You have logged out successfully."
     redirect_back_or_default root_url
   end
 end
