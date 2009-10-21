@@ -69,7 +69,11 @@ class MessagesController < ApplicationController
   protected
     def load_tag
       if params[:tag_id]
-        unless @tag = Tag.with_type_scope('Message') {Tag.find(params[:tag_id])}
+        @tag = Tag.with_type_scope('Message') do
+          Tag.find_by_id_or_name(params[:tag_id])
+        end
+        
+        unless @tag
           flash[:error] = "No such tag or no messages use the tag"
           redirect_to messages_path
           return

@@ -14,7 +14,9 @@ class TagsController < ApplicationController
   end
   
   def show
-    path = if (@tag = message_tags{Tag.find(params[:id])})
+    @tag = message_tags { Tag.find_by_id_or_name(params[:id]) }
+    
+    path = if @tag
       tag_messages_path(@tag)
     else
       flash[:error] = "That tag does not exist"
@@ -33,7 +35,6 @@ class TagsController < ApplicationController
     def tags_from_text(text)
       [] # TODO
     end
-    
   
     def autocomplete_tag_suggestions
       tags = Tag.popular.search(params[:val]).limit(params[:limit] || 5)
