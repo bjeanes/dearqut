@@ -21,10 +21,9 @@ Rails::Initializer.run do |config|
     ["haml",               "2.2.9"],
     ["json",               "1.1.9"],
     ["formtastic",         "0.2.5"],
-    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}]
-
-    #     ["oauth",              "0.3.6"],
-    #     ["authlogic-oauth",    "1.0.8", {:lib => "authlogic_oauth"}]
+    ["rack-tidy",          "0.2.0", {:lib => 'rack/tidy'}],
+    ["oauth",              "0.3.6"],
+    ["authlogic-oauth",    "1.0.8", {:lib => "authlogic_oauth"}]
   ].each do |gem, version, options|
     options ||= {}
     options[:version] = version

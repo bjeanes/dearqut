@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091020103834) do
+ActiveRecord::Schema.define(:version => 20091020134038) do
 
   create_table "activities", :force => true do |t|
     t.integer  "target_id"
@@ -159,9 +159,9 @@ ActiveRecord::Schema.define(:version => 20091020103834) do
 
   create_table "users", :force => true do |t|
     t.string   "twitter_id"
-    t.string   "login",                                                       :null => false
-    t.string   "access_token"
-    t.string   "access_secret"
+    t.string   "login"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
     t.string   "name"
@@ -174,17 +174,17 @@ ActiveRecord::Schema.define(:version => 20091020103834) do
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "crypted_password",          :limit => 128
-    t.string   "password_salt",             :limit => 128
-    t.boolean  "admin",                                    :default => false, :null => false
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.boolean  "admin",                                   :default => false, :null => false
     t.string   "email"
-    t.boolean  "staff",                                    :default => false, :null => false
-    t.boolean  "staff_status_confirmed",                   :default => false, :null => false
-    t.string   "persistence_token",                                           :null => false
-    t.string   "single_access_token",                                         :null => false
-    t.string   "perishable_token",                                            :null => false
-    t.integer  "login_count",                              :default => 0,     :null => false
-    t.integer  "failed_login_count",                       :default => 0,     :null => false
+    t.boolean  "staff",                                   :default => false, :null => false
+    t.boolean  "staff_status_confirmed",                  :default => false, :null => false
+    t.string   "persistence_token",                                          :null => false
+    t.string   "single_access_token",                                        :null => false
+    t.string   "perishable_token",                                           :null => false
+    t.integer  "login_count",                             :default => 0,     :null => false
+    t.integer  "failed_login_count",                      :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20091020103834) do
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["oauth_token"], :name => "index_users_on_oauth_token"
   add_index "users", ["staff"], :name => "index_users_on_staff"
   add_index "users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
 
