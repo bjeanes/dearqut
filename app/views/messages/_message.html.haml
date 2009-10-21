@@ -1,47 +1,46 @@
-.msg-item
-  %p.message-text= message_body(message)
-  %p.postedby.right-text
-    sincerely,
-    %strong= h message.author
-    ,
-    = h message.created_at.to_s(:short)
-  - if admin?
-    %p.admin
-      = link_to "delete", delete_message_path(message)
-      = link_to "edit", edit_message_path(message)
+%p.message-text= message_body(message)
+%p.postedby.right-text
+  sincerely,
+  %strong= h message.author
+  ,
+  = h message.created_at.to_s(:short)
+- if admin?
+  %p.admin
+    = link_to "delete", delete_message_path(message)
+    = link_to "edit", edit_message_path(message)
 
-  .msg-extras
-    %ul
-      %li.comments
-        - link_to "#{message_path(message)}#comments" do
-          %strong
-            Comments
-          %br
-          = image_tag "commentsicon.png"
-          %strong= message.ham_comments_count
-      %li.tags
-        %strong Tagged Under
+.msg-extras
+  %ul
+    %li.comments
+      - link_to "#{message_path(message)}#comments" do
+        %strong
+          Comments
         %br
-        %p= tag_sentence(message.tags)
-      %li.campus
-        %strong Happened at
-        %br
-        %p
-          %span.blue= message.campus || "N/A"
-      %li.faculty
-        %strong Faculty
-        %br
-        %p
-          %span.blue
-            - if message.faculty
-              - if message.faculty.to_s == 'Science and Technology'
-                Scitech
-              - elsif message.faculty.to_s == 'Built Environment and Engineering'
-                BEE
-              - elsif message.faculty.to_s == 'QUT International College'
-                International
-              - else
-                = message.faculty
+        = image_tag "commentsicon.png"
+        %strong= message.ham_comments_count
+    %li.tags
+      %strong Tagged Under
+      %br
+      %p= tag_sentence(message.tags)
+    %li.campus
+      %strong Happened at
+      %br
+      %p
+        %span.blue= message.campus || "N/A"
+    %li.faculty
+      %strong Faculty
+      %br
+      %p
+        %span.blue
+          - if message.faculty
+            - if message.faculty.to_s == 'Science and Technology'
+              Scitech
+            - elsif message.faculty.to_s == 'Built Environment and Engineering'
+              BEE
+            - elsif message.faculty.to_s == 'QUT International College'
+              International
             - else
-              N/A
-    %br{ :clear => "all" }
+              = message.faculty
+          - else
+            N/A
+  %br{ :clear => "all" }

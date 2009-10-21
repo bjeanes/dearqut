@@ -1,6 +1,7 @@
 #messages.mine
   %h1 My Messages
   - @messages.each do |message|
-    = render :partial => "messages/message", :locals => {:message => message}
+    .msg-item
+      = render :partial => "messages/message", :locals => {:message => message}
     
   = will_paginate @messages
