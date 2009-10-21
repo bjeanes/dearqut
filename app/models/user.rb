@@ -12,13 +12,12 @@ class User < ActiveRecord::Base
   has_many :votes,      :dependent => :destroy
   has_many :activities, :dependent => :destroy
 
-  validates_uniqueness_of   :email, :allow_nil => true
   validates_format_of       :email, :with => EmailRegex, :unless => :staff?, :allow_nil => true, :allow_blank => true, :message => "must be a valid email address"
   validates_format_of       :email, :with => StaffEmailRegex, :if => :staff?, :on => :create, :message => "must be a QUT staff email address"
   
-  attr_protected :admin, :staff, :staff_status_confirmed
+  attr_protected :admin, :staff_status_confirmed
   
-  after_create :populate_oauth_user
+  before_create :populate_oauth_user
   
   def to_s
     protected? ? "Anonymous" : name_for_display
@@ -83,18 +82,18 @@ class User < ActiveRecord::Base
         case @response
         when Net::HTTPSuccess
           user_info = JSON.parse(@response.body)
-          
-          self.attributes = user_info
 
-          # self.login             = user_info['login']
-          # self.location          = user_info['location']
-          # self.name              = user_info['name']
-          # self.description       = user_info['description']
-          # self.twitter_id        = user_info['id']
-          # self.profile_image_url = user_info['profile_image_url']
-          # self.url               = user_info['url']
-          # self.protected         = user_info['protected']
+          self.login             = user_info['screen_name']
+          self.location          = user_info['location']
+          self.name              = user_info['name']
+          self.description       = user_info['description']
+          self.twitter_id        = user_info['id']
+          self.profile_image_url = user_info['profile_image_url']
+          self.url               = user_info['url']
+          self.protected         = user_info['protected']
         end
       end
+      
+      true
     end
 end

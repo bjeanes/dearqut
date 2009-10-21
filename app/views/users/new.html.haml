@@ -8,6 +8,10 @@
 #signup.user-box
 
   - semantic_form_for @user do |f|
+    = oauth_register_button :value => "Sign Up With Twitter"
+
+    OR
+
     - f.inputs do
       = f.input :login, :label => "Username"
       = f.input :password

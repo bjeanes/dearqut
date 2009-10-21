@@ -1,9 +1,8 @@
 %h2
   Welcome Back
 #loginbox.user-box
-  = image_tag("twitter_login.png")
-  = oauth_register_button :value => "register"
-  = oauth_login_button :value => "login"
+  - form_for @user_session do
+    = oauth_login_button :value => "Login With Twitter"
 
   %br
   %br

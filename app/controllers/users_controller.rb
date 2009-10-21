@@ -9,8 +9,6 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    @user.login = params[:user][:login]
-    @user.staff = params[:user][:staff]
     
     @user.save do |result|
       if result
