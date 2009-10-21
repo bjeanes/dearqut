@@ -28,7 +28,7 @@
         Tags
         
 - @messages.each do |message|
-  .msg-item
+    = render :partial => 'controls', :locals => {:message => message}
     = render :partial => 'message', :locals => {:message => message}
 
 #pagination
