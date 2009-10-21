@@ -1,11 +1,11 @@
-message_options     = {
-  :member           => {:delete => :get}, 
-  :collection       => {
-    :random         => :get, 
-    :popular        => :get,
-    :most_commented => :get,
+message_options = {
+  :member             => {:delete => :get}, 
+  :collection         => {
+    :random           => :get, 
+    :popular          => :get,
+    :most_commented   => :get,
     :latest_commented => :get,
-    :controversial => :get
+    :controversial    => :get
   }
 }
 
