@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   
   deps = [
     ["twitter",            "0.6.15",{:lib => false}],
+    ["json",               "1.1.9"],
     ["mbbx6spp-twitter4r", "0.4.0", {:lib => false, :source => github}],
     ["twibot",             "0.1.7", {:lib => false}],
     ["chronic",            "0.2.3", {:lib => false}],
