@@ -1,6 +1,6 @@
 set :application,             "dearqut"
 set :repository,              "git@github.com:bjeanes/#{application}.git"
-set :domain,                  "192.168.1.20"
+set :domain,                  "115.69.29.3"
                               
 set :user,                    application
                               
