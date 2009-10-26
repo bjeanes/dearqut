@@ -3,7 +3,7 @@ module My
 
     def index
       @messages = current_user.messages.paginate(:order => "created_at DESC", :page => params[:page])
-      @grouped_messages = @messages.group_by {|m| m.updated_at.strftime("%d-%m-%Y")}
+      @grouped_messages = @messages.group_by {|m| m.created_at.strftime("%d-%m-%Y")}
     end
 
   end
