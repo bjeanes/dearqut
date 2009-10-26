@@ -127,36 +127,6 @@ ActiveRecord::Schema.define(:version => 20091020134038) do
   add_index "tags", ["name"], :name => "index_tags_on_name"
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
 
-  create_table "twitter_users", :force => true do |t|
-    t.string   "twitter_id"
-    t.string   "login"
-    t.string   "access_token"
-    t.string   "access_secret"
-    t.string   "remember_token",            :limit => 40
-    t.datetime "remember_token_expires_at"
-    t.string   "name"
-    t.string   "location"
-    t.string   "description"
-    t.string   "profile_image_url"
-    t.string   "url"
-    t.boolean  "protected"
-    t.integer  "utc_offset"
-    t.string   "time_zone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
-    t.boolean  "admin",                                   :default => false, :null => false
-    t.string   "email"
-    t.boolean  "staff",                                   :default => false, :null => false
-    t.boolean  "staff_status_confirmed",                  :default => false, :null => false
-  end
-
-  add_index "twitter_users", ["email"], :name => "index_users_on_email"
-  add_index "twitter_users", ["login"], :name => "index_users_on_login", :unique => true
-  add_index "twitter_users", ["staff"], :name => "index_users_on_staff"
-  add_index "twitter_users", ["staff_status_confirmed"], :name => "index_users_on_staff_status_confirmed"
-
   create_table "users", :force => true do |t|
     t.string   "twitter_id"
     t.string   "login"
