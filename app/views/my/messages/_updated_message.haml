@@ -8,7 +8,7 @@
   .comments
     - link_to "#{message_path(message)}#comments" do
       = image_tag "commentsicon.png"
-      %strong= message.ham_comments_count
+      = message.ham_comments_count
   .votes
     %ul
       %li
