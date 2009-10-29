@@ -8,6 +8,12 @@
 %p
   = pluralize(@votes_count, "votes")
   = "(#{@votes_per_message} per message)"
+  
+%h2 Staff Accounts
+%p
+  = link_to pluralize(@unverified_staff_account_count, "pending staff account"), admin_staff_accounts_path
+  = pluralize(@verified_staff_account_count, "verified staff account")
+
 
 %h2 Moderation
 %p= link_to @message_moderation_count, admin_message_moderation_index_path

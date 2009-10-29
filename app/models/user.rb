@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   validates_format_of       :email, :with => EmailRegex, :unless => :staff?, :allow_nil => true, :allow_blank => true, :message => "must be a valid email address"
   validates_format_of       :email, :with => StaffEmailRegex, :if => :staff?, :on => :create, :message => "must be a QUT staff email address"
   
+  named_scope :staff, :conditions => {:staff => true}
+  named_scope :verified_staff, :conditions => {:staff => true, :staff_status_confirmed => true}
+  named_scope :unverified_staff, :conditions => {:staff => true, :staff_status_confirmed => false}
+  
   attr_protected :admin, :staff_status_confirmed
   
   before_create :populate_oauth_user
@@ -29,6 +33,10 @@ class User < ActiveRecord::Base
   
   def login_for_display
     "#{'@' if twitter_id?}#{login}"
+  end
+  
+  def verified_staff?
+    staff? && staff_status_confirmed?
   end
   
   def voted?(message)
@@ -46,6 +54,10 @@ class User < ActiveRecord::Base
   
   def twitter?
     !twitter_id.nil?
+  end
+    
+  def approve_as_staff!
+    update_attribute(:staff_status_confirmed, true) if staff?
   end
   
   def self.find_or_create_by_twitter_user(user)

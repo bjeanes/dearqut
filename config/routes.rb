@@ -34,6 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.root      :controller => 'dashboard', :action => 'index'
     admin.resources :message_moderation
+    admin.resources :staff_accounts, :member => {:approve => :post, :deny => :post}
   end
   
   map.namespace :my do |my|

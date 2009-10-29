@@ -1,4 +1,4 @@
-Given /^I am not logged in$/ do
+Given /^I am not logged in|I am logged out$/ do
   reset!
 end
 
@@ -23,7 +23,7 @@ end
 Given /^I am logged in(?: as "([^\"]+)")?$/ do |user|
   user = user ? create_user(user) : create_user
   user.save!
-  login(user.login, user.password)
+  login(user.login, 'password')
   should_be_logged_in
 end
 

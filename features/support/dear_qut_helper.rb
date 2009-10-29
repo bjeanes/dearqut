@@ -7,7 +7,7 @@ module DearQutHelper
     controller.should be_logged_in
   end
   
-  def create_user(login = "leet", password = "h4x0rk1d", admin = false)
+  def create_user(login = "leet", password = "password", admin = false)
     User.find_by_login(login) || begin
       u = User.new(:password => password, :password_confirmation => password)
       u.login = login

@@ -1,0 +1,12 @@
+- if list.empty?
+  %i None
+- else
+  %table
+    %thead
+      %tr
+        %th Login
+        %th Created at
+    - list.each do |account|
+      %tr
+        %td= link_to h(account), admin_staff_account_path(account)
+        %td= account.created_at
