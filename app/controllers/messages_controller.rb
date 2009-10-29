@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
   
   def show
     @comments = @message.comments.ham
+    @comment = @message.comments.build
   end
   
   def new
@@ -101,13 +102,7 @@ class MessagesController < ApplicationController
         flash[:error] = "You do not have permission to do that"
         redirect_to @message
       end
-    end
-    
-    def can_edit_message?(message)
-      admin? || message_in_session?(message) || (logged_in? && message.author?(current_user))
-    end
-    helper_method :can_edit_message?
-    
+    end   
     
     def load_resources
       if collection?
@@ -130,23 +125,7 @@ class MessagesController < ApplicationController
     def collection?
       INDEX_VIEWS.include? action_name.to_s
     end
-    
-    # This is so when users are anonymous they can still edit 
-    # the message or assign it to their new account if they
-    # are still in the same browser session
-    def add_message_to_session
-      session_message_ids << @message.id
-    end
-    
-    # check if the current message was one created during
-    # this browser session
-    def message_in_session?(message)
-      session_message_ids.include?(message.id)
-    end
-    
-    def session_message_ids
-      session[:message_ids] ||= []
-    end
+
     
     def adding_context?
       !!params[:adding_context]

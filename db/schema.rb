@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091029071851) do
+ActiveRecord::Schema.define(:version => 20091029075319) do
 
   create_table "activities", :force => true do |t|
     t.integer  "target_id"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20091029071851) do
     t.datetime "last_commented_at"
     t.string   "ip"
     t.string   "moderation_status"
-    t.integer  "ham_comments_count"
+    t.integer  "ham_comments_count",               :default => 0,     :null => false
     t.boolean  "moderated",                        :default => false
   end
 

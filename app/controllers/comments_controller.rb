@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment was successfully posted.'
       redirect_to(@message)
     else
-      render :controller => "messages", :action => "show"
+      @comments = @message.comments.ham
+      render :template => "messages/show"
     end
   end
   

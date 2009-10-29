@@ -1,9 +1,9 @@
 #random-message.center
-  = render :partial => 'controls', :locals => {:message => @message}
-  = render :partial => 'message', :locals => {:message => @message}
+  = render :partial => 'messages/controls', :locals => {:message => @message}
+  = render :partial => 'messages/message', :locals => {:message => @message}
 #create-comment
   = image_tag 'comment.png'
-  - form_for [@message, @message.comments.build] do |f|
+  - form_for [@message, @comment] do |f|
     = f.text_area :body
     = f.submit 'Post Comment', :class => 'button right'
     - if logged_in?

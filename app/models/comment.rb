@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   before_create :check_verified_staff
   after_create :set_message_commented_at
   
-  acts_as_snook
+  acts_as_snook :comment_belongs_to => "message", :ham_comments_count_field => :ham_comments_count
   
   def author
     anonymous? ? "Anonymous" : user.to_s
