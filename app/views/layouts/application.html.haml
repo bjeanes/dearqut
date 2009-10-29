@@ -18,7 +18,7 @@
             %span.current-user
               - if current_user.verified_staff?
                 = image_tag('staffbadgesmall.png', :alt => 'Verified Staff Member')
-              = link_to "#{'@' if current_user.twitter?}#{current_user.login}", my_account_path
+              = link_to "#{'@' if current_user.twitter?}#{current_user.login}", my_activity_path
               = tab.logout "Log out", logout_path
           - else
             = tab.login "Log in", new_user_session_path
