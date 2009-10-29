@@ -9,12 +9,12 @@ module Admin
       @comments_per_message = (@comments_count / @messages_count.to_f).round(2) rescue 0
       @votes_per_message    = (@votes_count    / @messages_count.to_f).round(2) rescue 0
     
-      spams = [["spam", Message.spam.count],
-               ["need moderation", Message.moderate.count]]
+      spams = [["spam", Message.not_moderated.spam.count],
+               ["need moderation", Message.moderate.not_moderated.count]]
 
       @message_moderation_count = spams.map do |type, count| 
          "#{count} #{type}" if count > 0
-      end.flatten.join(', ')
+      end.compact.join(', ')
     end
 
   end

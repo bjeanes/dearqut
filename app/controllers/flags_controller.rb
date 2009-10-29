@@ -11,8 +11,10 @@ class FlagsController < ApplicationController
     @flag.ip   = request.remote_ip
 
     if @flag.save
+      @message.moderation_status = 'moderate'
+      @message.save!
       flash[:notice] = 'Message has been flagged for moderation'
-      redirect_to(@message)
+      redirect_to messages_path
     else
       render :action => "new"
     end

@@ -11,11 +11,11 @@ Given /^a message titled "([^\"]*)"$/ do |title|
 end
 
 Given /^I am logged in as admin$/ do
-  Given %{there is the following user},
-   %{
-   | login | password | admin |
-   | admin | secret   | true  |
-   }
+  Given %Q{there is the following user only}, table([
+    %w{login password admin},
+    %w{admin secret true}
+    ])
+  
   When  %{I go to the admin page}
   And   %{I fill in "Username" with "admin"}
   And   %{I fill in "Password" with "secret"}

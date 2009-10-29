@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091020134038) do
+ActiveRecord::Schema.define(:version => 20091029023213) do
 
   create_table "activities", :force => true do |t|
     t.integer  "target_id"
@@ -63,24 +63,35 @@ ActiveRecord::Schema.define(:version => 20091020134038) do
     t.datetime "updated_at"
   end
 
-  create_table "messages", :force => true do |t|
+  create_table "flags", :force => true do |t|
+    t.integer  "message_id", :null => false
+    t.integer  "ip"
     t.integer  "user_id"
-    t.text     "body",                                   :null => false
+    t.string   "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tweet_id"
+  end
+
+  add_index "flags", ["message_id"], :name => "index_flags_on_message_id"
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "body",                                                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tweet_id",            :limit => 8
     t.boolean  "private"
-    t.integer  "rating",              :default => 0,     :null => false
-    t.integer  "negative_vote_count", :default => 0,     :null => false
-    t.integer  "positive_vote_count", :default => 0,     :null => false
-    t.integer  "comments_count",      :default => 0,     :null => false
+    t.integer  "rating",                           :default => 0,     :null => false
+    t.integer  "negative_vote_count",              :default => 0,     :null => false
+    t.integer  "positive_vote_count",              :default => 0,     :null => false
+    t.integer  "comments_count",                   :default => 0,     :null => false
     t.integer  "faculty_id"
     t.integer  "campus_id"
     t.datetime "last_commented_at"
     t.string   "ip"
-    t.string   "spam_status"
+    t.string   "moderation_status"
     t.integer  "ham_comments_count"
-    t.boolean  "moderated",           :default => false
+    t.boolean  "moderated",                        :default => false
   end
 
   add_index "messages", ["campus_id"], :name => "index_messages_on_campus_id"
@@ -90,10 +101,10 @@ ActiveRecord::Schema.define(:version => 20091020134038) do
   add_index "messages", ["ip"], :name => "index_messages_on_ip"
   add_index "messages", ["last_commented_at"], :name => "index_messages_on_last_commented_at"
   add_index "messages", ["moderated"], :name => "index_messages_on_moderated"
+  add_index "messages", ["moderation_status"], :name => "index_messages_on_spam_status"
   add_index "messages", ["negative_vote_count"], :name => "index_messages_on_negative_vote_count"
   add_index "messages", ["positive_vote_count"], :name => "index_messages_on_positive_vote_count"
   add_index "messages", ["rating"], :name => "index_messages_on_rating"
-  add_index "messages", ["spam_status"], :name => "index_messages_on_spam_status"
   add_index "messages", ["tweet_id"], :name => "index_messages_on_tweet_id", :unique => true
   add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 

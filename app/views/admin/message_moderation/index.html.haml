@@ -14,7 +14,7 @@
     - cls = cycle('','alt')
     %tr
       %td{:class => "spec#{cls}"}= message.author
-      %td{:class => cls}= link_to message.body, admin_spam_path(message)
-      %td{:class => cls}= message.spam_status
+      %td{:class => cls}= link_to message.body, admin_message_moderation_path(message)
+      %td{:class => cls}= message.moderation_status
       
 = will_paginate @messages

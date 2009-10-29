@@ -1,0 +1,31 @@
+%h1 Moderation
+%h2 Viewing message ##{@message.id}
+
+%dl
+  %dt Author
+  %dd= @message.author
+  %dt Message
+  %dd= h(@message.body)
+
+  %dt Posted At
+  %dd= @message.created_at
+  
+  - if @message.flags.count > 0
+    %dt Reason
+    %dd= h(@message.flags.first.reason)
+  - else  
+    %dt Spam Status
+    %dd= @message.moderation_status.titleize
+    %dt Spam Score
+    %dd= @message.snook_credits
+  
+  - if @message.ip?
+    %dt IP
+    %dd= @message.ip
+    %dt Posted from QUT?
+    %dd= @message.qut? ? 'yes' : 'no'
+    
+- form_for @message, :url => admin_message_moderation_path(@message) do |f|
+  = f.submit 'This is Spam', :name => 'spam'
+  = f.submit 'This is Ham', :name => 'ham'
+  = f.submit 'Cull it', :name => 'cull'

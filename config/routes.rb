@@ -18,7 +18,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources(:messages, message_options) do |mes|
     mes.resources :comments
     mes.resource  :vote, :member => {:agree => :post, :disagree => :post}, :only => []
+    mes.resources :flags
   end
+  
   map.resources(:site, :collection => {:about => :get, :help=>:get, :privacy=>:get, :contact=>:get})
   
   map.login '/login', :controller => "user_sessions", :action => "new"
@@ -31,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.namespace :admin do |admin|
     admin.root      :controller => 'dashboard', :action => 'index'
-    admin.resources :spam
+    admin.resources :message_moderation
   end
   
   map.namespace :my do |my|

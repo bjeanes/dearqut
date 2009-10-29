@@ -30,7 +30,7 @@
         %p
           %label{ :for => "password" }
             Password
-          = f.text_field :password, {:id => "password", :class => "input-medium"}
+          = f.password_field :password, {:id => "password", :class => "input-medium"}
         %p.clearboth
           %input.button{ :name => "submit", :type => "submit", :value => "Login" }
     .login_message.message.error

@@ -11,7 +11,7 @@ Feature: Admin - Spam moderation
 
   Background:
     Given the following messages
-      | body                                                   | spam_status  | user |
+      | body                                                   | moderation_status  | user |
       | plz can buy some viagra at http://awesome.ru. rolex!   | moderation   |      |
       | please make the carpark more affordable                | ham          |      |
       | cool website!                                          | spam         |      |
