@@ -26,6 +26,7 @@
     - link_to random_messages_path, :class=>'nextmessage' do
       Show me another
       = image_tag "/images/nextmsg.png"
+    = render :partial => 'controls', :locals => {:message => @random_message}  
     = render :partial => 'message', :locals => {:message => @random_message}
 #recent-messages
   %h1

@@ -1,6 +1,9 @@
 .controls{ :id => "controls-#{message.id}" }
-
-  - [:agree, :disagree].each do |vote|
-    - form_tag([vote, message, :vote]) do
-      %button.vote{:type=>"submit", :name => vote.to_s, :class => vote.to_s}
-        = vote_link(vote, message)
+  .flag
+    - link_to new_message_flag_path(message) do
+      = image_tag "flag.png"
+  .vote
+    - [:agree, :disagree].each do |vote|
+      - form_tag([vote, message, :vote]) do
+        %button.vote{:type=>"submit", :name => vote.to_s, :class => vote.to_s}
+          = vote_link(vote, message)
