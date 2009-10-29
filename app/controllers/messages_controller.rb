@@ -51,6 +51,9 @@ class MessagesController < ApplicationController
   
   def update
     if @message.update_attributes(params[:message])
+      @message.update_attribute(:moderated, false) unless admin?
+      @message.save!
+      flash[:notice] = "Message updated successfully"
       redirect_to(@message)
     else
       render :action => "edit"
@@ -94,11 +97,17 @@ class MessagesController < ApplicationController
     end
   
     def permission_required
-      unless admin? || message_in_session? || @message.author?(current_user)
+      unless can_edit_message?(@message)
         flash[:error] = "You do not have permission to do that"
         redirect_to @message
       end
     end
+    
+    def can_edit_message?(message)
+      admin? || message_in_session?(message) || (logged_in? && message.author?(current_user))
+    end
+    helper_method :can_edit_message?
+    
     
     def load_resources
       if collection?
@@ -131,8 +140,8 @@ class MessagesController < ApplicationController
     
     # check if the current message was one created during
     # this browser session
-    def message_in_session?
-      session_message_ids.include? @message.id
+    def message_in_session?(message)
+      session_message_ids.include?(message.id)
     end
     
     def session_message_ids

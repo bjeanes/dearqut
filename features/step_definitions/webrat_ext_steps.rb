@@ -20,3 +20,11 @@ end
 Then /^I should see "([^\"]*)" before "([^\"]*)"$/ do |first, second|
   response.body.should contain(Regexp.new("#{first}.*#{second}", Regexp::MULTILINE))
 end
+
+Then /^I should( not)? see image "([^\"]*)"$/ do |n, alt_text|
+  begin
+    element_at("img[alt='#{alt_text}']")
+  rescue Webrat::NotFoundError
+    flunk unless n
+  end
+end

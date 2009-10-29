@@ -1,7 +1,8 @@
 .controls{ :id => "controls-#{message.id}" }
-  .flag
-    - link_to new_message_flag_path(message) do
-      = image_tag "flag.png"
+  - unless message.moderated?
+    .flag
+      - link_to new_message_flag_path(message) do
+        = image_tag "flag.png", :alt => 'Flag for moderation'
   .vote
     - [:agree, :disagree].each do |vote|
       - form_tag([vote, message, :vote]) do
