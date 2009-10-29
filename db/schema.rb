@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091029023213) do
+ActiveRecord::Schema.define(:version => 20091029071851) do
 
   create_table "activities", :force => true do |t|
     t.integer  "target_id"
@@ -50,11 +50,13 @@ ActiveRecord::Schema.define(:version => 20091029023213) do
     t.string   "ip"
     t.string   "spam_status"
     t.boolean  "private",     :default => false
+    t.boolean  "staff",       :default => false
   end
 
   add_index "comments", ["ip"], :name => "index_comments_on_ip"
   add_index "comments", ["message_id"], :name => "index_comments_on_message_id"
   add_index "comments", ["spam_status"], :name => "index_comments_on_spam_status"
+  add_index "comments", ["staff"], :name => "index_comments_on_staff"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "faculties", :force => true do |t|

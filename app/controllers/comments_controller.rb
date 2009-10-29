@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment was successfully posted.'
       redirect_to(@message)
     else
-      render :controller => "messages", :action => "show", :id => @message
+      render :controller => "messages", :action => "show"
     end
   end
   

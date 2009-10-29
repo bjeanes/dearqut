@@ -4,8 +4,9 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :body, :message_id
   
-  attr_accessible :body, :private
+  attr_accessible :body, :private, :staff
   
+  before_create :check_verified_staff
   after_create :set_message_commented_at
   
   acts_as_snook
@@ -28,4 +29,10 @@ class Comment < ActiveRecord::Base
     message.last_commented_at = Time.now
     message.save(false)
   end
+  
+  def check_verified_staff
+    staff = staff? && user && user.verified_staff?
+    true
+  end
+  
 end

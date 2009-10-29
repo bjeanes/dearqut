@@ -7,16 +7,24 @@
     = f.text_area :body
     = f.submit 'Post Comment', :class => 'button right'
     - if logged_in?
-      #anon
-        = f.label :private, "Post Anonymously"
-        = f.check_box :private
+      %ul#anon
+        %li
+          = f.label :private, "Post Anonymously"
+          = f.check_box :private
+        - if current_user.verified_staff?
+          %li
+            = f.label :staff, "Post as Staff"
+            = f.check_box :staff
+          
 #comments
   - @comments.each do |comment|
     - unless comment.new_record?
       %div{:id=>"comment-#{comment.id}", :class => "comment #{cycle("even", "odd")}#{' anonymous' if comment.anonymous?}"}
         %p.postedby
           Posted by:
-          %strong= comment.author
+          %strong
+            = comment.author
+            = "(Staff)" if comment.staff?
           on
           = h comment.created_at.to_s(:short)
         .message= simple_format h(comment.body)

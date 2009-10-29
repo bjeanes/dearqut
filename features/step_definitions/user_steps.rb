@@ -20,3 +20,19 @@ end
 Then /^I should( not)? be a staff member$/ do |n|
   Then %Q{I should#{n} see "Verified Staff Member"}
 end
+
+Given /^an approved staff "([^\"]*)"$/ do |name|
+  Cucumber %Q{
+    Given I sign up as a QUT staff member with login "staffer"
+    And I am logged out
+    And I am logged in as an admin user
+    And I go to the admin page
+    When I follow "1 pending staff account"
+    And I follow "staffer"
+    And I press "Approve"
+    And I go to the admin page
+    Given I am logged out
+    And I am logged in as "staffer"
+    Then I should be a staff member
+  }
+end
