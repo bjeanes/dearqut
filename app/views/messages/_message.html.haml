@@ -4,7 +4,8 @@
   %strong= h message.author
   ,
   = h message.created_at.to_s(:short)
-- if admin?
+
+- if can_edit_message?(message)
   %p.admin
     = link_to "delete", delete_message_path(message)
     = link_to "edit", edit_message_path(message)
