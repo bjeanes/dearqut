@@ -27,6 +27,7 @@ Feature: Flagging messages (for moderation)
     Given I am logged in as an admin user
     And I am on the admin page
     When I follow "Moderation"
+    When I follow "Messages"
     Then I should see "Dirty message"
     When I follow "Dirty Message"
     Then I should see "Inappropriate"
