@@ -1,6 +1,9 @@
 = render :partial => "my/accounts/my_menu"
 #activities
   %h1 My Activity
-  - @activities.each do |activity|
-    = render_activity(activity)
-= will_paginate @activities
+  - @grouped_activities.each do |date, activities| 
+    %h2= date
+    - activities.each do |activity| 
+      .activity
+        = render_activity(activity)
+  = will_paginate @activities
