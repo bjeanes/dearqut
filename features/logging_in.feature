@@ -10,7 +10,7 @@ Feature: Logging in
 
     When I follow "log in"
     And I fill in "Username" with "fooballz"
-    And I fill in "Password" with "h4x0rk1d"
+    And I fill in "Password" with "password"
     And I press "log in"
 
     Then I should see "You have logged in successfully."
