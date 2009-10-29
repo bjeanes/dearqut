@@ -4,6 +4,7 @@
   - @grouped_activities.each do |date, activities| 
     %h2= date
     - activities.each do |activity| 
-      .activity
-        = render_activity(activity)
+      - unless activity.target.nil?
+        .activity
+          = render_activity(activity)
   = will_paginate @activities
