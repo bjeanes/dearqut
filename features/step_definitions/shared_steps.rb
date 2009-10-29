@@ -22,7 +22,9 @@ end
 
 Given /^I am logged in(?: as "([^\"]+)")?$/ do |user|
   user = user ? create_user(user) : create_user
-  post_via_redirect '/session', :login => user.login, :password => user.password
+  user.save!
+  login(user.login, user.password)
+  should_be_logged_in
 end
 
 Given /^I do not fill in "([^\"]*)"$/ do |field|
@@ -31,5 +33,5 @@ end
 
 Given /^I am logged in as an admin user$/ do
   user = create_user('admin', 'password', true)
-  post_via_redirect '/session', :login => user.login, :password => user.password
+  login(user.login, user.password)
 end

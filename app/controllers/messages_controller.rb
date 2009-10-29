@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
   def new
     tab :home if request.path == '/'
     @message.user   = current_user
-    @random_message = Message.random
+    @random_message = Message.ham.random
     @messages = Message.newest.ham.all(:limit => 5)
   end
 
@@ -74,7 +74,11 @@ class MessagesController < ApplicationController
   protected
     def load_tag
       if params[:tag_id]
-        unless @tag = Tag.with_type_scope('Message') {Tag.find(params[:tag_id])}
+        @tag = Tag.with_type_scope('Message') do
+          Tag.find_by_id_or_name(params[:tag_id])
+        end
+        
+        unless @tag
           flash[:error] = "No such tag or no messages use the tag"
           redirect_to messages_path
           return

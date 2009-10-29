@@ -1,4 +1,6 @@
-#random-message.center= render :partial => 'message', :locals => {:message => @message}
+#random-message.center
+  = render :partial => 'controls', :locals => {:message => @message}
+  = render :partial => 'message', :locals => {:message => @message}
 #create-comment
   = image_tag 'comment.png'
   - form_for [@message, @message.comments.build] do |f|

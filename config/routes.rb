@@ -1,14 +1,11 @@
-message_options     = {
-  :member           => {
-    :delete => :get,
-    :flag => :get
-  }, 
-  :collection       => {
-    :random         => :get, 
-    :popular        => :get,
-    :most_commented => :get,
+message_options = {
+  :member             => {:delete => :get}, 
+  :collection         => {
+    :random           => :get, 
+    :popular          => :get,
+    :most_commented   => :get,
     :latest_commented => :get,
-    :controversial => :get
+    :controversial    => :get
   }
 }
 
@@ -24,8 +21,13 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources(:site, :collection => {:about => :get, :help=>:get, :privacy=>:get, :contact=>:get})
   
+  map.login '/login', :controller => "user_sessions", :action => "new"
   map.signup '/signup', :controller => "users", :action => "new"
-  map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true
+  
+  map.resources :user_sessions
+  map.login 'login', :controller => 'user_sessions', :action => 'new'  
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
+  # map.twitter_login '/login/twitter', :controller => "sessions", :action => "new", :twitter => true
   
   map.namespace :admin do |admin|
     admin.root      :controller => 'dashboard', :action => 'index'

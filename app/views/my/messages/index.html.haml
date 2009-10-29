@@ -1,0 +1,8 @@
+#messages.mine
+  %h1 Created Messages
+  - @grouped_messages.each do |date, messages| 
+    %h2= date
+    - messages.each do |message| 
+      .msg-item
+        = render :partial => "updated_message", :locals => {:message => message}
+  = will_paginate(@messages)

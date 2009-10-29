@@ -12,10 +12,10 @@
     #more-details
       #faculty
         = f.label :faculty_id
-        = f.collection_select(:faculty_id, Faculty.all, :id, :name, :include_blank => true)
+        = f.select(:faculty_id, Faculty.all, :prompt => "Choose Faculty")
       #campus
         = f.label :campus_id
-        = f.collection_select(:campus_id, Campus.all, :id, :name, :include_blank => true)
+        = f.select(:campus_id, Campus.all, :prompt => "Choose Campus")
     #add-tags
       %h2 Add Tags
       %p Type in your tag and press enter after each one

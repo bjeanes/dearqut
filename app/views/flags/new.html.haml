@@ -1,0 +1,7 @@
+- form_for(@flag, :html => { :id => "msgform"}) do |f|
+  = f.error_messages
+  %h2.center Why do you think this message is inappropriate?
+  #message-body= f.text_area :reason
+  %br
+  %span.right
+    = f.submit 'SUBMIT', :class => 'button inner'

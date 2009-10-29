@@ -2,12 +2,20 @@
   Sign up to get started
 %span.small
   or
-  = link_to "log in here", login_path
+  = link_to "log in here", new_user_session_path
 %br
 %br
 #signup.user-box
 
   - semantic_form_for @user do |f|
+    = oauth_register_button :value => "Use Twitter To Create An Account", :class => "twitter"
+
+    %br
+    %br
+    %em or use the form below
+    %br
+    %br
+
     - f.inputs do
       = f.input :login, :label => "Username"
       = f.input :password

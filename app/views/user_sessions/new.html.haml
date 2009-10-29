@@ -1,0 +1,18 @@
+%h2
+  Welcome Back
+#loginbox.user-box
+  - semantic_form_for @user_session do |f|
+    = oauth_login_button :value => "Use Twitter to Log In", :class => "twitter"
+
+    %br
+    %br
+    %em or use the form below
+    %br
+    %br
+
+    - f.inputs do
+      = f.input :login, :label => "Username"
+      = f.input :password
+      = f.input :remember_me, :as => :boolean
+    - f.buttons do
+      = f.commit_button "Log In"

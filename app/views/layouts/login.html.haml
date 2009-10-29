@@ -21,23 +21,16 @@
         %a{ :href => "/" } dearQUT Admin
       %h2.loginheading Login
       .icon_login.ie6fix
-      - form_tag(session_path, :id => "login-form", :method => "post") do
-        = hidden_field_tag :redirect_to_admin, true
+      - form_for(UserSession.new, :html => {:id => "login-form"}) do |f|
+        = hidden_field_tag :redirect_to_admin, 'true'
         %p
           %label{ :for => "login" }
             Username
-          %input#login.input-medium{ :name => "login", :type => "text", :value => "" }
+          = f.text_field :login, {:id => "login", :class => "input-medium"}
         %p
           %label{ :for => "password" }
             Password
-          %input#password.input-medium{ :name => "password", :type => "password", :value => "" }
-        %p.remember
-          %label.inline{ :for => "remember_me" }
-            Remember me?
-          %input#remember_me{ :name => "remember_me", :type => "checkbox", :value => "true" }
-        .forgot_pw
-          %a{ :href => "index.html" }
-            Forgot password?
+          = f.text_field :password, {:id => "password", :class => "input-medium"}
         %p.clearboth
           %input.button{ :name => "submit", :type => "submit", :value => "Login" }
     .login_message.message.error
