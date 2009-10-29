@@ -10,6 +10,11 @@ Given /^a message titled "([^\"]*)"$/ do |title|
   Message.make(:body => title)
 end
 
+Given /^a message titled "([^\"]*)" by user "([^\"]*)"$/ do |title, user|
+  Message.make(:body => title, :user => User.make(:login => user))
+end
+
+
 Given /^I am logged in as admin$/ do
   Given %Q{there is the following user only}, table([
     %w{login password admin},

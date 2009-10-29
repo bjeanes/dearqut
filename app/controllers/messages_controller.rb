@@ -51,6 +51,9 @@ class MessagesController < ApplicationController
   
   def update
     if @message.update_attributes(params[:message])
+      @message.update_attribute(:moderated, false) unless admin?
+      @message.save!
+      flash[:notice] = "Message updated successfully"
       redirect_to(@message)
     else
       render :action => "edit"
