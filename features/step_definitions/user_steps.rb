@@ -18,7 +18,7 @@ Given /^I sign up as a QUT staff member with login "([^\"]*)"$/ do |login|
 end
 
 Then /^I should( not)? be a staff member$/ do |n|
-  Then %Q{I should#{n} see "Verified Staff Member"}
+  Then %Q{I should#{n} see image "Verified Staff Member"}
 end
 
 Given /^an approved staff "([^\"]*)"$/ do |name|
