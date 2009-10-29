@@ -22,16 +22,16 @@ Feature: Admin - Spam moderation
   Scenario: The admin dashboard shows how many messages are currently spam
     Then I should see "2 spam, 1 need moderation"
     When I follow "2 spam, 1 need moderation"
-    Then I should be on the admin spam index page
+    Then I should be on the admin message moderation index page
     
   Scenario: There is an admin spam moderation page and it is linked to in the navigation
     When I follow "Moderation"
-    And I follow "Spam"
-    Then I should be on the admin spam index page
+    And I follow "Messages"
+    Then I should be on the admin message moderation index page
     
   Scenario: The admin spam moderation page lists all messages
     When I follow "Moderation"
-    And I follow "Spam"
+    And I follow "Messages"
     Then I should see the following in table "#spam-messages"
       | Author    | Body                                                   | Status   |
       | Anonymous | plz can buy some viagra at http://awesome.ru. rolex!   | moderate |
@@ -40,10 +40,10 @@ Feature: Admin - Spam moderation
 
   Scenario: Marking message as spam removes it from the site and from the moderation queue
     When I follow "Moderation"
-    And I follow "Spam"
+    And I follow "Messages"
     And I follow "plz can buy some viagra at http://awesome.ru. rolex!"
     And I press "This Is Spam"
-    Then I should be on the admin spam index page
+    Then I should be on the admin message moderation index page
     And I should see "You have successfully marked that message as spam."
     Then I should see the following in table "#spam-messages"
       | Author    | Body                                              | Status |
@@ -55,10 +55,10 @@ Feature: Admin - Spam moderation
 
   Scenario: Marking message as ham adds it back to site but removes it from the moderation queue
     When I follow "Moderation"
-    And I follow "Spam"
+    And I follow "Messages"
     And I follow "plz can buy some viagra at http://awesome.ru. rolex!"
     And I press "This Is Ham"
-    Then I should be on the admin spam index page
+    Then I should be on the admin message moderation index page
     And I should see "You have successfully marked that message as ham."
     Then I should see the following in table "#spam-messages"
       | Author    | Body                                              | Status |
