@@ -65,22 +65,22 @@ ActiveRecord::Schema.define(:version => 20091017151003) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.text     "body",                                                :null => false
+    t.text     "body",                                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tweet_id",            :limit => 8
+    t.integer  "tweet_id"
     t.boolean  "private"
-    t.integer  "rating",                           :default => 0,     :null => false
-    t.integer  "negative_vote_count",              :default => 0,     :null => false
-    t.integer  "positive_vote_count",              :default => 0,     :null => false
-    t.integer  "comments_count",                   :default => 0,     :null => false
+    t.integer  "rating",              :default => 0,     :null => false
+    t.integer  "negative_vote_count", :default => 0,     :null => false
+    t.integer  "positive_vote_count", :default => 0,     :null => false
+    t.integer  "comments_count",      :default => 0,     :null => false
     t.integer  "faculty_id"
     t.integer  "campus_id"
     t.datetime "last_commented_at"
     t.string   "ip"
     t.string   "spam_status"
     t.integer  "ham_comments_count"
-    t.boolean  "moderated",                        :default => false
+    t.boolean  "moderated",           :default => false
   end
 
   add_index "messages", ["campus_id"], :name => "index_messages_on_campus_id"

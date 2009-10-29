@@ -12,6 +12,7 @@ class Message < ActiveRecord::Base
                                    
   before_save                      :convert_hash_tags_to_tags
   before_save                      :strip_and_chomp_body
+  before_save                      :check_flag_reason
   after_create                     :create_initial_vote_for_author, :unless => :guest?
                                    
   named_scope :popular,            :order => 'rating DESC, tweet_id DESC'
@@ -21,9 +22,9 @@ class Message < ActiveRecord::Base
   named_scope :latest_commented,   :conditions => 'last_commented_at IS NOT NULL', 
                                    :order => 'last_commented_at DESC, tweet_id DESC'
                                    
-  attr_accessor                    :twitter
+  attr_accessor                    :twitter, :flag_reason
   attr_accessible                  :body, :tag_list, :campus_id, :faculty_id, :private
-  
+  attr_reader                      :just_flagged
   acts_as_taggable
   acts_as_snook
   
@@ -129,5 +130,11 @@ class Message < ActiveRecord::Base
     # for the message
     def create_initial_vote_for_author
       votes.create(:user => user, :value => 1)
+    end
+    
+    # Check if a message has been flagged
+    def check_flag_reason
+      return true if @flag_reason.blank?
+      
     end
 end

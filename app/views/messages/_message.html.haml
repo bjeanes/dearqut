@@ -44,4 +44,9 @@
               = message.faculty
           - else
             N/A
+    %li.flag
+      %strong Inappropriate?
+      %br
+      %p
+        = link_to 'Flag for moderation', flag_message_path(message)
   %br{ :clear => "all" }

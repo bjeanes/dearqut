@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   before_filter :remove_tag_from_url, :only => :show
   before_filter :load_resources, :except => :random
-  before_filter :permission_required, :except => INDEX_VIEWS + [:show, :new, :create, :random]
+  before_filter :permission_required, :except => INDEX_VIEWS + [:flag, :show, :new, :create, :random]
 
   INDEX_VIEWS.each do |view|
     define_method(view) do
@@ -56,6 +56,11 @@ class MessagesController < ApplicationController
       render :action => "edit"
     end
   end
+  
+  def flag
+    
+  end
+  
   
   def destroy
     @message.destroy

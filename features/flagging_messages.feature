@@ -18,7 +18,7 @@ Feature: Flagging messages (for moderation)
     And I am not logged in
     And I am on the home page
     When I follow "Dirty message"
-    And I follow "Flag message for moderation"
+    And I follow "Flag for moderation"
     Then I should see "Message has been flagged for moderation"
     When I am on the home page
     Then I should see "Dirty message"
@@ -35,10 +35,10 @@ Feature: Flagging messages (for moderation)
     And I am not logged in
     And I am on the home page
     When I follow "Dirty message"
-    And I follow "Flag message for moderation"
+    And I follow "Flag for moderation"
     Then I should see "Message has been flagged for moderation"
     And I should see "Dirty message"
-    When I should not see "Flag message for moderation"
+    When I should not see "Flag for moderation"
     Given I am logged in as admin
     And I am on the admin page
     When I follow "Flagged Messages"
@@ -52,7 +52,7 @@ Feature: Flagging messages (for moderation)
     And I am not logged in
     And I am on the home page
     When I follow "Dirty message"
-    And I follow "Flag message for moderation"
+    And I follow "Flag for moderation"
     Then I should see "Message has been flagged for moderation"
     When I am on the home page
     Then I should see "Dirty message"
