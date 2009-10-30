@@ -1,14 +1,16 @@
 %p.message-text= message_body(message)
-- if admin?
-  %p.admin
-    = link_to "delete", delete_message_path(message)
-    = link_to "edit", edit_message_path(message)
 
 .msg-extras
-  .comments
+  .left
     - link_to "#{message_path(message)}#comments" do
       = image_tag "commentsicon.png"
       = message.ham_comments_count
+    - if can_edit_message?(message)
+      - link_to delete_message_path(message) do
+        = image_tag"trash.png", :alt => 'Delete'
+      - link_to edit_message_path(message) do
+        = image_tag "edit.png", :alt => 'Edit'
+    
   .votes
     %ul
       %li
