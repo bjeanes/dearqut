@@ -1,8 +1,7 @@
 - path = "#{message_path(comment.message)}#comment-#{comment.id}"
-.action.commented Commented
+.action.commented
+  Commented
 = link_to truncate(comment.message.body, :length => 46), path
-You
-= link_to "commented", path
-on message
+= link_to "Comment", path, :class => 'comment-body'
 at 
 %em.created_at= activity.created_at.strftime("%I:%M%p")
