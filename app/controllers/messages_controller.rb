@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  INDEX_VIEWS = %w{most_commented index popular latest_commented controversial}
+  INDEX_VIEWS = %w{most_commented index popular latest_commented controversial search}
 
   around_filter :load_tag, :only => INDEX_VIEWS
 
@@ -107,11 +107,12 @@ class MessagesController < ApplicationController
     def load_resources
       if collection?
         @messages = case action_name
-          when 'index'          then Message.newest
-          when 'popular'        then Message.popular
-          when 'most_commented' then Message.most_commented
+          when 'index'            then Message.newest
+          when 'popular'          then Message.popular
+          when 'most_commented'   then Message.most_commented
           when 'latest_commented' then Message.latest_commented
-          when 'controversial' then Message.most_controversial
+          when 'controversial'    then Message.most_controversial
+          when 'search'           then Message.search(params[:q])
         end.ham.paginate(:page => params[:page], :include => [:tags, :user])
       else
         @message = case action_name

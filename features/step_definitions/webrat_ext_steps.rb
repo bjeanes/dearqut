@@ -28,3 +28,10 @@ Then /^I should( not)? see image "([^\"]*)"$/ do |n, alt_text|
     flunk unless n
   end
 end
+
+
+Then /^I should( not)? see the following$/ do |n, table|
+  table.rows.each do |line|
+    Then %Q{I should#{n} see #{line[0].inspect}}
+  end
+end

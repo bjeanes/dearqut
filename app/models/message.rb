@@ -19,6 +19,8 @@ class Message < ActiveRecord::Base
   named_scope :needs_moderation,   :conditions => ['moderation_status <> ? AND moderated = ?', 'ham', false], 
                                    :order => :moderation_status
   named_scope :culled,             :conditions => ['moderation_status = ?', 'culled']
+  
+  named_scope :do_search,          lambda { |query| {:conditions => ['messages.body LIKE ?', query]} }
   named_scope :popular,            :order => 'rating DESC, tweet_id DESC'
   named_scope :newest,             :order => 'created_at DESC, tweet_id DESC'
   named_scope :most_commented,     :order => 'comments_count DESC, tweet_id DESC'
@@ -30,6 +32,11 @@ class Message < ActiveRecord::Base
   attr_accessible                  :body, :tag_list, :campus_id, :faculty_id, :private
   acts_as_taggable
   acts_as_snook                    :spam_status_field => :moderation_status
+  
+  def self.search(query)
+    return [] if query.blank?
+    do_search("%#{query}%")
+  end
   
   # If sent via DM, lets make it Anonymous by default. All other 
   # messages are public, unless the user has a protected profile,
