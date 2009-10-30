@@ -1,6 +1,7 @@
 message_options = {
   :member             => {:delete => :get}, 
   :collection         => {
+    :search           => :get,
     :random           => :get, 
     :popular          => :get,
     :most_commented   => :get,

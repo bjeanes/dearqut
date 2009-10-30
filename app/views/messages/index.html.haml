@@ -26,6 +26,10 @@
       - link_to tags_path do
         = image_tag 'tags.png'
         Tags
+    %li
+      - form_tag search_messages_path, :method => :get do
+        = text_field_tag 'q'
+        = submit_tag 'Search'
         
 - @messages.each do |message|
   .msg-item
