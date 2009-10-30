@@ -321,13 +321,23 @@ body
         
 #random-message
   background-color: #EAE8E4
-  padding-top: 10px
-  width: 600px
+  padding-top: 5px
   float: left
 
+  &.left
+    width: 580px
+    
+    a
+      padding: 0
+      margin: 0
+    
+    .msg-extras
+      width: 580px
+    
   &.center
     margin-left: 100px
     clear: both
+    width: 600px
 
   &.front
     margin-top: 20px
@@ -337,8 +347,7 @@ body
 
 #recent-messages
   float: right
-  width: 185px
-  margin-top: 20px
+  width: 200px
 
   h1
     font-size: 12pt
@@ -355,7 +364,9 @@ body
 
   .postedby
     font-size: 8pt
-	
+
+    .recent-message
+      padding-bottom: 5px
 
   .link-more
     color: #2CACE2
@@ -369,7 +380,7 @@ body
 .recent-message
   display: block
   clear: both
-  padding: 10px 5px  10px 10px
+  padding: 8px 5px 0px 5px
 
 
 #recent-messages .odd
