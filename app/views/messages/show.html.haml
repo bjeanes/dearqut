@@ -3,6 +3,7 @@
   = render :partial => 'messages/message', :locals => {:message => @message}
 #create-comment
   = image_tag 'comment.png'
+  = error_messages_for :comment
   - form_for [@message, @comment] do |f|
     = f.text_area :body
     = f.submit 'Post Comment', :class => 'button right'
