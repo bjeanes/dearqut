@@ -5,13 +5,12 @@
         = image_tag "flag.png", :alt => 'Flag for moderation'
         
       - if can_edit_message?(message)
-        .admin
-          - link_to delete_message_path(message) do
-            = image_tag "trash.png", :alt => 'Delete'
-          - link_to edit_message_path(message) do
-            = image_tag "edit.png", :alt => 'Edit'
+        - link_to delete_message_path(message) do
+          = image_tag "trash.png", :alt => 'Delete'
+        - link_to edit_message_path(message) do
+          = image_tag "edit.png", :alt => 'Edit'
   .vote
-    - [:agree, :disagree].each do |vote|
+    - [:disagree, :agree].each do |vote|
       - form_tag([vote, message, :vote]) do
         %button.vote{:type=>"submit", :name => vote.to_s, :class => vote.to_s}
           = vote_link(vote, message)
