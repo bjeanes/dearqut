@@ -6,6 +6,8 @@ class Comment < ActiveRecord::Base
   
   attr_accessible :body, :private, :staff
   
+  validate :ensure_staff_comments_cannot_be_anonymous
+
   before_create :check_verified_staff
   after_create :set_message_commented_at
   
@@ -34,5 +36,10 @@ class Comment < ActiveRecord::Base
     staff = staff? && user && user.verified_staff?
     true
   end
+  
+  def ensure_staff_comments_cannot_be_anonymous
+    errors.add_to_base("Staff comments cannot be anonymous") if private? && staff?
+  end
+  
   
 end

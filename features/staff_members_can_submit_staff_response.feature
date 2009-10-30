@@ -36,6 +36,17 @@ Feature: Staff members can submit 'staff response' comments to messages
     And I press "Post Comment"
     Then I should see "Comment was successfully posted"
     And I should not see "(Staff)"
+
+  Scenario: Can't check both Post as Staff and Post Anonymously
+    Given I am on the home page
+    And I am logged in as "staffer"
+    When I follow "Browse"
+    And I follow "Will you go out with me"
+    And I fill in "comment_body" with "No. GTFO"
+    And I check "Post as Staff"
+    And I check "Post Anonymously"
+    And I press "Post Comment"
+    Then I should see "Staff comments cannot be anonymous"    
     
   Scenario: Normal users can't see the checkbox
     Given I am logged in
