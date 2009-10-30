@@ -29,8 +29,7 @@
     %li
       - form_tag search_messages_path, :method => :get do
         = text_field_tag 'q'
-        %br
-        = submit_tag 'Search', :name => nil
+        %button= image_tag 'search.png', :alt => 'Search', :title => 'Search'
         
 - @messages.each do |message|
   .msg-item

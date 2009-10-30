@@ -205,6 +205,25 @@ body
     &:hover
       color: #fff
 
+  input
+
+    line-height: 40px
+    width: 140px
+    padding-top: 10px
+    font-size: 18px
+    
+    background: transparent url(/images/search-text.png) no-repeat 20px 12px
+    border: none
+    border-bottom: 1px solid #DD7874
+
+  input:focus
+    background: none
+  
+  button
+    border: none
+    background-color: transparent
+    cursor: pointer
+
 
 .msglist
   padding: 0
@@ -278,6 +297,7 @@ body
       text-decoration: none
   
 #messages.mine, #activities
+  
   .msg-item
     float: right
     margin-bottom: 20px
@@ -321,9 +341,33 @@ body
   
   .activity 
     margin-left: 100px
+    font-size: 12pt
+    
+    
+    .action
+      float: left
+      width: 100px
+      font-weight: bold
+      font-size: 14pt
+          
+    .created
+      color: #209123
+    
+    .commented
+      color: #E02427
+       
+    .updated
+      color: #F98F00
+    
+    .voted
+      color: #2D9ADE
+    
+    .created_at
+      color: #999
 
   .pagination
     margin-left: 200px
+    margin-top: 20px
         
 #random-message
   background-color: #EAE8E4
@@ -750,4 +794,3 @@ form.formtastic
     
     &.alt
       background-color: #EEEEEE
-      
