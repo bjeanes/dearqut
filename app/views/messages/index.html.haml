@@ -29,7 +29,8 @@
     %li
       - form_tag search_messages_path, :method => :get do
         = text_field_tag 'q'
-        = submit_tag 'Search'
+        %br
+        = submit_tag 'Search', :name => nil
         
 - @messages.each do |message|
   .msg-item
