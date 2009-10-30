@@ -1,0 +1,16 @@
+- form_tag review_messages_path do
+  %table#review_messages
+    - @messages.each do |message|
+      %tr
+        %td= message.body
+        %td
+          = label_tag "message_#{message.id}_mine", "Mine"
+          = radio_button_tag "message[#{message.id}]", "mine", :id => "message_#{message.id}_mine"
+        %td
+          = label_tag "message_#{message.id}_anonymous", "Mine but keep anonymous"
+          = radio_button_tag "message[#{message.id}]", "anonymous", :id => "message_#{message.id}_anonymous"
+        %td
+          = label_tag "message_#{message.id}_not_mine", "Not mine"
+          = radio_button_tag "message[#{message.id}]", "not_mine", :id => "message_#{message.id}_not_mine", :selected => true
+
+  = submit_tag "Submit", :name => nil
