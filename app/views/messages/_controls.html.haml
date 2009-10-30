@@ -10,7 +10,7 @@
       - link_to edit_message_path(message) do
         = image_tag "edit.png", :alt => 'Edit', :title => 'Edit'
   .vote
-    - [:agree, :disagree].each do |vote|
-      - form_tag([vote, message, :vote]) do
+    - [:disagree, :agree].each do |vote|
+      - form_tag([vote, message, :vote], :class => vote.to_s) do
         %button.vote{:type=>"submit", :name => vote.to_s, :class => vote.to_s}
           = vote_link(vote, message)

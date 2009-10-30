@@ -1,3 +1,9 @@
+When /^I ((?:dis)?agree) with the message$/ do |action|
+  within("form.#{action}") do
+    When "I press #{action.titleize.inspect}"
+  end
+end
+
 Then /^the message will be under the name "([^\"]*)"$/ do |author|
   Message.last.author.should == author
 end
