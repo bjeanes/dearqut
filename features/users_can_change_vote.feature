@@ -18,30 +18,30 @@ Feature: Provide ability to change vote
     And I follow "this is a super duper message. hai"
 
   Scenario: Agreeing then disagreeing is counted as a disagree vote
-    When I press "Agree"
+    When I agree with the message
     Then I should see "You agreed"
     And I should not see "You disagreed"
-    When I press "Disagree"
+    When I disagree with the message
     Then I should see "You disagreed"
     And I should not see "You agreed"
     And I should see "0" within "button.agree span.num"
     And I should see "1" within "button.disagree span.num"
 
   Scenario: Disagreeing then agreeing is counted as an agree vote
-    When I press "Disagree"
+    When I disagree with the message
     Then I should see "You disagreed"
     And I should not see "You agreed"
-    When I press "Agree"
+    When I agree with the message
     Then I should see "You agreed"
     And I should not see "You disagreed"
     And I should see "1" within "button.agree span.num"
     And I should see "0" within "button.disagree span.num"
     
   Scenario: Agreeing then pressing agree again does not count as two agrees
-    When I press "Agree"
+    When I agree with the message
     Then I should see "You agreed"
     And I should not see "You disagreed"    
-    When I press "Agree"
+    When I agree with the message
     Then I should see "You agreed"
     And I should not see "You disagreed"
     And I should see "1" within "button.agree span.num"
