@@ -1,14 +1,14 @@
 .controls{ :id => "controls-#{message.id}" }
-  - unless message.moderated?
-    .left
+  .left
+    - unless message.moderated?
       - link_to new_message_flag_path(message) do
         = image_tag "flag.png", :alt => 'Flag for moderation', :title => 'Flag for moderation'
-        
-      - if can_edit_message?(message)
-        - link_to delete_message_path(message) do
-          = image_tag "trash.png", :alt => 'Delete', :title => 'Delete'
-        - link_to edit_message_path(message) do
-          = image_tag "edit.png", :alt => 'Edit', :title => 'Edit'
+      
+    - if can_edit_message?(message)
+      - link_to delete_message_path(message) do
+        = image_tag "trash.png", :alt => 'Delete', :title => 'Delete'
+      - link_to edit_message_path(message) do
+        = image_tag "edit.png", :alt => 'Edit', :title => 'Edit'
   .vote
     - [:agree, :disagree].each do |vote|
       - form_tag([vote, message, :vote]) do
