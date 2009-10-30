@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
   around_filter :load_tag, :only => INDEX_VIEWS
 
   before_filter :remove_tag_from_url, :only => :show
-  before_filter :load_resources, :except => :random
-  before_filter :permission_required, :except => INDEX_VIEWS + [:show, :new, :create, :random]
+  before_filter :load_resources, :except => [:random, :review]
+  before_filter :permission_required, :except => INDEX_VIEWS + [:show, :new, :create, :random, :review]
 
   INDEX_VIEWS.each do |view|
     define_method(view) do
@@ -47,6 +47,19 @@ class MessagesController < ApplicationController
     else
       new
       render :action => "new"
+    end
+  end
+  
+  def review
+    redirect_to root_path if guest_messages.empty?
+    @messages = guest_messages    
+
+    if request.post?
+      # do association
+      
+      # if success
+      flash[:notice] = "Messages processed successfully"
+      session[:message_ids] = []
     end
   end
   
@@ -126,7 +139,6 @@ class MessagesController < ApplicationController
     def collection?
       INDEX_VIEWS.include? action_name.to_s
     end
-
     
     def adding_context?
       !!params[:adding_context]
