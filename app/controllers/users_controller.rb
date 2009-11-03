@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       if result
         flash[:notice] = "You have successfully created an account."
         flash[:notice] << " Your staff account will be activated after an admin confirms that you are a staff member." if @user.staff?
-        redirect_back_or_default root_path
+        review_messages_or_go_home
       else
         flash[:error] = "There was an error creating your account."
         if @user.errors.on(:email).to_s =~ /QUT/

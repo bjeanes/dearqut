@@ -13,7 +13,9 @@ module NavigationHelpers
     when /the admin( dashboard)? page/
       admin_root_path
     when /the sign up page/
-      signup_path    
+      signup_path
+    when /log ?in page/
+      new_user_session_path    
     when /^the ([\w ]+) page$/
       send("#{$1.gsub(/\W+/, '_')}_path")
     

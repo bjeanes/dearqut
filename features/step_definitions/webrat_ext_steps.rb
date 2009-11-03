@@ -35,3 +35,9 @@ Then /^I should( not)? see the following$/ do |n, table|
     Then %Q{I should#{n} see #{line[0].inspect}}
   end
 end
+
+Then /^(?!I should see|I follow)(.*) within "([^"]+)"$/ do |step, selector|
+  within(selector) do
+    Then(step)
+  end
+end

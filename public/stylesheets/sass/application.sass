@@ -626,7 +626,6 @@ body
     text-decoration: none
     color: #999999
 
-    &:hover
   .footer1 a
     background: url('/images/bottomlink1.png') no-repeat
 
@@ -671,9 +670,6 @@ h2
   letter-spacing: -2px
   font-size: 1.5em
   text-transform: uppercase
-
-
-p
 
 a
   color: #000
@@ -791,6 +787,9 @@ fieldset
 form.formtastic
   padding: 0
   margin: 0
+  
+.note
+  font-size: 10pt
 
 #activities
   margin-bottom: 20px
@@ -800,3 +799,41 @@ form.formtastic
     
     &.alt
       background-color: #EEEEEE
+
+#review_messages
+  border-collapse: collapse
+  font-size: 12pt
+  line-height: 1.5em
+  margin: 30px 0
+  th
+    font-size: 14pt
+    padding-bottom: 5px
+    color: #2D9BDF
+    
+    &.who
+      text-align: right
+      color: #696969
+  
+  tr
+    &.odd
+      background-color: #f2f2f2
+  
+  td
+    vertical-align: top
+    text-align: center
+    border: none
+    margin: 0
+    padding: 10px 
+    width: 60px
+    
+    label 
+      display: none
+
+  .message
+    width: 540px
+    text-align: left
+    padding-right: 20px
+      
+    a
+      font-weight: bold
+      text-decoration: none

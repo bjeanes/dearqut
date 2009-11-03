@@ -44,7 +44,29 @@ class ApplicationController < ActionController::Base
       session_message_ids.include?(message.id)
     end
     
+    def guest_message_conditions
+      {:conditions => {:id => session_message_ids, :user_id => nil}}
+    end
+    
+    def guest_messages
+      Message.all(guest_message_conditions)
+    end
+    
+    def has_guest_messages?
+      Message.count(guest_message_conditions) > 0
+    end
+    
     def session_message_ids
       session[:message_ids] ||= []
     end
+
+    def review_messages_or_go_home
+      if has_guest_messages?
+        flash[:notice] = "#{flash[:notice]} We have found a few messages that may belong to you."
+        redirect_to review_messages_path
+      else
+        redirect_back_or_default root_path
+      end
+    end
+
 end
