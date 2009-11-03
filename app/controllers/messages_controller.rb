@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
   before_filter :remove_tag_from_url, :only => :show
   before_filter :load_resources, :except => [:random, :review]
   before_filter :permission_required, :except => INDEX_VIEWS + [:show, :new, :create, :random, :review]
-
+  before_filter :require_user, :only => :review
+  
   INDEX_VIEWS.each do |view|
     define_method(view) do
       tab :browse
@@ -56,6 +57,18 @@ class MessagesController < ApplicationController
 
     if request.post?
       # do association
+      
+      (params[:messages] || {}).each do |message_id, choice|
+        next if choice == 'not_mine'
+        
+        message = Message.find(message_id, :conditions => {:user_id => nil})
+        next if message.nil?
+        
+        message.user = current_user
+        message.private = true if choice == 'anonymous'
+        message.save
+        
+      end
       
       # if success
       flash[:notice] = "Messages processed successfully"
