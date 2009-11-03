@@ -36,7 +36,7 @@ Then /^I should( not)? see the following$/ do |n, table|
   end
 end
 
-Then /^(.*) within "([^"]+)"$/ do |step, selector|
+Then /^(?!I should see|I follow)(.*) within "([^"]+)"$/ do |step, selector|
   within(selector) do
     Then(step)
   end
