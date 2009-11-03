@@ -1,38 +1,26 @@
-<<<<<<< HEAD:app/views/messages/review.html.haml
-.note NOTE: Anonymous messages will still show up in your account, but will not have your name on it!
 - form_tag review_messages_path do
   %table#review_messages
-    %tr
-      %th.who Sincerely...
-      %th=current_user
-      %th Anon
-      %th Not me
-    - @messages.each do |message|
-      %tr{ :class => "message #{cycle('odd','even')}"}
-        %td.message= message_body(message)
-        %td
-          = radio_button_tag "message[#{message.id}]", "mine", :id => "message_#{message.id}_mine"
-        %td
-          = radio_button_tag "message[#{message.id}]", "anonymous", :id => "message_#{message.id}_anonymous"
-        %td
-          = radio_button_tag "message[#{message.id}]", "not_mine", :id => "message_#{message.id}_not_mine", :selected => true
+    %thead
+      %tr
+        %th.who Sincerely...
+        %th= current_user
+        %th Anon
+        %th Not me
+    %tbody
+      - @messages.each do |message|
+        %tr{ :class => "message #{cycle('odd','even')}"}
+          %td.message= message_body(message)
+          %td
+            = label_tag "messages_#{message.id}_mine", "Mine"
+            = radio_button_tag "messages[#{message.id}]", "mine", :id => "messages_#{message.id}_mine"
+          %td
+            = label_tag "messages_#{message.id}_anonymous", "Anonymous"
+            = radio_button_tag "messages[#{message.id}]", "anonymous", :id => "messages_#{message.id}_anonymous"
+          %td
+            = label_tag "messages_#{message.id}_not_mine", "Not Mine"
+            = radio_button_tag "messages[#{message.id}]", "not_mine", :id => "messages_#{message.id}_not_mine"
 
   = submit_tag 'SUBMIT', :class=>'button right'
-=======
-- form_tag review_messages_path do
-  %table#review_messages
-    - @messages.each do |message|
-      %tr
-        %td= message.body
-        %td
-          = label_tag "messages_#{message.id}_mine", "Mine"
-          = radio_button_tag "messages[#{message.id}]", "mine", :id => "messages_#{message.id}_mine"
-        %td
-          = label_tag "messages_#{message.id}_anonymous", "Mine but keep anonymous"
-          = radio_button_tag "messages[#{message.id}]", "anonymous", :id => "messages_#{message.id}_anonymous"
-        %td
-          = label_tag "messages_#{message.id}_not_mine", "Not mine"
-          = radio_button_tag "messages[#{message.id}]", "not_mine", :id => "messages_#{message.id}_not_mine", :selected => true
+  
 
-  = submit_tag "Submit", :name => nil
->>>>>>> c43eb204ff93b9aaa44c8d13a97ae3ac3538c3ca:app/views/messages/review.html.haml
+

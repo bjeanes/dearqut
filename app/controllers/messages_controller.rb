@@ -53,21 +53,16 @@ class MessagesController < ApplicationController
   
   def review
     redirect_to root_path if guest_messages.empty?
-    @messages = guest_messages    
+    @messages = guest_messages
 
     if request.post?
-      # do association
-
       (params[:messages] || {}).each do |message_id, choice|
         next if choice == 'not_mine'
         
-        message = Message.find(message_id, :conditions => {:user_id => nil})
-        next if message.nil?
-        
-        message.user = current_user
+        message         = Message.find(message_id, :conditions => {:user_id => nil}) || next
+        message.user    = current_user
         message.private = true if choice == 'anonymous'
-        message.save
-        
+        message.save!
       end
 
       # if success

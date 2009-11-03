@@ -33,18 +33,11 @@ Feature: Associating guest messages with new accounts
       | Hello world |
       | Your face   |
       | Hurr durr   |
-    Then I choose "Mine" within "table tr:nth-child(1)"
-    Then I choose "Mine but keep anonymous" within "table tr:nth-child(2)"
-    Then I choose "Not mine" within "table tr:nth-child(3)"
+    Then I choose "Mine" within "table tbody tr:nth-child(1)"
+    Then I choose "Anonymous" within "table tbody tr:nth-child(2)"
+    Then I choose "Not Mine" within "table tbody tr:nth-child(3)"
     And I press "Submit"
     Then I should see "Messages processed successfully"
-    When I follow "student"
-    And I follow "Created Messages"
-    Then I should see "Hello world"
-    Given I am not logged in
-    And I am on the home page
-    When I follow "Hello world"
-    Then I should not see "student"
     
     When I follow "student"
     And I follow "Created Messages"
@@ -74,9 +67,9 @@ Feature: Associating guest messages with new accounts
       | Hello world |
       | Your face   |
       | Hurr durr   |
-    Then I choose "Mine" within "table tr:nth-child(1)"
-    Then I choose "Mine but keep anonymous" within "table tr:nth-child(2)"
-    Then I choose "Not mine" within "table tr:nth-child(3)"
+    Then I choose "Mine" within "table tbody tr:nth-child(1)"
+    Then I choose "Anonymous" within "table tbody tr:nth-child(2)"
+    Then I choose "Not Mine" within "table tbody tr:nth-child(3)"
     And I press "Submit"
     Then I should see "Messages processed successfully"
     
