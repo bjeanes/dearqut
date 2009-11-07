@@ -5,10 +5,11 @@
     %title Dear QUT
     %link{ :href => "/fav_ri.gif", :rel => "shortcut icon" }
     = rss_feeds
-    = stylesheet_link_tag 'application', 'acts_as_taggable', 'jquery.ui.autobox'
+    = stylesheet_link_tag 'application', 'acts_as_taggable'
+    = stylesheet_link_tag 'TextboxList', 'TextboxList.Autocomplete'                                                       
     = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'
-    = javascript_include_tag 'jquery.templating', 'jquery.ui.autobox.ext', 'jquery.ui.autobox'                                                                  
-    = javascript_include_tag 'application'                                                                   
+    = javascript_include_tag 'GrowingInput', 'TextboxList', 'TextboxList.Autocomplete'
+    = javascript_include_tag 'application'
   %body
     #container
       #twitter-badge= link_to image_tag('TwitterBadge.png'), 'http://www.twitter.com?status=@dearQUT+'

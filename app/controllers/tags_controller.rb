@@ -37,7 +37,14 @@ class TagsController < ApplicationController
     end
   
     def autocomplete_tag_suggestions
-      tags = Tag.popular.search(params[:val]).limit(params[:limit] || 5)
+      # tags = Tag.popular.search(params[:val]).limit(params[:limit] || 5)
+      tags = Tag.popular.map do |tag|
+        name = tag.name
+        display = "#{name} (#{tag.taggings_count})"
+        
+        [name, name, name, display]
+      end
+      
       render :json => tags.to_json
     end
 end

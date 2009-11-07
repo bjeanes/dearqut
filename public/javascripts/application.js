@@ -1,45 +1,31 @@
 $(function() {
   $('#message_body').focus();
   
-  var tagInput = $("input.autobox.tags");
-  
-  if(tagInput.length != 0) {
-    var preVals = tagInput.attr("value").toString().replace(/^\s+|\s+$/,'').split(/\s+/);
-
-    if(preVals.length == 1 && preVals[0] == "")
-      preVals = [];
-
-    tagInput.autobox({
-      ajax: "/tags",
-      match: function(typed) {
-        this.typed = typed;
-        this.pre_match = this.name;
-        this.match = this.post_match = '';
-        if (!this.ajax && !typed || typed.length == 0) { return true; }
-        var match_at = this.name.search(new RegExp("\\b" + typed, "i"));
-        if (match_at != -1) {
-          this.pre_match = this.name.slice(0,match_at);
-          this.match = this.name.slice(match_at,match_at + typed.length);
-          this.post_match = this.name.slice(match_at + typed.length);
-          return true;
-        }
-        return false;
+  if($('input#message_tag_list').length > 0)
+  {
+    var tags = new TextboxList('#message_tag_list', {
+      plugins: {
+        autocomplete: {}
       },
-      insertText: function(obj) { return obj.name; },
-      templateText: "<li><%= pre_match %><u><%= match %><u><%= post_match %> (<%= taggings_count %>)</li>",
-      prevals: preVals
+      bitsOptions: {
+        editable: {
+          addKeys: [32, 188],
+          addOnBlur: true
+        }
+      },
+      unique: true,
     });
-
-    $('ul.autobox-hldr').click(function() { 
-      $('li.autobox-input input', this).focus(); 
+    tags.getContainer().addClass('textboxlist-loading');
+    $.ajax({
+      url: '/tags',
+      dataType: 'json',
+      success: function (r) {
+        tags.plugins['autocomplete'].setValues(r);
+        tags.getContainer().removeClass('textboxlist-loading');      
+      }
     });
-    
-    $("input.autobox")
-      .bind("activate.autobox", function(e, d) { console.log(d); })
-      .bind("cancel.autobox", function(e) { console.log("Cancelled"); });
+    $('.controls form').submit(vote);
   }
-
-  $('.controls form').submit(vote);
 });
 
 function vote() {
