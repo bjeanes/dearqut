@@ -1,6 +1,6 @@
 = render :partial => "my/accounts/my_menu"
 #messages.mine
-  %h1 Created Messages
+  %h1 My Messages
   - @grouped_messages.each do |date, messages| 
     %h2= date
     - messages.each do |message| 

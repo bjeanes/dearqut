@@ -40,7 +40,7 @@ Feature: Associating guest messages with new accounts
     Then I should see "Messages processed successfully"
     
     When I follow "student"
-    And I follow "Created Messages"
+    And I follow "My Messages"
     Then I should see "Hello world"
     Then I should see "Your face"
     But I should not see "Hurr durr"
@@ -74,7 +74,7 @@ Feature: Associating guest messages with new accounts
     Then I should see "Messages processed successfully"
     
     When I follow "student"
-    And I follow "Created Messages"
+    And I follow "My Messages"
     Then I should see "Hello world"
     Then I should see "Your face"
     But I should not see "Hurr durr"
