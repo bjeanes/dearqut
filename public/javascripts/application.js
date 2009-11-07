@@ -15,6 +15,10 @@ $(function() {
       unique: true,
     });
     tags.getContainer().addClass('textboxlist-loading');
+    $('#suggested_tags li').click(function (el) {
+      tags.add($(this).text());
+    });
+    
     $.ajax({
       url: '/tags',
       dataType: 'json',

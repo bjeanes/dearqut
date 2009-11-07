@@ -18,6 +18,11 @@
         = f.select(:campus_id, Campus.all, :prompt => "Choose Campus")
     #add-tags
       %h2 Add Tags
+      
+      %p Suggested tags
+      %ul#suggested_tags
+        - @message.suggested_tags.each do |tag|
+          %li= tag
       %p Type in your tag and press enter after each one
       = f.text_field 'tag_list', :class => 'tags'
       %br

@@ -97,6 +97,11 @@ class Message < ActiveRecord::Base
     tags = tags.join(" ") if tags.respond_to? :join
     super(tags)
   end
+  
+  def suggested_tags
+    @suggested_tags ||= KeywordFinder.get_keywords(body).sort.uniq
+  end
+  
 
   private
   

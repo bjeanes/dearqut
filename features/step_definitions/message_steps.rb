@@ -34,3 +34,8 @@ Given /^I am logged in as admin$/ do
   Then  %{I should be on the admin page}
   Given %{I am logged in as admin}
 end
+
+Then /^I should see the following suggested tags:$/ do |table|
+  actual_table = current_dom.xpath("//ul[@id='suggested_tags']/li/text()").to_a.map{|item| [item.to_s]}
+  table.diff!(actual_table)
+end
