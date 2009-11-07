@@ -1,0 +1,10 @@
+= render :partial => "my/accounts/my_menu"
+#messages.mine
+  %h1 My Comments
+  - @comments.each do |comment| 
+    .msg-item
+      = comment.body
+      = link_to message_body(comment.message, 30), comment.message
+      
+      
+  = will_paginate(@comments)

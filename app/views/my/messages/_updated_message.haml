@@ -7,7 +7,7 @@
       = message.ham_comments_count
     - if can_edit_message?(message)
       - link_to delete_message_path(message) do
-        = image_tag"trash.png", :alt => 'Delete', :title => 'Delete'
+        = image_tag "trash.png", :alt => 'Delete', :title => 'Delete'
       - link_to edit_message_path(message) do
         = image_tag "edit.png", :alt => 'Edit', :title => 'Edit'
     

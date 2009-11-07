@@ -27,6 +27,13 @@ class Message < ActiveRecord::Base
   named_scope :most_controversial, :order => '(1 / ABS(positive_vote_count - negative_vote_count)) * (positive_vote_count + negative_vote_count) DESC'
   named_scope :latest_commented,   :conditions => 'last_commented_at IS NOT NULL', 
                                    :order => 'last_commented_at DESC, tweet_id DESC'
+  named_scope :with_comments_by,   lambda { |user| 
+                                      {
+                                        :include => :comments, 
+                                        :conditions => {:comments => {:user_id => user.id}}, 
+                                        :order => 'messages.last_commented_at DESC'
+                                      }
+                                    }
                                    
   attr_accessor                    :twitter
   attr_accessible                  :body, :tag_list, :campus_id, :faculty_id, :private
