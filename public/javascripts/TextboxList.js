@@ -99,8 +99,8 @@ TextboxList = function(element, _options){
 	
 	var create = function(klass, value, opt){
 		if (klass == 'box'){
-      if (value[1].trim().length == 0) return false;
 			if (!value[0] && !value[1]) return false;
+			if ($.trim(value[1]).length == 0) return false;
 			if (chk(options.max) && list.getChildren('.' + options.prefix + '-bit-box').length + 1 > options.max) return false;
 			if (options.unique && $.inArray(uniqueValue(value), index) != -1) {
 			  return false;

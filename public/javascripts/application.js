@@ -1,6 +1,5 @@
 $(function() {
   $('#message_body').focus();
-  
   if($('input#message_tag_list').length > 0)
   {
     var tags = new TextboxList('#message_tag_list', {
