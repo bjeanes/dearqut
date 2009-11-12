@@ -19,10 +19,12 @@
     #add-tags
       %h2 Add Tags
       
-      %p Suggested tags
-      %ul#suggested_tags
-        - @message.suggested_tags.each do |tag|
-          %li= tag
+      - if @message.suggested_tags?
+        %p Click to add a tag
+        %ul#suggested_tags
+          - @message.suggested_tags.each do |tag|
+            %li.textboxlist-bit-box
+              %a= tag
       %p Type in your tag and press enter after each one
       = f.text_field 'tag_list', :class => 'tags'
       %br

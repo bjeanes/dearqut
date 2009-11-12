@@ -98,10 +98,14 @@ class Message < ActiveRecord::Base
     super(tags)
   end
   
-  def suggested_tags
-    @suggested_tags ||= KeywordFinder.get_keywords(body).sort.uniq
+  def suggested_tags?
+    !suggested_tags.empty?
   end
   
+  def suggested_tags
+    @suggested_tags ||= KeywordFinder.get_keywords(body).sort.uniq
+    @suggested_tags - existing_tags
+  end
 
   private
   
