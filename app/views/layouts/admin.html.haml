@@ -35,21 +35,20 @@
             flexy - adjustable admin skin
         .head_memberinfo
           .head_memberinfo_logo
-            %span 1
-            %img{ :src => "/images/unreadmail.png", :alt => "" }
-          %span.memberinfo_span
-            Welcome
-            %a{ :href => "" }
-              Admin
-          %span.memberinfo_span
-            %a{ :href => "" }
-              Settings
+          /   %span 1
+          /   %img{ :src => "/images/unreadmail.png", :alt => "" }
+          / %span.memberinfo_span
+          /   Welcome
+          /   %a{ :href => "" }
+          /     Admin
+          / %span.memberinfo_span
+          /   %a{ :href => "" }
+          /     Settings
           %span
-            %a{ :href => "login.html" }
-              logout
-          %span.memberinfo_span2
-            %a{ :href => "" }
-              1 Private Message received
+            = link_to("logout", logout_path)
+          / %span.memberinfo_span2
+          /   %a{ :href => "" }
+          /     1 Private Message received
       #bg_wrapper
         #main
           #content
@@ -71,12 +70,12 @@
                 Moderation
               %ul
                 %li= link_to("Messages", admin_message_moderation_index_path)
-                %li
-                  %a{ :href => "#" }
-                    Comments
-                %li
-                  %a{ :href => "#" }
-                    Bans
+                / %li
+                /   %a{ :href => "#" }
+                /     Comments
+                / %li
+                /   %a{ :href => "#" }
+                /     Bans
       #footer
       /
         end footer
