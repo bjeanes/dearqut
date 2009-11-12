@@ -1,1 +1,7 @@
-*.css
+acts_as_taggable.css
+application.css
+jquery-ui.css
+jquery.ui.autobox.css
+jquery.wysiwyg.css
+style1.css
+style_all.css
