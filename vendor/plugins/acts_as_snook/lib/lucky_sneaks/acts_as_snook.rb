@@ -31,7 +31,7 @@ module LuckySneaks
           freenet free\s*shipping gambling- hair-loss homefinance holdem incest jrcreations leethal levitra macinstruct
           mortgagequotes nemogs online-gambling ottawavalleyag ownsthis paxil penis pharmacy phentermine
           poker poze pussy ringtones roulette shemale shoes -site slot-machine thorcarlson
-          tramadol trim-spa ultram valeofglamorganconservatives viagra vioxx xanax zolus
+          tramadol trim-spa ultram valeofglamorganconservatives viagra vioxx xanax zolus xxx porn sex
         }
         if additional = options.delete(:spam_words)
           self.spam_words << additional
