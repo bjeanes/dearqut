@@ -1,7 +1,7 @@
 development:
   strategy: oauth
-  oauth_consumer_key: V0xVRgj8HImO0ieEnlTKyA
-  oauth_consumer_secret: n9T0jOGxWHTb6MlCP9hX3ndwz0WoMXwRKiJtkDusPgI
+  oauth_consumer_key: keys-removed-and-reset
+  oauth_consumer_secret: keys-removed-and-reset
   base_url: "https://twitter.com"
   api_timeout: 10
   remember_for: 14 # days
@@ -20,8 +20,8 @@ cucumber:
   <<: *TEST
 production:
   strategy: oauth
-  oauth_consumer_key: vGcptDOIaRl5kidYbofQ
-  oauth_consumer_secret: cjGgIiKSIwuXu6BkIllNrFGqgYbJj3MuRnmidsaKweU
+  oauth_consumer_key: keys-removed-and-reset
+  oauth_consumer_secret: keys-removed-and-reset
   base_url: "https://twitter.com"
   api_timeout: 10
   remember_for: 14 # days
